@@ -1,0 +1,4 @@
+include:
+  - 'app/views/*/*.slim'
+  - 'app/assets/templates/*.slim'
+  - 'app/assets/templates/*/*.slim'
