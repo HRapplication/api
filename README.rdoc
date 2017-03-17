@@ -1,28 +1,54 @@
-== README
+## Start serwera:
+bundle exec rails s -b 0.0.0.0
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Po postawieniu apki luc spullowaniu zmian:
+```
+bundle install
+rake db:drop db:create db:migrate db:seed (trzeba miec szamkniety server)
+restart servera
+```
 
-Things you may want to cover:
+## Git
+###### The dodaje zmiany
+```git add -A```
+###### zobaczyc, czy dodane
+```git status```
 
-* Ruby version
+###### nowy commit
+```git commit -m "message"```
 
-* System dependencies
+###### podnoszenie zmian
+```
+git add -A
+git stash
+```
 
-* Configuration
+###### położenie zmian
+```
+git stash pop
+```
 
-* Database creation
+###### ściąganie danych z serwera
+```
+git pull --rebase
+```
 
-* Database initialization
+jak mam konflikt w rebase:
+edytuje plik z konfliktem i później
+```
+git add -A
+git rebase --continue
+```
 
-* How to run the test suite
+###### deploy
+```
+git push heroku master
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+heroku pg:reset DATABASE_URL
+```
 
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+```
+heroku run:detached rake db:migrate db:seed
+```
