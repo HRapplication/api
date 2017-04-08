@@ -1,0 +1,2 @@
+class EventsContentsController < ApplicationController
+end
