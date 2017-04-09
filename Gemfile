@@ -28,6 +28,10 @@ gem 'angular-rails-templates', '~> 0.2.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'slim-rails', '~> 0.2.1'
 gem 'devise'
+gem 'activeadmin', '~> 1.0.0.pre2'
+gem 'cancan' # or cancancan
+gem 'draper'
+gem 'pundit'
 
 group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views
