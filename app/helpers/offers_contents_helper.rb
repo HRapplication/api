@@ -1,0 +1,2 @@
+module OffersContentsHelper
+end

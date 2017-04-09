@@ -1,0 +1,2 @@
+class EnlistedForEventsController < ApplicationController
+end

@@ -1,0 +1,2 @@
+class SickLeaveFormsController < ApplicationController
+end
