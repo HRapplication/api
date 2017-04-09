@@ -8,6 +8,18 @@ rake db:drop db:create db:migrate db:seed (trzeba miec szamkniety server)
 restart servera
 ```
 
+
+###### ADMIN
+Wchodzimy na
+```
+/admin
+```
+
+```
+login: admin@example.com
+hasło: password
+```
+
 ## Git
 ###### The dodaje zmiany
 ```git add -A```
