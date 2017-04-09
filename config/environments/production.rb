@@ -33,6 +33,8 @@ Rails.application.configure do
   config.assets.precompile =
       ['*.js', '*.css', '*.css.erb', '*.coffee', '*.sass', '*.scss']
 
+  config.assets.precompile = [/^[a-z0-9\/]*[a-z0-9]\w+.(css|js)$/]
+
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
