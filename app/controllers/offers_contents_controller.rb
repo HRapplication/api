@@ -1,2 +1,0 @@
-class OffersContentsController < ApplicationController
-end

@@ -1,2 +1,0 @@
-class HomeofficeFormsController < ApplicationController
-end

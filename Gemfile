@@ -32,7 +32,7 @@ gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'cancan' # or cancancan
 gem 'draper'
 gem 'pundit'
-
+gem 'awesome_print'
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

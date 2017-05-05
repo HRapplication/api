@@ -1,2 +1,0 @@
-class JobOffersController < ApplicationController
-end

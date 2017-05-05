@@ -1,2 +1,0 @@
-class HolidayFormsController < ApplicationController
-end

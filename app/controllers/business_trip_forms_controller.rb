@@ -1,2 +1,0 @@
-class BusinessTripFormsController < ApplicationController
-end
