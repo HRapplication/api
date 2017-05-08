@@ -1,5 +1,6 @@
 class Employee < ActiveRecord::Base
-  belongs_to :user
+  has_one :user, foreign_key: 'employee_id'
+  belongs_to :supervisor, class_name: 'User'
   has_many :business_trip_forms, dependent: :destroy
   has_many :schedules, dependent: :destroy
   has_many :holiday_forms, dependent: :destroy

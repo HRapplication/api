@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409115001) do
+ActiveRecord::Schema.define(version: 20170508141747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,12 +80,9 @@ ActiveRecord::Schema.define(version: 20170409115001) do
     t.integer  "position"
     t.integer  "weekly_working_hours"
     t.integer  "supervisor_id"
-    t.integer  "user_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
-
-  add_index "employees", ["user_id"], name: "index_employees_on_user_id", using: :btree
 
   create_table "enlisted_for_events", force: :cascade do |t|
     t.integer  "event_id"
@@ -191,14 +188,15 @@ ActiveRecord::Schema.define(version: 20170409115001) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "employee_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["employee_id"], name: "index_users_on_employee_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "addresses", "employees"
   add_foreign_key "business_trip_forms", "employees"
-  add_foreign_key "employees", "users"
   add_foreign_key "enlisted_for_events", "employees"
   add_foreign_key "enlisted_for_events", "events"
   add_foreign_key "events", "users"
@@ -209,4 +207,5 @@ ActiveRecord::Schema.define(version: 20170409115001) do
   add_foreign_key "offers_contents", "job_offers"
   add_foreign_key "schedules", "employees"
   add_foreign_key "sick_leave_forms", "employees"
+  add_foreign_key "users", "employees"
 end
