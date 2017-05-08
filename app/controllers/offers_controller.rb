@@ -1,9 +1,10 @@
 class OffersController < ApplicationController
 	def index
+    render json: JobOffer.all
 	end
 
 	def show
-
+    render json: current_user.job_offers.where(id: id_param).first.to_json(include: :offers_content)
 	end
 
 	def create
@@ -16,7 +17,8 @@ class OffersController < ApplicationController
     render json: offer.to_json(include: :offers_content)
 	end
 
-	def delete
+	def destroy
+    render json: current_user.job_offers.where(id: id_param).first.destroy
 	end
 
   private
@@ -27,5 +29,9 @@ class OffersController < ApplicationController
 
   def content_param
     params.permit(:content)["content"]
+  end
+
+  def id_param
+    params.permit(:id)["id"]
   end
 end

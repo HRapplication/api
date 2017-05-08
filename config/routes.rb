@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
-  resources :offers, only: [:index, :show, :create, :delete]
+  resources :offers
 
   root 'home#index'
 end

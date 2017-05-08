@@ -36,6 +36,7 @@ gem 'awesome_print'
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+  gem 'rails-erd', '~> 1.4.5'
 end
 
 group :development, :test do
