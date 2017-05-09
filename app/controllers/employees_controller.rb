@@ -1,4 +1,4 @@
-class EmployeeController < ApplicationController
+class EmployeesController < ApplicationController
   def index
 
   end
@@ -18,6 +18,17 @@ class EmployeeController < ApplicationController
   end
 
   def destroy
+    id = user_params["id"].to_i
+    render json: User.find(id).destroy
+  end
+
+  def update
+    if current_user.id == user_params["id"].to_i
+      user = current_user.details.update(employee_params)
+      render json: current_user.to_json(include: :details)
+    else
+      render json: false
+    end
   end
 
   private
@@ -31,8 +42,9 @@ class EmployeeController < ApplicationController
       :weekly_working_hours,
     )
   end
+
   def user_params
-    params.permit(:email)
+    params.permit(:id, :email)
   end
 
 end

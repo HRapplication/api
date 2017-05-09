@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :offers
+  resources :employees
 
   root 'home#index'
 end
