@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
-  resources :events
+  resources :events do
+    post "/enlist/:event_id", to: 'events#enlist'
+  end
   resources :offers
   resources :employees
 
