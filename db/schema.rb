@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515121149) do
+ActiveRecord::Schema.define(version: 20170515134811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -158,12 +158,12 @@ ActiveRecord::Schema.define(version: 20170515121149) do
     t.time     "start_hour"
     t.time     "end_hour"
     t.boolean  "is_weekend"
-    t.integer  "employee_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
-  add_index "schedules", ["employee_id"], name: "index_schedules_on_employee_id", using: :btree
+  add_index "schedules", ["user_id"], name: "index_schedules_on_user_id", using: :btree
 
   create_table "sick_leave_forms", force: :cascade do |t|
     t.date     "start_date"
@@ -206,7 +206,7 @@ ActiveRecord::Schema.define(version: 20170515121149) do
   add_foreign_key "homeoffice_forms", "employees"
   add_foreign_key "job_offers", "users"
   add_foreign_key "offers_contents", "job_offers"
-  add_foreign_key "schedules", "employees"
+  add_foreign_key "schedules", "users"
   add_foreign_key "sick_leave_forms", "employees"
   add_foreign_key "users", "employees"
 end
