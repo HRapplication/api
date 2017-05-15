@@ -39,7 +39,7 @@ RSpec.describe EventsController, type: :controller do
   it "gets simple event" do
     get :show, id: @event.id
     output = JSON.parse(response.body)
-    ap output
+    # ap output
   end
 
   it "creates an event" do

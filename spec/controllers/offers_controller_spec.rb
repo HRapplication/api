@@ -44,7 +44,7 @@ RSpec.describe OffersController, type: :controller do
     sign_in @user
     id = @offer.id
 
-    get :destroy, {
+    delete :destroy, {
       id: id
     }
 
