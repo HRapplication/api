@@ -61,6 +61,34 @@
               "type": "integer",
               "description": "Ilość godzin przepracowanych w tygodniu?",
               "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "address_attributes[address]",
+              "type": "optional",
+              "description": "Adres?",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "address_attributes[city]",
+              "type": "optional",
+              "description": "Miasto",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "address_attributes[country]",
+              "type": "optional",
+              "description": "Państwo",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "address_attributes[postcode]",
+              "type": "optional",
+              "description": "Kod pocztowy",
+              "required": false
             }
           ],
           "nickname": "Employees#create",
@@ -115,6 +143,34 @@
               "type": "integer",
               "description": "Ilość godzin przepracowanych w tygodniu?",
               "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "address_attributes[address]",
+              "type": "optional",
+              "description": "Adres?",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "address_attributes[city]",
+              "type": "optional",
+              "description": "Miasto",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "address_attributes[country]",
+              "type": "optional",
+              "description": "Państwo",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "address_attributes[postcode]",
+              "type": "optional",
+              "description": "Kod pocztowy",
+              "required": false
             }
           ],
           "nickname": "Employees#update",

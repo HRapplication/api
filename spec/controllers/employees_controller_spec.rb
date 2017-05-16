@@ -13,7 +13,13 @@ RSpec.describe EmployeesController, type: :controller do
       surname: "e",
       phone_number: "453213222",
       position: 1,
-      weekly_working_hours: 4
+      weekly_working_hours: 4,
+      address_attributes: {
+        address: 'asd',
+        city: 'dsa',
+        country: 'sad',
+        postcode: '45-500'
+      }
     }
     e = Employee.create(@input.except(:email))
 
@@ -25,6 +31,7 @@ RSpec.describe EmployeesController, type: :controller do
     post :create, @input
 
     output = JSON.parse(response.body)
+    ap output
 
     expect(output["email"]).to eq(@input[:email])
     expect(output["details"]["name"]).to eq(@input[:name])
@@ -32,6 +39,7 @@ RSpec.describe EmployeesController, type: :controller do
     expect(output["details"]["phone_number"]).to eq(@input[:phone_number])
     expect(output["details"]["position"]).to eq(@input[:position ])
     expect(output["details"]["weekly_working_hours"]).to eq(@input[:weekly_working_hours])
+    expect(output["details"]["address"]["country"]).to eq(@input[:address_attributes][:country])
   end
 
   it "destroys employee with id" do

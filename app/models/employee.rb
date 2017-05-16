@@ -7,4 +7,5 @@ class Employee < ActiveRecord::Base
   has_many :homeoffice_forms, dependent: :destroy
   has_many :sick_leaves_forms, dependent: :destroy
   has_many :enlisted_for_events, dependent: :destroy
+  accepts_nested_attributes_for :address
 end

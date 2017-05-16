@@ -14,7 +14,13 @@ class EmployeesController < ApplicationController
     user.details = employee
     user.save
 
-    render json: JSON.parse(user.to_json(include: :details)).merge!("password": password)
+    render json: JSON.parse(
+        user
+          .to_json(
+            include: {
+              details: {
+                include: { address: {}}}}))
+      .merge!("password": password)
   end
 
   def destroy
@@ -40,6 +46,12 @@ class EmployeesController < ApplicationController
       :phone_number,
       :position,
       :weekly_working_hours,
+      address_attributes: [
+        :address,
+        :city,
+        :country,
+        :postcode
+      ]
     )
   end
 
@@ -67,6 +79,10 @@ class EmployeesController < ApplicationController
     param :form, :phone_number, :string, :required, "Numer telefonu"
     param :form, :position, :integer, :required, "Pozycja"
     param :form, :weekly_working_hours, :integer, :required, "Ilość godzin przepracowanych w tygodniu?"
+    param :form, "address_attributes[address]", :optional, :string, "Adres?"
+    param :form, "address_attributes[city]", :optional, :string, "Miasto"
+    param :form, "address_attributes[country]", :optional, :string, "Państwo"
+    param :form, "address_attributes[postcode]", :optional, :string, "Kod pocztowy"
   end
 
   swagger_api :update do
@@ -77,6 +93,10 @@ class EmployeesController < ApplicationController
     param :form, :phone_number, :string, :required, "Numer telefonu"
     param :form, :position, :integer, :required, "Pozycja"
     param :form, :weekly_working_hours, :integer, :required, "Ilość godzin przepracowanych w tygodniu?"
+    param :form, "address_attributes[address]", :optional, :string, "Adres?"
+    param :form, "address_attributes[city]", :optional, :string, "Miasto"
+    param :form, "address_attributes[country]", :optional, :string, "Państwo"
+    param :form, "address_attributes[postcode]", :optional, :string, "Kod pocztowy"
   end
 
   swagger_api :destroy do
