@@ -1,5 +1,5 @@
-class BusinessTripForm < ActiveRecord::Base
-  belongs_to :employee
+class OffersContent < ActiveRecord::Base
+  belongs_to :job_offer
 
   validates_presence_of :start_date, :end_date, :company, :transport, :employee_id
 end

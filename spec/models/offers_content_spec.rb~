@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe EventsContent, type: :model do
+RSpec.describe OffersContent, type: :model do
 
 subject { 
-    described_class.new(content: "lorem ipsum i cos tam jeszcze", event_id: "2") 
+    described_class.new(content: "Tu jest opis stanowiska", job_offer_id: "2") 
 }
   
 describe "Validations" do
@@ -16,16 +16,16 @@ describe "Validations" do
     expect(subject).to_not be_valid
   end
 
-  it "is not valid without a event_id" do
-    subject.event_id = nil
+  it "is not valid without a job_offer_id" do
+    subject.job_offer_id = nil
     expect(subject).to_not be_valid
   end
 end
 
 describe "Associations" do
-  it "belongs to event" do
-    assc = described_class.reflect_on_association(:event)
-    expect(assc.macro).to eq :belongs_to
+    it "belongs to job offer" do
+    assc = described_class.reflect_on_association(:job_offer)
+    expect(assc.macro).to eq :belongs_tp
   end
 end
 
