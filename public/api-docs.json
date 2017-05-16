@@ -4,8 +4,20 @@
   "basePath": "http://localhost:3000",
   "apis": [
     {
+      "path": "/events.{format}",
+      "description": "Events Management"
+    },
+    {
       "path": "/schedules.{format}",
       "description": "Schedule Management"
+    },
+    {
+      "path": "/offers.{format}",
+      "description": "Offers Management"
+    },
+    {
+      "path": "/employees.{format}",
+      "description": "Employees Management"
     }
   ],
   "authorizations": null,

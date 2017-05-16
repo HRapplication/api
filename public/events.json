@@ -1,0 +1,109 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000",
+  "resourcePath": "events",
+  "apis": [
+    {
+      "path": "/events/{event_id}/enlist",
+      "operations": [
+        {
+          "summary": "Zapisuje aktualnego użytkownika na wydarzenie",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "event_id",
+              "type": "integer",
+              "description": "Id wydarzenia",
+              "required": true
+            }
+          ],
+          "nickname": "Events#enlist",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/events",
+      "operations": [
+        {
+          "summary": "Zwraca wszystkie wydarzenia",
+          "nickname": "Events#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/events",
+      "operations": [
+        {
+          "summary": "Tworzy wydarzenie",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "title",
+              "type": "string",
+              "description": "Tytuł wydarzenia",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "content",
+              "type": "string",
+              "description": "Opis wydarzenia",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "duedate",
+              "type": "date",
+              "description": "Data kiedy wydarzenie się odbędzie",
+              "required": true
+            }
+          ],
+          "nickname": "Events#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/events/{id}",
+      "operations": [
+        {
+          "summary": "Zwraca jedno wydarzenie z zapisanymi na nie ludźmi",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Id danej pozycji",
+              "required": true
+            }
+          ],
+          "nickname": "Events#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/events/{id}",
+      "operations": [
+        {
+          "summary": "Usuwa event",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Id danej pozycji",
+              "required": true
+            }
+          ],
+          "nickname": "Events#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

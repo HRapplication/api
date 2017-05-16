@@ -34,4 +34,28 @@ class OffersController < ApplicationController
   def id_param
     params.permit(:id)["id"]
   end
+
+
+  swagger_controller :offers, "Offers Management"
+
+  swagger_api :index do
+    summary "Zwraca wszystkie dodane oferty pracy"
+  end
+
+  swagger_api :show do
+    summary "Zwraca jedną pozycję ofery pracy"
+    param :path, :id, :integer, :required, "Id danej pozycji"
+  end
+
+  swagger_api :create do
+    summary "Tworzy pozyjcę na terminarzu"
+    notes "godziny są zwracane w strefie UTC"
+    param :form, :title, :string, :required, "Tytuł oferty"
+    param :form, :content, :string, :required, "Opis oferty"
+  end
+
+  swagger_api :destroy do
+    summary "Usuwa pozycję oferty pracy z danym id"
+    param :path, :id, :integer, :required, "Id danej pozycji"
+  end
 end

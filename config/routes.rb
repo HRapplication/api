@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
 
   resources :events do
-    post "/enlist/:event_id", to: 'events#enlist'
+    post "/enlist", to: 'events#enlist'
   end
   resources :schedules
   resources :offers

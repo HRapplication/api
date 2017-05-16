@@ -50,4 +50,32 @@ class EventsController < ApplicationController
     params.permit(:duedate)["duedate"]
   end
 
+
+  swagger_controller :events, "Events Management"
+
+  swagger_api :index do
+    summary "Zwraca wszystkie wydarzenia"
+  end
+
+  swagger_api :show do
+    summary "Zwraca jedno wydarzenie z zapisanymi na nie ludźmi"
+    param :path, :id, :integer, :required, "Id danej pozycji"
+  end
+
+  swagger_api :create do
+    summary "Tworzy wydarzenie"
+    param :form, :title, :string, :required, "Tytuł wydarzenia"
+    param :form, :content, :string, :required, "Opis wydarzenia"
+    param :form, :duedate, :date, :required, "Data kiedy wydarzenie się odbędzie"
+  end
+
+  swagger_api :destroy do
+    summary "Usuwa event"
+    param :path, :id, :integer, :required, "Id danej pozycji"
+  end
+
+  swagger_api :enlist do
+    summary "Zapisuje aktualnego użytkownika na wydarzenie"
+    param :path, :event_id, :integer, :required, "Id wydarzenia"
+  end
 end
