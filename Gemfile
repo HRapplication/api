@@ -33,6 +33,8 @@ gem 'cancan' # or cancancan
 gem 'draper'
 gem 'pundit'
 gem 'awesome_print'
+gem 'swagger-docs'
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

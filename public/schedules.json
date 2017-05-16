@@ -1,0 +1,116 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000",
+  "resourcePath": "schedules",
+  "apis": [
+    {
+      "path": "/schedules",
+      "operations": [
+        {
+          "summary": "Pokazuje całą zaplanowaną pracę pomiędzy datami",
+          "notes": "godziny są zwracane w strefie UTC",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "start_date",
+              "type": "date",
+              "description": "Data początkowa",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "end_date",
+              "type": "date",
+              "description": "Data końcowa",
+              "required": true
+            }
+          ],
+          "nickname": "Schedules#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/schedules",
+      "operations": [
+        {
+          "summary": "Tworzy pozyjcę na terminarzu",
+          "notes": "godziny są zwracane w strefie UTC",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "start_hour",
+              "type": "string",
+              "description": "Czas startu",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "end_hour",
+              "type": "string",
+              "description": "Czas zakończenia",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "is_weekend",
+              "type": "boolean",
+              "description": "Czy dana pozycja odbywa się w weekend",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "work_date",
+              "type": "string",
+              "description": "Data danego dnia",
+              "required": true
+            }
+          ],
+          "nickname": "Schedules#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/schedules/{id}",
+      "operations": [
+        {
+          "summary": "Zwraca jedną pozycję z formularza",
+          "notes": "godziny są zwracane w strefie UTC",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Id danej pozycji",
+              "required": true
+            }
+          ],
+          "nickname": "Schedules#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/schedules/{id}",
+      "operations": [
+        {
+          "summary": "Usuwa pozycję z formularza z danym id",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Id danej pozycji",
+              "required": true
+            }
+          ],
+          "nickname": "Schedules#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

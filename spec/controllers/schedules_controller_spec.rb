@@ -24,7 +24,7 @@ RSpec.describe SchedulesController, type: :controller do
     expect(Date.parse(output[0]["work_date"]) < Date.parse(end_date)).to be(true)
   end
 
-  it "returns http success" do
+  it "show one schedule" do
     sign_in @user
     get :show, id: @user.schedules.first.id
 
@@ -33,7 +33,7 @@ RSpec.describe SchedulesController, type: :controller do
     expect(Date.parse(output['work_date']) == Date.parse("2016-09-01")).to be(true)
   end
 
-  it "returns http success" do
+  it "craete one schedule" do
     start_hour = Time.new(2000, 1, 1, 14, 35, 0)
     end_hour = Time.new(2000, 1, 1, 14, 45, 0)
     work_date = Date.today

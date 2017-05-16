@@ -14,7 +14,7 @@ class SchedulesController < ApplicationController
       start_hour: Time.parse(schedule_params["start_hour"]).utc,
       end_hour: Time.parse(schedule_params["end_hour"]).utc,
       is_weekend: schedule_params["is_weekend"],
-      work_date: schedule_params["work_date"]
+      work_date: Date.parse(schedule_params["work_date"])
     })
   end
 
@@ -44,5 +44,34 @@ class SchedulesController < ApplicationController
     params.permit(
       :id
     )
+  end
+
+  swagger_controller :schedules, "Schedule Management"
+
+  swagger_api :index do
+    summary "Pokazuje całą zaplanowaną pracę pomiędzy datami"
+    notes "godziny są zwracane w strefie UTC"
+    param :query, :start_date, :date, :required, "Data początkowa"
+    param :query, :end_date, :date, :required, "Data końcowa"
+  end
+
+  swagger_api :show do
+    summary "Zwraca jedną pozycję z formularza"
+    notes "godziny są zwracane w strefie UTC"
+    param :path, :id, :integer, :required, "Id danej pozycji"
+  end
+
+  swagger_api :create do
+    summary "Tworzy pozyjcę na terminarzu"
+    notes "godziny są zwracane w strefie UTC"
+    param :form, :start_hour, :string, :required, "Czas startu"
+    param :form, :end_hour, :string, :required, "Czas zakończenia"
+    param :form, :is_weekend, :boolean, :required, "Czy dana pozycja odbywa się w weekend"
+    param :form, :work_date, :string, :required, "Data danego dnia"
+  end
+
+  swagger_api :destroy do
+    summary "Usuwa pozycję z formularza z danym id"
+    param :path, :id, :integer, :required, "Id danej pozycji"
   end
 end

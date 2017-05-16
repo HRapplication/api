@@ -273,6 +273,9 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    swagger-docs (0.2.9)
+      activesupport (>= 3)
+      rails (>= 3)
     sysexits (1.2.0)
     teaspoon (1.1.5)
       railties (>= 3.2.5, < 6)
@@ -327,6 +330,7 @@ DEPENDENCIES
   slim_lint
   spring (~> 1.3.6)
   sprockets (~> 2.12.4)
+  swagger-docs
   teaspoon-jasmine (~> 2.2.0)
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
