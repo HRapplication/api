@@ -66,3 +66,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular', '~> 1.3.15'
   gem 'rails-assets-angular-ui-router', '~> 0.2.13'
 end
+
+gem 'rails-assets-jquery', source: 'https://rails-assets.org'
+gem 'rails-assets-bootstrap', '3.3.7', source: 'https://rails-assets.org'
+
