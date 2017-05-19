@@ -8,4 +8,7 @@ class Employee < ActiveRecord::Base
   has_many :sick_leaves_forms, dependent: :destroy
   has_many :enlisted_for_events, dependent: :destroy
   accepts_nested_attributes_for :address
+
+  validates_presence_of :name, :surname, :phone_number, 
+:position, :weekly_working_hours, :supervisor_id
 end

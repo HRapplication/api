@@ -12,4 +12,6 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :details
   accepts_nested_attributes_for :employees
+
+  validates_presence_of :email, :encrypted_password, :employee_id
 end
