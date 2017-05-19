@@ -53,6 +53,11 @@ describe "Associations" do
     expect(assc.macro).to eq :has_many
   end
 
+  it "has many schedules" do
+    assc = described_class.reflect_on_association(:schedules)
+    expect(assc.macro).to eq :has_many
+  end
+
   it "has many holiday forms" do
     assc = described_class.reflect_on_association(:holiday_forms)
     expect(assc.macro).to eq :has_many
