@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
 subject { 
-    described_class.new(email: "pawel.zyb@gmail.com", password: "password", encrypted_password: "password", employee_id: "2") 
+    described_class.new(email: "pawel.zyb@gmail.com", password: "password", encrypted_password: "password", password: 'password', employee_id: "2") 
 }
   
 describe "Validations" do
