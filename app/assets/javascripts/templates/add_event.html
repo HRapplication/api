@@ -89,7 +89,7 @@
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li>
-                                <i class="glyphicon glyphicon-home"></i>  <a href="../index.html">Home</a>
+                                <i class="glyphicon glyphicon-home"></i>  <a ui-sref="home">Home</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-fw fa-bell"></i> Wydarzenia
@@ -104,18 +104,18 @@
                         <h2>Nowe wydarzenie</h2>
                         <h4>Data wydarzenia</h4>
 
-                        <form>
+                        <form ng-controller="eventCtrl">
                             <div class="row">  
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="date">Od:</label><br />                                
-                                        <input type="date" class="form-control date_form"/>
+                                        <input type="date" class="form-control date_form" ng-model="eStartDate" />
                                     </div>   
                                 </div>                          
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="date">Do:</label><br />
-                                        <input type="date" class="form-control date_form" />                                
+                                        <input type="date" class="form-control date_form" ng-model="eFinishDate" />                                
                                     </div>
                                 </div>
                             </div>
@@ -125,13 +125,13 @@
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="time">Od:</label><br />
-                                        <input type="time" class="form-control time_form" />
+                                        <input type="time" class="form-control time_form" ng-model="eStartTime" />
                                     </div>
-                                </div>
+                                </div>Michał
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="time">Do:</label><br />
-                                        <input type="time" class="form-control time_form" />                                
+                                        <input type="time" class="form-control time_form" ng-model="eFinishTime" />                                
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +139,7 @@
                                 <div class="col-lg-8">
                                     <div class="form-group">
                                         <label for="event_description">Opis wydarzenia:</label><br />
-                                        <textarea class="form-control" rows="5" cols="50" id="event_description" name="event_description" placeholder="Wprowadź opis wydarzenia..."></textarea>
+                                        <textarea ng-model="eDescription" class="form-control" rows="5" cols="50" id="event_description" name="event_description" placeholder="Wprowadź opis wydarzenia..."></textarea>
                                     </div>                    
                                 <button type="submit" class="btn btn-default">Dodaj wydarzenie</button>
                                 </div>
