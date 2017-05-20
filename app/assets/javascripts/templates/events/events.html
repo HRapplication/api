@@ -1,4 +1,3 @@
-
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -19,7 +18,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> John Doe <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="login.html"><i class="glyphicon glyphicon-off"></i> Wyloguj</a>
+                            <a ui-sref="login"><i class="glyphicon glyphicon-off"></i> Wyloguj</a>
                         </li>
                     </ul>
                 </li>
@@ -34,16 +33,16 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#grafik"><i class="glyphicon glyphicon-calendar"></i> Grafik <i class="caret"></i></a>
                         <ul id="grafik" class="collapse">
                             <li>
-                                <a href="schedule/calendar.html">Kalendarz</a>
+                                <a ui-sref="calendar">Kalendarz</a>
                             </li>
                             <li>
-                                <a href="schedule/schedule_preference.html">Ustal preferencje</a>
+                                <a ui-sref="schedule_preference">Ustal preferencje</a>
                             </li>
                             <li>
-                                <a href="#">Edytuj grafik</a>
+                                <a ui-sref="edit_schedule">Edytuj grafik</a>
                             </li>
                             <li>
-                                <a href="schedule/submit_schedule.html">Zatwierdź grafik</a>
+                                <a ui-sref="submit_schedule">Zatwierdź grafik</a>
                             </li>
                         </ul>
                     </li>
@@ -51,7 +50,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#wydarzenia"><i class="glyphicon glyphicon-bell"></i> Wydarzenia <i class="caret"></i></a>
                         <ul id="wydarzenia" class="collapse">
                             <li>
-                                <a href="events/events.html">Aktualne wydarzenia</a>
+                                <a ui-sref="events">Aktualne wydarzenia</a>
                             </li>
                             <li>
                                 <a ui-sref="add_event">Dodaj wydarzenie</a>
@@ -62,16 +61,16 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#formularze"><i class="glyphicon glyphicon-edit"></i> Formularze <i class="caret"></i></a>
                         <ul id="formularze" class="collapse">
                             <li>
-                                <a href="forms/holiday_form.html">Urlop</a>
+                                <a ui-sref="holiday_form">Urlop</a>
                             </li>
                             <li>
-                                <a href="forms/sick_leave_form.html">Urlop zdrowotny</a>
+                                <a ui-sref="sick_leave_form">Urlop zdrowotny</a>
                             </li>
                             <li>
-                                <a href="forms/homeoffice_form.html">Praca zdalna</a>
+                                <a ui-sref="homeoffice_form">Praca zdalna</a>
                             </li>
                             <li>
-                                <a href="forms/business_trip_form.html">Delegacja</a>
+                                <a ui-sref="business_trip_form">Delegacja</a>
                             </li>
                         </ul>
                     </li>
@@ -89,7 +88,7 @@
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li>
-                                <i class="glyphicon glyphicon-home"></i>  <a href="../index.html">Home</a>
+                                <i class="glyphicon glyphicon-home"></i> <a href="../index.html">Home</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-fw fa-bell"></i> Wydarzenia
@@ -97,66 +96,37 @@
                         </ol>
                     </div>
                 </div>
-                
+                <!-- /.row -->
+
                 <div class="row">
-                    <div class="col-lg-8">
-
-                        <h2>Nowe wydarzenie</h2>
-                        <h4>Data wydarzenia</h4>
-
-                        <form>
-                            <div class="row">  
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="date">Od:</label><br />                                
-                                        <input type="date" class="form-control date_form"/>
-                                    </div>   
-                                </div>                          
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="date">Do:</label><br />
-                                        <input type="date" class="form-control date_form" />                                
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h4>Czas wydarzenia</h4>
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="time">Od:</label><br />
-                                        <input type="time" class="form-control time_form" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="time">Do:</label><br />
-                                        <input type="time" class="form-control time_form" />                                
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <div class="form-group">
-                                        <label for="event_description">Opis wydarzenia:</label><br />
-                                        <textarea class="form-control" rows="5" cols="50" id="event_description" name="event_description" placeholder="Wprowadź opis wydarzenia..."></textarea>
-                                    </div>                    
-                                <button type="submit" class="btn btn-default">Dodaj wydarzenie</button>
-                                </div>
-                            </div> 
-                        </form>
-                        <br />
+                    <div class="col-lg-12 list-group" id="offers_list">
+                        <a href="event_description.html" class="list-group-item">
+                                <h4 class="list-group-item-heading">Wydarzenie 1</h4>
+                                <p class="list-group-item-text">Excepteur voluptate laborum in in cillum tempor. Et nostrud ipsum laboris cupidatat occaecat proident eu incididunt. Commodo exercitation sit commodo eiusmod cupidatat eu aliqua id aliqua.</p>
+                        </a>
+                        <a href="#" class="list-group-item">
+                                <h4 class="list-group-item-heading">Wydarzenie 2</h4>
+                                <p class="list-group-item-text">Excepteur voluptate laborum in in cillum tempor. Et nostrud ipsum laboris cupidatat occaecat proident eu incididunt. Commodo exercitation sit commodo eiusmod cupidatat eu aliqua id aliqua.</p>
+                        </a>
+                        <a href="#" class="list-group-item">
+                                <h4 class="list-group-item-heading">Wydarzenie 3</h4>
+                                <p class="list-group-item-text">Excepteur voluptate laborum in in cillum tempor. Et nostrud ipsum laboris cupidatat occaecat proident eu incididunt. Commodo exercitation sit commodo eiusmod cupidatat eu aliqua id aliqua.</p>
+                        </a>
+                        <a href="#" class="list-group-item">
+                                <h4 class="list-group-item-heading">Wydarzenie 4</h4>
+                                <p class="list-group-item-text">Excepteur voluptate laborum in in cillum tempor. Et nostrud ipsum laboris cupidatat occaecat proident eu incididunt. Commodo exercitation sit commodo eiusmod cupidatat eu aliqua id aliqua.</p>
+                        </a>
                     </div>
-                    <!-- /.col-lg-8 -->
                 </div>
                 <!-- /.row -->
 
             </div>
-            <!-- /.container-fluid --> 
+            <!-- /.container-fluid -->
 
         </div>
         <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
+
 
