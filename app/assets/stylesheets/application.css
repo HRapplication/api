@@ -16,5 +16,6 @@
  *= require index
  *= require add_event
  *= require edit_profile
+ *= require events_list
  *= require_self
  */

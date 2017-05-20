@@ -4,3 +4,10 @@
     color: #fff;
     font-weight: bold;
 }
+
+.submit_btn:hover, .submit_btn:focus {
+    background-color: #3fb0ac;
+    border-color: #3fb0ac;
+    color: #fff;
+    box-shadow: 0 0 15px #173e43;
+}
