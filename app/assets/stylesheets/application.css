@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require bootstrap
+ *= require fullcalendar
  *= require sb-admin
  *= require index
  *= require add_event

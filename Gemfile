@@ -69,4 +69,5 @@ end
 
 gem 'rails-assets-jquery', source: 'https://rails-assets.org'
 gem 'rails-assets-bootstrap', '3.3.7', source: 'https://rails-assets.org'
-
+gem 'rails-assets-fullcalendar', source: 'https://rails-assets.org'
+gem 'rails-assets-angular-ui-calendar', source: 'https://rails-assets.org'

@@ -3,6 +3,8 @@
 # = require angular
 # = require angular-rails-templates
 # = require angular-ui-router
+# = require fullcalendar
+# = require angular-ui-calendar
 
 # = require_tree ./templates
 # = require init
