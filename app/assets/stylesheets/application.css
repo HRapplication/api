@@ -13,5 +13,7 @@
  *= require bootstrap
  *= require sb-admin
  *= require index
+ *= require add_event
+ *= require edit_profile
  *= require_self
  */

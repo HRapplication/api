@@ -11,7 +11,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="home.html">KORPOPLAN</a>
+                <a class="navbar-brand" ui-sref="home">KORPOPLAN</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -19,7 +19,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> John Doe <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="login.html"><i class="glyphicon glyphicon-off"></i> Wyloguj</a>
+                            <a ui-sref="login"><i class="glyphicon glyphicon-off"></i> Wyloguj</a>
                         </li>
                     </ul>
                 </li>
@@ -28,22 +28,22 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar">
                 <ul class="nav navbar-nav side-nav" id="sidebar_list">
                     <li class="active">
-                        <a href="home.html"><i class="glyphicon glyphicon-home"></i> Strona główna</a>
+                        <a ui-sref="home"><i class="glyphicon glyphicon-home"></i> Strona główna</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#grafik"><i class="glyphicon glyphicon-calendar"></i> Grafik <i class="caret"></i></a>
                         <ul id="grafik" class="collapse">
                             <li>
-                                <a href="schedule/calendar.html">Kalendarz</a>
+                                <a ui-sref="calendar">Kalendarz</a>
                             </li>
                             <li>
-                                <a href="schedule/schedule_preference.html">Ustal preferencje</a>
+                                <a ui-sref="schedule_preference">Ustal preferencje</a>
                             </li>
                             <li>
-                                <a href="#">Edytuj grafik</a>
+                                <a ui-sref="edit_schedule">Edytuj grafik</a>
                             </li>
                             <li>
-                                <a href="schedule/submit_schedule.html">Zatwierdź grafik</a>
+                                <a ui-sref="submit_schedule">Zatwierdź grafik</a>
                             </li>
                         </ul>
                     </li>
@@ -51,10 +51,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#wydarzenia"><i class="glyphicon glyphicon-bell"></i> Wydarzenia <i class="caret"></i></a>
                         <ul id="wydarzenia" class="collapse">
                             <li>
-                                <a href="events/events.html">Aktualne wydarzenia</a>
+                                <a ui-sref="events">Aktualne wydarzenia</a>
                             </li>
                             <li>
-                                <a href="events/add_event.html">Dodaj wydarzenie</a>
+                                <a ui-sref="add_event">Dodaj wydarzenie</a>
                             </li>
                         </ul>
                     </li>
@@ -62,16 +62,16 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#formularze"><i class="glyphicon glyphicon-edit"></i> Formularze <i class="caret"></i></a>
                         <ul id="formularze" class="collapse">
                             <li>
-                                <a href="forms/holiday_form.html">Urlop</a>
+                                <a ui-sref="holiday_form">Urlop</a>
                             </li>
                             <li>
-                                <a href="forms/sick_leave_form.html">Urlop zdrowotny</a>
+                                <a ui-sref="sick_leave_form">Urlop zdrowotny</a>
                             </li>
                             <li>
-                                <a href="forms/homeoffice_form.html">Praca zdalna</a>
+                                <a ui-sref="homeoffice_form">Praca zdalna</a>
                             </li>
                             <li>
-                                <a href="forms/business_trip_form.html">Delegacja</a>
+                                <a ui-sref="business_trip_form">Delegacja</a>
                             </li>
                         </ul>
                     </li>
@@ -82,7 +82,7 @@
 
         <div id="page-wrapper">
 
-            <div class="container-fluid">
+            <div ui-view class="container-fluid">
 
                 <!-- Page Heading -->
                 <div class="row">
@@ -136,7 +136,7 @@
                                     </table>
                                 </div>
                                 <div class="text-right">
-                                    <a href="edit_profile.html">Edytuj dane <i class="glyphicon glyphicon-circle-arrow-right"></i></a>
+                                    <a ui-sref="edit_profile">Edytuj dane <i class="glyphicon glyphicon-circle-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
