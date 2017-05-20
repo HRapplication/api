@@ -16,3 +16,37 @@ angular.module 'HrApp'
         url: '/edit_profile',
         templateUrl: 'edit_profile.html'
       })
+
+      .state('business_trip_form', {
+        url: '/business_trip_form',
+        templateUrl: 'forms/business_trip_form.html'
+      })
+      .state('holiday_form', {
+        url: '/holiday_form',
+        templateUrl: 'forms/holiday_form.html'
+      })
+      .state('homeoffice_form', {
+        url: '/homeoffice_form',
+        templateUrl: 'forms/homeoffice_form.html'
+      })
+      .state('sick_leave_form', {
+        url: '/sick_leave_form',
+        templateUrl: 'forms/sick_leave_form.html'
+      })
+      
+      .state('edit_schedule', {
+        url: '/edit_schedule',
+        templateUrl: 'schedule/edit_schedule.html'
+      })
+      .state('schedule_preference', {
+        url: '/schedule_preference',
+        templateUrl: 'schedule/schedule_preference.html'
+      })
+      .state('submit_schedule', {
+        url: '/submit_schedule',
+        templateUrl: 'schedule/submit_schedule.html'
+      })
+      .state('calendar', {
+        url: '/calendar',
+        templateUrl: 'schedule/calendar.html'
+      })
