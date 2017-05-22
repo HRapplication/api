@@ -1,0 +1,36 @@
+#login_form {
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid rgba(119,119,119,0.5);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 20px;
+}
+
+#email, #pwd, #pwdConfirm {
+    width: 80%;
+}
+
+.offers_btn {
+    background-color: #173e43;
+    border-color: #173e43;
+    color: #fff;
+    font-weight: bold;
+}
+
+.offers_btn:hover, .offers_btn:focus {
+    background-color: #3fb0ac;
+    border-color: #3fb0ac;
+    color: #fff;
+    box-shadow: 0 0 15px #173e43;
+}
+
+#wrapper-log {
+    padding-left: 5%;
+    padding-right: 5%;
+    position: relative;
+}
+
+#offers_content {
+    margin-top: 5%;
+}
