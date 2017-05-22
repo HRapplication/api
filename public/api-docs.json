@@ -4,6 +4,10 @@
   "basePath": "http://yourhr.herokuapp.com",
   "apis": [
     {
+      "path": "/users.{format}",
+      "description": "User Management"
+    },
+    {
       "path": "/events.{format}",
       "description": "Events Management"
     },

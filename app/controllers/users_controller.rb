@@ -7,6 +7,8 @@ class UsersController < ApplicationController
             include: { address: {}}}})
   end
 
+  swagger_controller :schedules, "User Management"
+
   swagger_api :index do
     summary "Zwraca dane aktulanie zalogowanego użytkownika"
   end
