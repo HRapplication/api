@@ -1,10 +1,10 @@
 class EventsController < ApplicationController
   def index
-    render json: Event.all.to_json(include: [:events_content, :enlisted_for_events])
+    render json: Event.all.to_json(include: [:events_content, enlisted_for_events: { include: { employee: {}}}])
   end
 
   def show
-    render json: Event.find(id_param).to_json(include: [:events_content, :enlisted_for_events])
+    render json: Event.find(id_param).to_json(include: [:events_content, enlisted_for_events: { include: { employee: {}}}])
   end
 
   def create
@@ -30,13 +30,13 @@ class EventsController < ApplicationController
       event.enlisted_for_events.create(employee: current_user.details)
     end
 
-    render json: event.to_json(include: [:events_content, :enlisted_for_events])
+    render json: event.to_json(include: [:events_content, enlisted_for_events: { include: { employee: {}}}])
   end
 
   def unroll
     event = Event.find(event_id_param)
     event.enlisted_for_events.where(employee: current_user.details.id).delete_all
-    render json: event.to_json(include: [:events_content, :enlisted_for_events])
+    render json: event.to_json(include: [:events_content, enlisted_for_events: { include: { employee: {}}}])
   end
 
   private

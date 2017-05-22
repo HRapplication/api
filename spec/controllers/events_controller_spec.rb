@@ -37,9 +37,10 @@ RSpec.describe EventsController, type: :controller do
   end
 
   it "gets simple event" do
+    post :enlist, {event_id: @event.id}
     get :show, id: @event.id
     output = JSON.parse(response.body)
-    # ap output
+    ap output
   end
 
   it "creates an event" do
