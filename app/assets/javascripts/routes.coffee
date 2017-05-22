@@ -21,7 +21,10 @@ angular.module 'HrApp'
         url: '/events',
         templateUrl: 'events/events.html'
       })
-
+      .state('event_contents', {
+        url: '/event_contents',
+        templateUrl: 'events/event_contents.html'
+      })
       .state('business_trip_form', {
         url: '/business_trip_form',
         templateUrl: 'forms/business_trip_form.html'
