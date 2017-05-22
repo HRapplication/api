@@ -11,8 +11,6 @@ RSpec.describe OffersController, type: :controller do
       )
   end
   it 'shows offer' do
-    sign_in @user
-
     get :show, {
       id: @offer.id
     }

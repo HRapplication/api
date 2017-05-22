@@ -1,10 +1,13 @@
 class OffersController < ApplicationController
+  skip_before_filter :authenticate_user!, :only => [:index, :show]
+
+
 	def index
     render json: JobOffer.all
 	end
 
 	def show
-    render json: current_user.job_offers.where(id: id_param).first.to_json(include: :offers_content)
+    render json: JobOffer.where(id: id_param).first.to_json(include: :offers_content)
 	end
 
 	def create
