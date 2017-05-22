@@ -92,30 +92,31 @@
                                 <i class="glyphicon glyphicon-home"></i>  <a ui-sref="home">Home</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-fw fa-bell"></i> Wydarzenia
+                                <i class="glyphicon glyphicon-bell"></i> Wydarzenia
                             </li>
                         </ol>
                     </div>
                 </div>
                 
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-8" ng-controller="addEventCtrl">
 
                         <h2>Nowe wydarzenie</h2>
+                        <h3><strong>{{event.title}}</strong></h3>
                         <h4>Data wydarzenia</h4>
 
-                        <form ng-controller="eventCtrl">
+                        <form>
                             <div class="row">  
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="date">Od:</label><br />                                
-                                        <input type="date" class="form-control date_form" ng-model="eStartDate" />
+                                        <input type="date" class="form-control date_form" ng-model="event.start_date" />
                                     </div>   
                                 </div>                          
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="date">Do:</label><br />
-                                        <input type="date" class="form-control date_form" ng-model="eFinishDate" />                                
+                                        <input type="date" class="form-control date_form" ng-model="event.end_date" />                                
                                     </div>
                                 </div>
                             </div>
@@ -125,21 +126,25 @@
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="time">Od:</label><br />
-                                        <input type="time" class="form-control time_form" ng-model="eStartTime" />
+                                        <input type="time" class="form-control time_form" ng-model="event.start_time" />
                                     </div>
                                 </div>Michał
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="time">Do:</label><br />
-                                        <input type="time" class="form-control time_form" ng-model="eFinishTime" />                                
+                                        <input type="time" class="form-control time_form" ng-model="event.end_time" />                                
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-8">
                                     <div class="form-group">
+                                        <label for="event_title">Tytuł wydarzenia:</label><br />
+                                        <textarea ng-model="event.title" class="form-control" maxlength="75" rows="1" cols="50" id="event_title" placeholder="Wprowadź tytuł wydarzenia..."></textarea>
+                                    </div>   
+                                    <div class="form-group">
                                         <label for="event_description">Opis wydarzenia:</label><br />
-                                        <textarea ng-model="eDescription" class="form-control" rows="5" cols="50" id="event_description" name="event_description" placeholder="Wprowadź opis wydarzenia..."></textarea>
+                                        <textarea ng-model="event.content" class="form-control" rows="3" cols="50" id="event_description" placeholder="Wprowadź opis wydarzenia..."></textarea>
                                     </div>                    
                                 <button type="submit" class="btn btn-default">Dodaj wydarzenie</button>
                                 </div>

@@ -112,26 +112,30 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table ng-controller="ctrl1" class="table table-bordered table-hover">
+                                <table ng-controller="profileCtrl" class="table table-bordered table-hover">
                                     <tr>
                                         <th>Imię</th>
-                                        <td>{{name}}</td>
+                                        <td>{{person.name}}</td>
                                     </tr>
                                     <tr>
                                         <th>Nazwisko</th>
-                                        <td>{{surname}}</td>
+                                        <td>{{person.surname}}</td>
                                     </tr>
                                     <tr>
                                         <th>ID</th>
-                                        <td>{{number}}</td>
+                                        <td>{{person.id}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Telefon</th>
+                                        <td>{{person.phone_number}}</td>
                                     </tr>
                                     <tr>
                                         <th>e-mail</th>
-                                        <td>johnDoe@korpoplan.com</td>
+                                        <td>{{person.email}}</td>
                                     </tr>
                                     <tr>
                                         <th>Stanowisko</th>
-                                        <td>HR</td>
+                                        <td>{{person.position}}</td>
                                     </tr>
                                 </table>
                             </div>
