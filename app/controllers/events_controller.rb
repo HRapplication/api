@@ -24,13 +24,18 @@ class EventsController < ApplicationController
 
   def enlist
     event = Event.find(event_id_param)
-    event.enlisted_for_events.create(employee: current_user.details)
+    is_enlisted = event.enlisted_for_events.where(employee: current_user.details.id).length > 0
+
+    if !is_enlisted
+      event.enlisted_for_events.create(employee: current_user.details)
+    end
+
     render json: event.to_json(include: [:events_content, :enlisted_for_events])
   end
 
   def unroll
     event = Event.find(event_id_param)
-    event.enlisted_for_events.where(employee: current_user.details.id).first.destroy
+    event.enlisted_for_events.where(employee: current_user.details.id).delete_all
     render json: event.to_json(include: [:events_content, :enlisted_for_events])
   end
 

@@ -66,6 +66,16 @@ RSpec.describe EventsController, type: :controller do
     expect(output["enlisted_for_events"][0]["employee_id"]).to be(@user.details.id)
   end
 
+
+  it "cant enlist a user twice" do
+    post :enlist, {event_id: @event.id}
+    post :enlist, {event_id: @event.id}
+
+    output = JSON.parse(response.body)
+    expect(output["enlisted_for_events"].length).to be(1)
+    expect(output["enlisted_for_events"][0]["employee_id"]).to be(@user.details.id)
+  end
+
   it "unroll a user" do
     event = Event.find(@event.id)
     event.enlisted_for_events.create(employee: @user.details)
