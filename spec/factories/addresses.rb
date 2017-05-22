@@ -1,10 +1,10 @@
 FactoryGirl.define do
   factory :address do
-    country "MyString"
-city "MyString"
-address "MyString"
-postcode "MyString"
-employee nil
+    country "Poland"
+    city "Wrocław"
+    address "Wyszyńskiego"
+    postcode "12-122"
+    employee nil
   end
 
 end

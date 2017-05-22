@@ -31,7 +31,7 @@ RSpec.describe EmployeesController, type: :controller do
     post :create, @input
 
     output = JSON.parse(response.body)
-    ap output
+    # ap output
 
     expect(output["email"]).to eq(@input[:email])
     expect(output["details"]["name"]).to eq(@input[:name])

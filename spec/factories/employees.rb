@@ -1,12 +1,12 @@
 FactoryGirl.define do
   factory :employee do
-    name "MyString"
-surname "MyString"
-phone_number "MyString"
-position 1
-weekly_working_hours 1
-supervisor_id 1
-user nil
+    name "imie"
+    surname "nazwisko"
+    phone_number "123123123"
+    position 1
+    weekly_working_hours 1
+    supervisor_id nil
+    user nil
   end
 
 end
