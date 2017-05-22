@@ -24,6 +24,25 @@
       ]
     },
     {
+      "path": "/events/{event_id}/enlist",
+      "operations": [
+        {
+          "summary": "Odpisuje aktualnego użytkownika z wydarzenia",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "event_id",
+              "type": "integer",
+              "description": "Id wydarzenia",
+              "required": true
+            }
+          ],
+          "nickname": "Events#unroll",
+          "method": "delete"
+        }
+      ]
+    },
+    {
       "path": "/events",
       "operations": [
         {

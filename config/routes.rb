@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :events do
     post "/enlist", to: 'events#enlist'
+    delete "/enlist", to: 'events#unroll'
   end
   resources :schedules
   resources :offers

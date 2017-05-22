@@ -4,7 +4,7 @@ RSpec.describe EmployeesController, type: :controller do
 
   before(:example) do
     @user = create(:user)
-    ap @user
+    # ap @user
     @user_to_destroy = create(:user)
 
     @input = {
@@ -67,8 +67,8 @@ RSpec.describe EmployeesController, type: :controller do
 
     output = JSON.parse(response.body)
 
-    ap user
-    ap output
+    # ap user
+    # ap output
 
     expect(output["details"]["name"]).to eq(new_name)
   end

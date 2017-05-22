@@ -28,6 +28,12 @@ class EventsController < ApplicationController
     render json: event.to_json(include: [:events_content, :enlisted_for_events])
   end
 
+  def unroll
+    event = Event.find(event_id_param)
+    event.enlisted_for_events.where(employee: current_user.details.id).first.destroy
+    render json: event.to_json(include: [:events_content, :enlisted_for_events])
+  end
+
   private
 
   def id_param
@@ -76,6 +82,11 @@ class EventsController < ApplicationController
 
   swagger_api :enlist do
     summary "Zapisuje aktualnego użytkownika na wydarzenie"
+    param :path, :event_id, :integer, :required, "Id wydarzenia"
+  end
+
+  swagger_api :unroll do
+    summary "Odpisuje aktualnego użytkownika z wydarzenia"
     param :path, :event_id, :integer, :required, "Id wydarzenia"
   end
 end
