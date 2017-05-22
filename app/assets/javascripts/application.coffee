@@ -4,6 +4,7 @@
 # = require angular-rails-templates
 # = require angular-ui-router
 # = require fullcalendar
+# = require moment
 
 # = require_tree ./templates
 # = require init
