@@ -17,8 +17,7 @@ Swagger::Docs::Config.register_apis({
         "description" => "Obsłyga human resources w korporacji",
         "termsOfServiceUrl" => "http://helloreverb.com/terms/",
         "contact" => "apiteam@wordnik.com",
-        "license" => "Apache 2.0",
-        "licenseUrl" => "http://www.apache.org/licenses/LICENSE-2.0.html"
+        "license" => "Apache 2.0"
       }
     }
   }
