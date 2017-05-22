@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :schedules
   resources :offers
   resources :employees
+  patch "/update_user", to: 'employees#update_user'
+
   resources :users, only: [:index]
 
 

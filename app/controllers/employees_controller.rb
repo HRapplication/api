@@ -37,6 +37,22 @@ class EmployeesController < ApplicationController
     end
   end
 
+  def update_user
+    if current_user.details.nil?
+      employee = Employee.create(employee_params)
+      current_user.details = employee
+      current_user.save
+    else
+      current_user.details.update(employee_params)
+    end
+
+    render json: current_user
+          .to_json(
+            include: {
+              details: {
+                include: { address: {}}}})
+  end
+
   private
 
   def employee_params
@@ -85,14 +101,13 @@ class EmployeesController < ApplicationController
     param :form, "address_attributes[postcode]", :optional, :string, "Kod pocztowy"
   end
 
-  swagger_api :update do
+  swagger_api :update_user do
     summary "Nadpisuje dane aktualnego użytkownika"
-    param :path, :id, :integer, :required, "Id użytkowanika"
-    param :form, :name, :string, :required, "Imie"
-    param :form, :surname, :string, :required, "Nazwisko"
-    param :form, :phone_number, :string, :required, "Numer telefonu"
-    param :form, :position, :integer, :required, "Pozycja"
-    param :form, :weekly_working_hours, :integer, :required, "Ilość godzin przepracowanych w tygodniu?"
+    param :form, :name, :string, :optional, "Imie"
+    param :form, :surname, :string, :optional, "Nazwisko"
+    param :form, :phone_number, :string, :optional, "Numer telefonu"
+    param :form, :position, :integer, :optional, "Pozycja"
+    param :form, :weekly_working_hours, :integer, :optional, "Ilość godzin przepracowanych w tygodniu?"
     param :form, "address_attributes[address]", :optional, :string, "Adres?"
     param :form, "address_attributes[city]", :optional, :string, "Miasto"
     param :form, "address_attributes[country]", :optional, :string, "Państwo"

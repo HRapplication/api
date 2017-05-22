@@ -4,8 +4,8 @@ RSpec.describe EmployeesController, type: :controller do
 
   before(:example) do
     @user = create(:user)
+    ap @user
     @user_to_destroy = create(:user)
-    sign_in @user
 
     @input = {
       email: "bertek@gmail.com",
@@ -21,13 +21,10 @@ RSpec.describe EmployeesController, type: :controller do
         postcode: '45-500'
       }
     }
-    e = Employee.create(@input.except(:email))
-
-    @user.details = e
-    @user.save
   end
 
   it "creates employee" do
+    sign_in @user
     post :create, @input
 
     output = JSON.parse(response.body)
@@ -43,6 +40,12 @@ RSpec.describe EmployeesController, type: :controller do
   end
 
   it "destroys employee with id" do
+    sign_in @user
+    e = Employee.create(@input.except(:email))
+
+    @user.details = e
+    @user.save
+
     id = @user_to_destroy.id
     delete :destroy, id: id
 
@@ -52,15 +55,20 @@ RSpec.describe EmployeesController, type: :controller do
   end
 
   it "updates employee with id" do
+
+    user = create(:user)
+    sign_in user
+
     new_name = "pracownik2"
     updated_input = @input
     updated_input[:name] = new_name
 
-    updated_input.merge!(id: @user.id)
-
-    put :update, updated_input
+    put :update_user, updated_input
 
     output = JSON.parse(response.body)
+
+    ap user
+    ap output
 
     expect(output["details"]["name"]).to eq(new_name)
   end
