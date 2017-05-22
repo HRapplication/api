@@ -5,6 +5,7 @@
 # = require angular-ui-router
 # = require fullcalendar
 # = require moment
+# = require bootstrap-daterangepicker
 
 # = require_tree ./templates
 # = require init
@@ -12,4 +13,5 @@
 # = require_tree ./controllers
 # = require_tree ./directives
 # = require_tree ./services
+# = require_tree ./calendar
 

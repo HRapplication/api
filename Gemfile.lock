@@ -187,6 +187,9 @@ GEM
       rails-assets-angular (>= 1.0.8, < 2)
     rails-assets-bootstrap (3.3.7)
       rails-assets-jquery (>= 1.9.1, < 4)
+    rails-assets-bootstrap-daterangepicker (2.1.25)
+      rails-assets-jquery (>= 1.9.1, < 4)
+      rails-assets-moment (>= 2.9.0)
     rails-assets-fullcalendar (3.4.0)
       rails-assets-jquery (>= 2, < 4)
       rails-assets-moment (>= 2.9.0, < 3)
@@ -339,6 +342,7 @@ DEPENDENCIES
   rails-assets-angular-ui-calendar!
   rails-assets-angular-ui-router (~> 0.2.13)!
   rails-assets-bootstrap (= 3.3.7)!
+  rails-assets-bootstrap-daterangepicker!
   rails-assets-fullcalendar!
   rails-assets-jquery!
   rails-assets-momentjs!
