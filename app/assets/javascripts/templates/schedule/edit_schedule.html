@@ -99,44 +99,42 @@
                 
                 <div class="row">
                     <div class="col-lg-5">
-                        <form>
+                        <form ng-controller="editScheduleCtrl">
                             <div class="form-group">
+                            <h2>Edytuj grafik</h2>
                                 <label for="employee">Pracownik:</label>
                                 <select id="employee" name="employee" class="form-control">                                    
-                                    <option>Pracownik 1</option>
-                                    <option>Pracownik 2</option>
-                                    <option>Pracownik 3</option>
-                                    <option>Pracownik 4</option>                            
+                                    <option ng-repeat="option in editSchedule.employee" value="{{option.id}}">{{option.name}}</option>                            
                                 </select>
                             </div>                                                   
                             <h4>Data</h4>
                             <div class="row">  
-                                <div class="col-lg-4">
+                                <div class="col-lg-5">
                                     <div class="form-group">
                                         <label for="date">Od:</label><br />                                
-                                        <input type="date" class="form-control date_form"/>
+                                        <input type="date" class="form-control date_form" ng-model="editSchedule.start_date"/>
                                     </div>   
                                 </div>                          
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="date">Do:</label><br />
-                                        <input type="date" class="form-control date_form" />                                
+                                        <input type="date" class="form-control date_form" ng-model="editSchedule.end_date"/>                                
                                     </div>
                                 </div>
                             </div>
 
                             <h4>Czas</h4>
                             <div class="row">
-                                <div class="col-lg-4">
+                                <div class="col-lg-5">
                                     <div class="form-group">
                                         <label for="time">Od:</label><br />
-                                        <input type="time" class="form-control time_form" />
+                                        <input type="time" class="form-control time_form" ng-model="editSchedule.start_time"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="time">Do:</label><br />
-                                        <input type="time" class="form-control time_form" />                                
+                                        <input type="time" class="form-control time_form" ng-model="editSchedule.end_time"/>                             
                                     </div>
                                 </div>
                             </div>

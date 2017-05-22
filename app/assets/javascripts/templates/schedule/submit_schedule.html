@@ -99,22 +99,18 @@
                 
                 <div class="row">
                     <div class="col-lg-5">
-                        <form>
+                        <form ng-controller="submitScheduleCtrl">
                             <div class="form-group">
                                 <label for="employee">Pracownik:</label>
-                                <select id="employee" name="employee" class="form-control">
-                                    <option selected disabled hidden>Wybierz pracownika...</option>
-                                    <option>Pracownik 1</option>
-                                    <option>Pracownik 2</option>
-                                    <option>Pracownik 3</option>
-                                    <option>Pracownik 4</option>                            
+                                <select id="employee" name="employee" class="form-control">                                    
+                                    <option ng-repeat="option in submitSchedule.employee" value="{{option.id}}">{{option.name}}</option>                            
                                 </select>
                             </div>
 
                             <div>
                             
                             </div>                    
-                            <button type="generate_form" class="btn btn-default">Generuj formularz</button>
+                            <button type="generate_form" class="btn btn-default">Zatwierdź</button>
                         </form>
                     </div>
                </div>
