@@ -3,11 +3,11 @@
 # = require angular
 # = require angular-rails-templates
 # = require angular-ui-router
-# = require fullcalendar
 # = require moment
+# = require fullcalendar
 # = require bootstrap-daterangepicker
 
-# = require_tree ./templates
+# = require_tree ./templates    
 # = require init
 # = require routes
 # = require_tree ./controllers
