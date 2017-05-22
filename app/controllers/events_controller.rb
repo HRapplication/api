@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    render json: Event.all
+    render json: Event.all.to_json(include: [:events_content, :enlisted_for_events])
   end
 
   def show
