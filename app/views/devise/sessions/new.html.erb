@@ -1,26 +1,88 @@
-<h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+<div id="wrapper-log">
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <!-- Navigation -->
+    <nav class="main-nav navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand -->
+        <div class="navbar-header">
+            <a class="navbar-brand" ui-sref="login">KORPOPLAN</a>
+        </div>
+    </nav>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <div class="row" >
+                <div class="col-lg-12">
+                    <ol class="breadcrumb">
+                        <li class="active">
+                            <i class="glyphicon glyphicon-user"></i> Logowanie
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-xs-10 col-xs-push-1" id="login_form">
+                  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-horizontal"}) do |f| %>
+
+                    <div class="form-group">
+                      <%= f.label :email, class: "control-label col-xs-2" %>
+                      <div class="col-xs-10">
+                        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Wprowadź email" %>
+                      </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <%= f.label :password, class: "control-label col-xs-2" %>
+                        <div class="col-xs-10">
+                          <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Wprowadź hasło" %>
+                        </div>
+                    </div>
+
+                    <% if devise_mapping.rememberable? -%>
+                        <div class="form-group">
+                            <div class="col-xs-offset-2 col-xs-10">
+
+                              <%= f.check_box :remember_me %>
+                              <%= f.label :remember_me %>
+                            </div>
+                          </div>
+                    <% end -%>
+
+                    <div class="form-group">
+                        <div class="col-xs-offset-2 col-xs-10">
+                          <%= f.submit "Zaloguj", class: "btn btn-default" %>
+                        </div>
+                    </div>
+                  <% end %>
+
+                  <%= render "devise/shared/links" %>
+                    <!-- <div class="row">
+                        <div class="col-xs-offset-2 col-xs-10">
+                            <a href="#">Zarejestruj się</a>
+                            <a href="#">Zapomniałeś hasła?</a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+<!--             <div class="row">
+                <div class="col-lg-4 col-lg-offset-4" id="offers_content">
+                    <a href="#" role="button" class="offers_btn btn btn-block btn-lg">Przeglądaj oferty pracy</a>
+                </div>
+            </div>
+ -->
+
+        </div>
+        <!-- /.container-fluid -->
+
     </div>
-  <% end -%>
+    <!-- /#page-wrapper -->
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
+<!-- /#wrapper-log -->
