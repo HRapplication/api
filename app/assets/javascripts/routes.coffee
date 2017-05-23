@@ -58,3 +58,12 @@ angular.module 'HrApp'
         url: '/calendar',
         templateUrl: 'schedule/calendar.html'
       })
+      
+      .state('add_employee', {
+        url: '/add_employee',
+        templateUrl: 'employee/add_employee.html'
+      })
+      .state('update_employee', {
+        url: '/update_employee',
+        templateUrl: 'employee/update_employee.html'
+      })
