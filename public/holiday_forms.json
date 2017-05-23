@@ -1,0 +1,127 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://yourhr.herokuapp.com",
+  "resourcePath": "holiday_forms",
+  "apis": [
+    {
+      "path": "/holiday_forms",
+      "operations": [
+        {
+          "summary": "Zwraca wszystkie formularze",
+          "nickname": "HolidayForms#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/holiday_forms",
+      "operations": [
+        {
+          "summary": "Dodaje formularz",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "comment",
+              "type": "string",
+              "description": "Komentarz",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "end_date",
+              "type": "date",
+              "description": "Czas zakończenia",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "start_date",
+              "type": "date",
+              "description": "Czas rozpoczęcia",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "holiday_type",
+              "type": "integer",
+              "description": "Rodzaj wakacji?",
+              "required": true
+            }
+          ],
+          "notes": "holiday_types: 'compensation_for_overtime', 'justified_paid_not', 'military', 'parental',\n'blood_donation', 'training'",
+          "nickname": "HolidayForms#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/holiday_forms/{id}",
+      "operations": [
+        {
+          "summary": "nadpisuje dany formularz",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Id formularza",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "comment",
+              "type": "string",
+              "description": "Komentarz",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "end_date",
+              "type": "date",
+              "description": "Czas zakończenia",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "start_date",
+              "type": "date",
+              "description": "Czas rozpoczęcia",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "holiday_type",
+              "type": "integer",
+              "description": "Rodzaj wakacji?",
+              "required": true
+            }
+          ],
+          "notes": "holiday_types: 'compensation_for_overtime', 'justified_paid_not', 'military', 'parental',\n'blood_donation', 'training'",
+          "nickname": "HolidayForms#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/holiday_forms/{id}",
+      "operations": [
+        {
+          "summary": "Usuwa formularz",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Id formularza",
+              "required": true
+            }
+          ],
+          "nickname": "HolidayForms#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

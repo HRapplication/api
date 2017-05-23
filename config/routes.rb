@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     delete "/enlist", to: 'events#unroll'
   end
 
+  resources :holiday_forms
   resources :sick_leave_forms
   resources :homeoffice_forms
   resources :schedules
