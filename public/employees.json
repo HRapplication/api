@@ -91,6 +91,7 @@
               "required": false
             }
           ],
+          "notes": "positions: 'hr', 'worker'",
           "nickname": "Employees#create",
           "method": "post"
         }
@@ -185,6 +186,7 @@
               "required": false
             }
           ],
+          "notes": "positions: 'hr', 'worker'",
           "nickname": "Employees#update_user",
           "method": "patch"
         }

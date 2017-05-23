@@ -20,7 +20,10 @@ RSpec.describe EventsController, type: :controller do
     @example_event = {
       title: "event1",
       content: "content1",
-      duedate: "2001-02-03T04:05:06"
+      duedate: "2001-02-03T04:05:06",
+      attending: 3,
+      spots: 20,
+      place: "dworzec"
     }
 
     @event = @user.events.create(
@@ -28,7 +31,10 @@ RSpec.describe EventsController, type: :controller do
       events_content_attributes: {
         content: @example_event[:content]
       },
-      duedate: @example_event[:duedate]
+      duedate: @example_event[:duedate],
+      attending: @example_event[:attending],
+      spots: @example_event[:spots],
+      place: @example_event[:place]
     )
   end
 
@@ -49,6 +55,9 @@ RSpec.describe EventsController, type: :controller do
     output = JSON.parse(response.body)
     expect(output["title"]).to eq(@example_event[:title])
     expect(DateTime.parse(output["duedate"])).to eq(DateTime.new(2001, 2, 3, 4, 5, 6))
+    expect(output["attending"]).to eq(@example_event[:attending])
+    expect(output["spots"]).to eq(@example_event[:spots])
+    expect(output["place"]).to eq(@example_event[:place])
     expect(output["events_content"]["content"]).to eq(@example_event[:content])
   end
 
