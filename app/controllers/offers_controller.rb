@@ -3,7 +3,7 @@ class OffersController < ApplicationController
 
 
 	def index
-    render json: JobOffer.all
+    render json: JobOffer.all.to_json(include: :offers_content)
 	end
 
 	def show
