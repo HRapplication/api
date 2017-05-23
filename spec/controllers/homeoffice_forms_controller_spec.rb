@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SickLeaveFormsController, type: :controller do
+RSpec.describe HomeofficeFormsController, type: :controller do
 
   before(:example) do
     @user = create(:user)
@@ -10,44 +10,44 @@ RSpec.describe SickLeaveFormsController, type: :controller do
     sign_in @user
 
     @data = {
-      care_type: "some care",
       end_date: "2015-01-01",
       start_date: "2015-02-01"
     }
   end
-  it "returns all sick leave forms" do
-    form = @user.details.sick_leave_forms.create(@data)
+  it "returns all homeoffice forms" do
+    form = @user.details.homeoffice_forms.create(@data)
     get :index
     output = JSON.parse(response.body)
     expect(output.length).to be(1)
   end
 
-  it "creates sick leave forms" do
+  it "creates homeoffice forms" do
     post :create, @data
 
     output = JSON.parse(response.body)
     expect(Date.parse(output["start_date"]) == Date.parse(@data[:start_date])).to be(true)
     expect(Date.parse(output["end_date"]) == Date.parse(@data[:end_date])).to be(true)
-    expect(output["care_type"] == @data[:care_type]).to be(true)
   end
 
   it "updates form" do
-    form = @user.details.sick_leave_forms.create(@data)
-    @data[:care_type] = "another care"
+    form = @user.details.homeoffice_forms.create(@data)
+    new_date = "2015-01-02"
+    @data[:start_date] = new_date
     @data.merge!(id: form.id)
     patch :update, @data
 
     output = JSON.parse(response.body)
 
-    expect(output["care_type"] == "another care").to be(true)
+    expect(Date.parse(output["start_date"]) == Date.parse(new_date)).to be(true)
   end
 
   it "deletes form" do
-    form = @user.details.sick_leave_forms.create(@data)
+    form = @user.details.homeoffice_forms.create(@data)
     id = form.id
     delete :destroy, id: id
 
-    expect(SickLeaveForm.where(id: id).count).to be(0)
+    expect(HomeofficeForm.where(id: id).count).to be(0)
   end
+
 
 end

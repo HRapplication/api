@@ -1,0 +1,97 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://yourhr.herokuapp.com",
+  "resourcePath": "homeoffice_forms",
+  "apis": [
+    {
+      "path": "/homeoffice_forms",
+      "operations": [
+        {
+          "summary": "Zwraca wszystkie formularze",
+          "nickname": "HomeofficeForms#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/homeoffice_forms",
+      "operations": [
+        {
+          "summary": "Dodaje formularz",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "end_date",
+              "type": "date",
+              "description": "Czas zakończenia",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "start_date",
+              "type": "date",
+              "description": "Czas rozpoczęcia",
+              "required": true
+            }
+          ],
+          "nickname": "HomeofficeForms#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/homeoffice_forms/{id}",
+      "operations": [
+        {
+          "summary": "nadpisuje dany formularz",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Id formularza",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "end_date",
+              "type": "date",
+              "description": "Czas zakończenia",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "start_date",
+              "type": "date",
+              "description": "Czas rozpoczęcia",
+              "required": true
+            }
+          ],
+          "nickname": "HomeofficeForms#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/homeoffice_forms/{id}",
+      "operations": [
+        {
+          "summary": "Usuwa formularz",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Id formularza",
+              "required": true
+            }
+          ],
+          "nickname": "HomeofficeForms#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     post "/enlist", to: 'events#enlist'
     delete "/enlist", to: 'events#unroll'
   end
+
   resources :sick_leave_forms
+  resources :homeoffice_forms
   resources :schedules
   resources :offers
   resources :employees

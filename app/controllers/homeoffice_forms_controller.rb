@@ -1,27 +1,26 @@
-class SickLeaveFormsController < ApplicationController
+class HomeofficeFormsController < ApplicationController
 
   def index
-    render json: SickLeaveForm.all
+    render json: HomeofficeForm.all
   end
 
   def create
-    render json: current_user.details.sick_leave_forms.create(form_params)
+    render json: current_user.details.homeoffice_forms.create(form_params)
   end
 
   def update
-    current_user.details.sick_leave_forms.where(id_param).first.update(form_params)
-    render json: current_user.details.sick_leave_forms.where(id_param).first
+    current_user.details.homeoffice_forms.where(id_param).first.update(form_params)
+    render json: current_user.details.homeoffice_forms.where(id_param).first
   end
 
   def destroy
-    render json: current_user.details.sick_leave_forms.where(id_param).first.destroy
+    render json: current_user.details.homeoffice_forms.where(id_param).first.destroy
   end
 
   private
 
   def form_params
     params.permit(
-      :care_type,
       :end_date,
       :start_date
     )
@@ -33,7 +32,7 @@ class SickLeaveFormsController < ApplicationController
     )
   end
 
-  swagger_controller :sick_leave, "Sick Leave Form Management"
+  swagger_controller :homeoffice, "Homeoffice Form Management"
 
   swagger_api :index do
     summary "Zwraca wszystkie formularze"
@@ -41,7 +40,6 @@ class SickLeaveFormsController < ApplicationController
 
   swagger_api :create do
     summary "Dodaje formularz"
-    param :form, :care_type, :string, :required, "Nie mam pojęcia"
     param :form, :end_date, :date, :required, "Czas zakończenia"
     param :form, :start_date, :date, :required, "Czas rozpoczęcia"
   end
@@ -49,7 +47,6 @@ class SickLeaveFormsController < ApplicationController
   swagger_api :update do
     summary "nadpisuje dany formularz"
     param :path, :id, :integer, :required, "Id formularza"
-    param :form, :care_type, :string, :required, "Nie mam pojęcia"
     param :form, :end_date, :date, :required, "Czas zakończenia"
     param :form, :start_date, :date, :required, "Czas rozpoczęcia"
   end
