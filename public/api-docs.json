@@ -12,6 +12,10 @@
       "description": "Events Management"
     },
     {
+      "path": "/sick_leave_forms.{format}",
+      "description": "Sick Leave Form Management"
+    },
+    {
       "path": "/schedules.{format}",
       "description": "Schedule Management"
     },
