@@ -28,8 +28,8 @@ describe "Associations" do
     expect(assc.macro).to eq :has_many
   end
 
-  it "has many sick leaves forms" do
-    assc = described_class.reflect_on_association(:sick_leaves_forms)
+  it "has many sick leave forms" do
+    assc = described_class.reflect_on_association(:sick_leave_forms)
     expect(assc.macro).to eq :has_many
   end
 
