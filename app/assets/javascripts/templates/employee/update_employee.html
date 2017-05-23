@@ -1,4 +1,3 @@
-
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -75,6 +74,17 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="active">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#pracownicy"><i class="glyphicon glyphicon-user"></i> Pracownicy <i class="caret"></i></a>
+                        <ul id="pracownicy" class="collapse">
+                            <li>
+                                <a ui-sref="add_employee">Dodaj profil pracownika</a>
+                            </li>
+                            <li>
+                                <a ui-sref="update_employee">Aktualizuj profil</a>
+                            </li>                                               
+                        </ul>
+                   </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -179,8 +189,7 @@
                                     <br />
                                 </div>
                             </div>
-                       </form>
-                         
+                       </form>                         
                    </div>
                     
                 </div>
