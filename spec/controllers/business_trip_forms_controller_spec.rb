@@ -23,6 +23,13 @@ RSpec.describe BusinessTripFormsController, type: :controller do
     expect(output.length).to be(1)
   end
 
+  it "returns all current user sick leave forms" do
+    form = @user.details.business_trip_forms.create(@data)
+    get :all
+    output = JSON.parse(response.body)
+    expect(output.length).to be(1)
+  end
+
   it "creates sick leave forms" do
     post :create, @data
 
