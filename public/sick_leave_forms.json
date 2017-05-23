@@ -42,6 +42,7 @@
               "required": true
             }
           ],
+          "notes": "cate_types: 'self', 'child'",
           "nickname": "SickLeaveForms#create",
           "method": "post"
         }
@@ -82,6 +83,7 @@
               "required": true
             }
           ],
+          "notes": "cate_types: 'self', 'child'",
           "nickname": "SickLeaveForms#update",
           "method": "patch"
         }

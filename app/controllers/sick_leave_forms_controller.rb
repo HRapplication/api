@@ -41,6 +41,7 @@ class SickLeaveFormsController < ApplicationController
 
   swagger_api :create do
     summary "Dodaje formularz"
+    notes "cate_types: 'self', 'child'"
     param :form, :care_type, :string, :required, "Nie mam pojęcia"
     param :form, :end_date, :date, :required, "Czas zakończenia"
     param :form, :start_date, :date, :required, "Czas rozpoczęcia"
@@ -48,6 +49,7 @@ class SickLeaveFormsController < ApplicationController
 
   swagger_api :update do
     summary "nadpisuje dany formularz"
+    notes "cate_types: 'self', 'child'"
     param :path, :id, :integer, :required, "Id formularza"
     param :form, :care_type, :string, :required, "Nie mam pojęcia"
     param :form, :end_date, :date, :required, "Czas zakończenia"

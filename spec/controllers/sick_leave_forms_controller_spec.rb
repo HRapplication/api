@@ -10,7 +10,7 @@ RSpec.describe SickLeaveFormsController, type: :controller do
     sign_in @user
 
     @data = {
-      care_type: "some care",
+      care_type: 'self',
       end_date: "2015-01-01",
       start_date: "2015-02-01"
     }
@@ -33,13 +33,13 @@ RSpec.describe SickLeaveFormsController, type: :controller do
 
   it "updates form" do
     form = @user.details.sick_leave_forms.create(@data)
-    @data[:care_type] = "another care"
+    @data[:care_type] = 'child'
     @data.merge!(id: form.id)
     patch :update, @data
 
     output = JSON.parse(response.body)
 
-    expect(output["care_type"] == "another care").to be(true)
+    expect(output["care_type"] == 'child').to be(true)
   end
 
   it "deletes form" do
