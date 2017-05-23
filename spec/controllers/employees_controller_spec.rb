@@ -12,7 +12,7 @@ RSpec.describe EmployeesController, type: :controller do
       name: "bartek",
       surname: "e",
       phone_number: "453213222",
-      position: 1,
+      position: 'hr',
       weekly_working_hours: 4,
       address_attributes: {
         address: 'asd',

@@ -89,6 +89,7 @@ class EmployeesController < ApplicationController
 
   swagger_api :create do
     summary "Tworzy nowego użytkownika i zwraca jego nowe hasło"
+    notes "positions: 'hr', 'worker'"
     param :form, :email, :string, :required, "Email użytkowna"
     param :form, :name, :string, :required, "Imie"
     param :form, :surname, :string, :required, "Nazwisko"
@@ -103,6 +104,7 @@ class EmployeesController < ApplicationController
 
   swagger_api :update_user do
     summary "Nadpisuje dane aktualnego użytkownika"
+    notes "positions: 'hr', 'worker'"
     param :form, :name, :string, :optional, "Imie"
     param :form, :surname, :string, :optional, "Nazwisko"
     param :form, :phone_number, :string, :optional, "Numer telefonu"

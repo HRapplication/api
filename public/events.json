@@ -74,6 +74,27 @@
             },
             {
               "paramType": "form",
+              "name": "attending",
+              "type": "integer",
+              "description": "liczba biorących udział",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "spots",
+              "type": "integer",
+              "description": "Liczba wolnych miejsc",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "place",
+              "type": "string",
+              "description": "Miejsce wydarzenia",
+              "required": true
+            },
+            {
+              "paramType": "form",
               "name": "duedate",
               "type": "date",
               "description": "Data kiedy wydarzenie się odbędzie",
