@@ -1,9 +1,11 @@
-var initialize_calendar;
-initialize_calendar = function() {
-  $('.calendar').each(function(){
-    var calendar = $(this);
-    calendar.fullCalendar({
-      header: {
+angular.module('HrApp')
+    .controller('CalendarCtrl', function($scope) {
+        $(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+
+    $('#calendar').fullCalendar({
+         header: {
         left: 'prev,next today',
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
@@ -38,7 +40,8 @@ initialize_calendar = function() {
       eventClick: function(event, jsEvent, view) {
         $.getScript(event.edit_url, function() {});
       }
+        });
+
     });
-  })
-};
-$(document).on('turbolinks:load', initialize_calendar);
+});
+

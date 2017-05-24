@@ -13,6 +13,7 @@
  *= require bootstrap
  *= require fullcalendar
  *= require bootstrap-daterangepicker
+ *= require angular-bootstrap-calendar
  *= require sb-admin
  *= require index
  *= require add_event
