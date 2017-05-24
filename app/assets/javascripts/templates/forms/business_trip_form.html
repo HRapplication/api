@@ -97,27 +97,27 @@
                     </div>
                 </div>
                 
-                <div class="row">
+                <div class="row" ng-controller="businessCtrl">
                     <div class="col-xs-10 col-sm-7">
                         <h2>Delegacja</h2>
-                <form>
+                <form ng-submit="sendBusiness()">
                     <div class="form-group">
                         <label for="company">Firma:</label><br />
-                        <input type="text" class="form-control"  placeholder="Firma"/><br />    
+                        <input type="text" class="form-control"  placeholder="Firma" ng-model="business.company" /><br />    
                         <label for="date">Termin delegacji:</label><br />
                         <p>Od:
-                            <input type="date" class="form-control date_form"/>
+                            <input type="date" class="form-control date_form" ng-model="business.start_date" />
                             Do:
-                            <input type="date" class="form-control date_form"/>
+                            <input type="date" class="form-control date_form" ng-model="business.end_date" />
                         </p>
                     </div>
                     <div class="form-group">
                         <label for="transport">Rodzaj transportu:</label><br />                              
-                        <input type="checkbox" name="transport" value="own_car" checked> Własny samochód<br />
-                        <input type="checkbox" name="transport" value="rent_car" > Wypożyczony samochód<br /> 
-                        <input type="checkbox" name="transport" value="train"> Pociąg<br />
-                        <input type="checkbox" name="transport" value="bus"> Autobus<br />
-                        <input type="checkbox" name="transport" value="airplane"> Samolot<br />                  
+                        <input type="checkbox" name="transport" value="own_car" checked ng-model="business.transport" /> Własny samochód<br />
+                        <input type="checkbox" name="transport" value="rent_car" /> Wypożyczony samochód<br /> 
+                        <input type="checkbox" name="transport" value="train" /> Pociąg<br />
+                        <input type="checkbox" name="transport" value="bus" /> Autobus<br />
+                        <input type="checkbox" name="transport" value="airplane" /> Samolot<br />                  
                         <br />
                         <button type="submit" class="btn btn-default">Generuj formularz</button>
                     </div>                    

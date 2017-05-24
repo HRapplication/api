@@ -6,28 +6,16 @@ angular.module('HrApp')
 
         $scope.addEvent = function() {
 
-            console.log("hey, i'm submitted!!!!");
-            
-            console.log($scope.event);
-
             $http.post('/events', $scope.event).
-                success(function(data, status) {
-                    console.log('Post się udał! ' + status);
+                success(function(data) {
+                    console.log('Post się udał! ');
+                    console.log(data);
                 }).
-                error(function(data, status) {
-                    console.log('Error!!!! ' + status); 
+                error(function(data) {
+                    console.log('Error!!!!'); 
                 })
                 
         }
 
-/*
-        $scope.event= {
-            title: '',
-            content: 'Świetne wydarzenie! Przyjdźcie, a nie pożałujecie! :-)',
-            start_date: '',
-            end_date: '',
-            start_time: '15:00',
-            end_time: '17:00',
-        };*/
     });
 

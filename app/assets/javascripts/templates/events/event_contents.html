@@ -82,7 +82,7 @@
 
     <div id="page-wrapper">
 
-        <div class="container-fluid">
+        <div class="container-fluid" ng-controller="eventContCtrl">
 
             <!-- Page Heading -->
             <div class="row">
@@ -101,16 +101,23 @@
 
             <div class="row">
                 <div class="col-lg-6" id="offers_list">
-                    <h2>Wydarzenie 1</h2>
+                    <h2>{{event.title}}</h2>
                     <br />
-                    <h4 id="e_date"><span class="glyphicon glyphicon-calendar"></span> Data: 15.05.2017</h4>
-                    <h4 id="e_time"><span class="glyphicon glyphicon-time"></span> Czas: 11:00 - 12:00</h4>
+                    <h4>Data wydarzenia: </h4>
+                    <h4 id="e_date"><span class="glyphicon glyphicon-calendar"></span> {{event.duedate.substr(0,10)}}</h4>
                     <br />
-                    <p id="e_description" class="text-justify">Laboris velit esse ipsum nisi sunt aute sunt. Adipisicing magna dolore laborum aute tempor eiusmod est pariatur. Aliqua ipsum non aliqua proident. Laborum culpa Lorem esse esse ipsum aliquip aute sit ut id aute reprehenderit ipsum dolor. Pariatur laboris nulla esse occaecat elit incididunt adipisicing. Elit voluptate id commodo laborum ullamco. Anim fugiat labore incididunt minim.Dolore laborum consectetur magna in deserunt mollit ipsum ullamco laboris mollit aliqua.Occaecat cillum esse mollit est excepteur in quis qui duis consectetur anim aliquip magna. Reprehenderit sint non do quis irure eu. Proident amet deserunt id eu qui commodo ea cupidatat voluptate ut consectetur. Amet velit cupidatat ad quis incididunt. Nulla dolore minim enim commodo anim reprehenderit aliqua dolore culpa consequat cillum in nisi incididunt. Ex dolor proident amet labore sit cillum duis.</p><br />
+                    <p id="e_description" class="text-justify">{{event.events_content.content}}</p><br />
                 </div>
             </div>
             <!-- /.row -->
 
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-1">
+                    <button type="button" ng-click="eventEnlist()"  class="btn btn-default" >Zapisz się</button>
+                    <button type="button" ng-click="eventEnlistUndo()"  class="btn btn-default" >Wypisz się</button>
+                    <button type="button" ng-click="eventDelete()"  class="btn btn-default hr_only" >Usuń wydarzenie</button>
+                </div>
+            </div>
         </div>
         <!-- /.container-fluid -->
 

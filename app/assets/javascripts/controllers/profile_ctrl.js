@@ -3,14 +3,17 @@ angular.module('HrApp')
     .controller('profileCtrl', function($scope, $http) {
 
         $scope.user = {};
+        $scope.employees = {};
+        
 
         $http.get('/users/index').
-            success(function(data, status) {
+            success(function(data) {
                 $scope.user = data;
             }).
-            error(function(data, status) {
-                console.log('Error!!! ' + status);
+            error(function(data) {
+                console.log('Error!!! ');
             });
+        
         
         $scope.person = {
             name: 'Example',
