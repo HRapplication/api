@@ -8,13 +8,10 @@ class EventsController < ApplicationController
   end
 
   def create
-    event = current_user.events.create(
-      title: title_param,
-      events_content_attributes: {
-        content: content_param
-      },
-      duedate: duedate_param
-    )
+    event = current_user.events.create(event_params)
+    event.events_content_attributes = { content: content_param }
+    event.save
+
     render json: event.to_json(include: :events_content)
   end
 
@@ -49,18 +46,19 @@ class EventsController < ApplicationController
     params.permit(:event_id)["event_id"]
   end
 
-  def title_param
-    params.permit(:title)["title"]
+  def event_params
+    params.permit(
+      :title,
+      :duedate,
+      :attending,
+      :spots,
+      :place,
+      )
   end
 
   def content_param
     params.permit(:content)["content"]
   end
-
-  def duedate_param
-    params.permit(:duedate)["duedate"]
-  end
-
 
   swagger_controller :events, "Events Management"
 
@@ -77,6 +75,9 @@ class EventsController < ApplicationController
     summary "Tworzy wydarzenie"
     param :form, :title, :string, :required, "Tytuł wydarzenia"
     param :form, :content, :string, :required, "Opis wydarzenia"
+    param :form, :attending, :integer, :required, "liczba biorących udział"
+    param :form, :spots, :integer, :required, "Liczba wolnych miejsc"
+    param :form, :place, :string, :required, "Miejsce wydarzenia"
     param :form, :duedate, :date, :required, "Data kiedy wydarzenie się odbędzie"
   end
 

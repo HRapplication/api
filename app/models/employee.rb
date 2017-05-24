@@ -8,4 +8,6 @@ class Employee < ActiveRecord::Base
   has_many :sick_leave_forms, dependent: :destroy
   has_many :enlisted_for_events, dependent: :destroy
   accepts_nested_attributes_for :address
+
+  enum position: [:hr, :worker]
 end

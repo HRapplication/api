@@ -1,0 +1,5 @@
+class ChangeDataTypeForCareType < ActiveRecord::Migration
+  def change
+     change_column :sick_leave_forms, :care_type, :integer
+  end
+end
