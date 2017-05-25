@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525181459) do
+ActiveRecord::Schema.define(version: 20170525182750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20170525181459) do
     t.integer  "employee_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "status"
   end
 
   add_index "business_trip_forms", ["employee_id"], name: "index_business_trip_forms_on_employee_id", using: :btree
@@ -123,6 +124,7 @@ ActiveRecord::Schema.define(version: 20170525181459) do
     t.integer  "employee_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "status"
   end
 
   add_index "holiday_forms", ["employee_id"], name: "index_holiday_forms_on_employee_id", using: :btree
@@ -133,6 +135,7 @@ ActiveRecord::Schema.define(version: 20170525181459) do
     t.integer  "employee_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "status"
   end
 
   add_index "homeoffice_forms", ["employee_id"], name: "index_homeoffice_forms_on_employee_id", using: :btree
@@ -175,6 +178,7 @@ ActiveRecord::Schema.define(version: 20170525181459) do
     t.integer  "employee_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "status"
   end
 
   add_index "sick_leave_forms", ["employee_id"], name: "index_sick_leave_forms_on_employee_id", using: :btree
