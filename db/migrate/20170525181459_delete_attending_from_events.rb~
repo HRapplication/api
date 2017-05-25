@@ -1,0 +1,4 @@
+class DeleteAttendingFromEvents < ActiveRecord::Migration
+  def change
+  end
+end
