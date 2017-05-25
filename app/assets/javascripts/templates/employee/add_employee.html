@@ -111,68 +111,72 @@
                 <!-- /.row -->
                 <br />
                 <div class="row">
-                   <div class="col-sm-12">
-                       <form class="form-horizontal">
+                   <div class="col-sm-12" ng-controller="addEmployeeCtrl">
+                       <form class="form-horizontal" ng-submit="addEmployee()">
                            <div class="form-group">
                                <label for="name" class="col-sm-2 control-label">Imię: </label>
                                <div class="col-sm-5">
-                                   <input type="string" id="name" class="form-control" value="John" />
+                                   <input type="text" id="name" class="form-control" placeholder="Wprowadź imię..." ng-model="newEmployee.name" required />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="surname" class="col-sm-2 control-label">Nazwisko: </label>
                                <div class="col-sm-5">
-                                   <input type="string" id="surname" class="form-control" value="Doe" />
+                                   <input type="text" id="surname" class="form-control" placeholder="Wprowadź nazwisko..." ng-model="newEmployee.surname" required />
                                </div>
                            </div>                           
                            <div class="form-group">
                                <label for="e_mail" class="col-sm-2 control-label">e-mail: </label>
                                <div class="col-sm-5">
-                                   <input type="email" id="e_mail" class="form-control" placeholder="Wprowadź email" />
+                                   <input type="email" id="e_mail" class="form-control" placeholder="Wprowadź email..." ng-model="newEmployee.email" required />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="phone_number" class="col-sm-2 control-label">Numer telefonu: </label>
                                <div class="col-sm-5">
-                                   <input type="string" id="phone_number" value="547 152 554" class="form-control" />
+                                   <input type="tel" id="phone_number" class="form-control" placeholder="Wprowadź numer telefonu..." ng-model="newEmployee.phone_number" required />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="job_position" class="col-sm-2 control-label">Stanowisko: </label>
                                <div class="col-sm-5">
-                                   <input type="string" id="job_position" value="HR" class="form-control" />
+                                   <select id="job_position" class="form-control" ng-model="newEmployee.postion" required>
+                                       <option ng-value="hr">hr</option>
+                                       <option ng-value="worker">worker</option>
+                                   </select>
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="weekly_working_hours" class="col-sm-2 control-label">Ilość godzin pracy w tygodniu: </label>
                                <div class="col-sm-5">
-                                   <input type="string" id="weekly_working_hours" value="20" class="form-control" />
+                                   <input type="number" min="0" placeholder="Wprowadź liczbę godzin..." id="weekly_working_hours" ng-model="newEmployee.weekly_working_hours" class="form-control" required />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="address" class="col-sm-2 control-label">Ulica: </label>
                                <div class="col-sm-5">
-                                   <input type="string" id="address" value="20" class="form-control" />
+                                   <input type="text" id="address" ng-model="newEmployee.address_attributes.address" class="form-control" />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="address_city" class="col-sm-2 control-label">Miasto: </label>
                                <div class="col-sm-5">
-                                   <input type="string" id="address_city" value="20" class="form-control" />
+                                   <input type="text" id="address_city" ng-model="newEmployee.address_attributes.city" class="form-control" />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="address_country" class="col-sm-2 control-label">Państwo: </label>
                                <div class="col-sm-5">
-                                   <input type="string" id="address_country" value="20" class="form-control" />
+                                   <input type="text" id="address_country" ng-model="newEmployee.address_attributes.country" class="form-control" />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="address_postcode" class="col-sm-2 control-label">Kod pocztowy: </label>
                                <div class="col-sm-5">
-                                   <input type="string" id="address_postcode" value="20" class="form-control" />
+                                   <input type="text" id="address_postcode" ng-model="newEmployee.address_attributes.postcode" class="form-control" />
                                </div>
-                           </div>                           
+                           </div>  
+                           <br />                         
                            <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-3">                               
                                <button type="submit" class="btn btn-block submit_btn">Zatwierdź dane</button>
                            </div>

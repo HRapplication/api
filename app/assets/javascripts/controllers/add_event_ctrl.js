@@ -13,9 +13,8 @@ angular.module('HrApp')
                 }).
                 error(function(data) {
                     console.log('Error!!!!'); 
-                })
-                
-        }
+                });
 
+        };
     });
 

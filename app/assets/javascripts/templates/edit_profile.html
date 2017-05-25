@@ -14,9 +14,9 @@
                 <a class="navbar-brand" ui-sref="home">KORPOPLAN</a>
             </div>
             <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
+            <ul class="nav navbar-right top-nav" ng-controller="profileCtrl">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> John Doe <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> {{currentUser.name + ' ' + currentUser.surname}} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a ui-sref="login"><i class="glyphicon glyphicon-off"></i> Wyloguj</a>
@@ -110,43 +110,37 @@
                 </div>
                 <!-- /.row -->
                 <br />
-                <div class="row">
+                <div class="row" ng-controller="profileCtrl">
                    <div class="col-sm-12">
-                       <form class="form-horizontal">
+                       <form class="form-horizontal" ng-submit="updateCrtUser()">
                            <div class="form-group">
                                <label for="name" class="col-sm-2 control-label">Imię: </label>
                                <div class="col-sm-5">
-                                   <input type="text" id="name" class="form-control" value="John" readonly />
+                                   <input type="text" id="name" class="form-control" ng-model="currentUser.name" />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="surname" class="col-sm-2 control-label">Nazwisko: </label>
                                <div class="col-sm-5">
-                                   <input type="text" id="surname" class="form-control" value="Doe" readonly />
+                                   <input type="text" id="surname" class="form-control" ng-model="currentUser.surname" />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="id_number" class="col-sm-2 control-label">ID: </label>
                                <div class="col-sm-5">
-                                   <input type="text" id="id_number" value="123456" class="form-control" readonly />
+                                   <input type="text" id="id_number" ng-model="currentUser.id" class="form-control" readonly />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="e_mail" class="col-sm-2 control-label">e-mail: </label>
                                <div class="col-sm-5">
-                                   <input type="email" id="e_mail" class="form-control" placeholder="Wprowadź email" />
+                                   <input type="email" id="e_mail" class="form-control" ng-model="user.email" />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="job_position" class="col-sm-2 control-label">Stanowisko: </label>
                                <div class="col-sm-5">
-                                   <input type="text" id="job_position" value="HR" class="form-control" readonly />
-                               </div>
-                           </div>
-                           <div class="form-group">
-                               <label for="profile_img" class="col-sm-2 control-label">Zdjęcie: </label>
-                               <div class="col-sm-5">
-                                   <input type="file" id="profile_img" name="img" value="profile_img" class="form-control"/>
+                                   <input type="text" id="job_position" class="form-control" ng-model="currentUser.position" readonly />
                                </div>
                            </div>
                            <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-3">
