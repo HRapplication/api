@@ -116,13 +116,13 @@
                            <div class="form-group">
                                <label for="name" class="col-sm-2 control-label">Imię: </label>
                                <div class="col-sm-5">
-                                   <input type="text" id="name" class="form-control" ng-model="currentUser.name" />
+                                   <input type="text" id="name" class="form-control" ng-model="currentUser.name" placeholder="Wprowadź imię..." required />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="surname" class="col-sm-2 control-label">Nazwisko: </label>
                                <div class="col-sm-5">
-                                   <input type="text" id="surname" class="form-control" ng-model="currentUser.surname" />
+                                   <input type="text" id="surname" class="form-control" ng-model="currentUser.surname" placeholder="Wprowadź nazwisko..." required />
                                </div>
                            </div>
                            <div class="form-group">
@@ -134,7 +134,7 @@
                            <div class="form-group">
                                <label for="e_mail" class="col-sm-2 control-label">e-mail: </label>
                                <div class="col-sm-5">
-                                   <input type="email" id="e_mail" class="form-control" ng-model="user.email" />
+                                   <input type="email" id="e_mail" class="form-control" ng-model="user.email" placeholder="Wprowadź email..." required />
                                </div>
                            </div>
                            <div class="form-group">
@@ -143,6 +143,31 @@
                                    <input type="text" id="job_position" class="form-control" ng-model="currentUser.position" readonly />
                                </div>
                            </div>
+                            <div class="form-group">
+                               <label for="address" class="col-sm-2 control-label">Ulica: </label>
+                               <div class="col-sm-5">
+                                   <input type="text" id="address" ng-model="currentUser.address_attributes.address" class="form-control" />
+                               </div>
+                           </div>
+                           <div class="form-group">
+                               <label for="address_city" class="col-sm-2 control-label">Miasto: </label>
+                               <div class="col-sm-5">
+                                   <input type="text" id="address_city" ng-model="currentUser.address_attributes.city" class="form-control" />
+                               </div>
+                           </div>
+                           <div class="form-group">
+                               <label for="address_country" class="col-sm-2 control-label">Państwo: </label>
+                               <div class="col-sm-5">
+                                   <input type="text" id="address_country" ng-model="currentUser.address_attributes.country" class="form-control" />
+                               </div>
+                           </div>
+                           <div class="form-group">
+                               <label for="address_postcode" class="col-sm-2 control-label">Kod pocztowy: </label>
+                               <div class="col-sm-5">
+                                   <input type="text" id="address_postcode" ng-model="currentUser.address_attributes.postcode" class="form-control" />
+                               </div>
+                           </div>  
+
                            <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-3">
                                <br />
                                <button type="submit" class="btn btn-block submit_btn">Zatwierdź dane</button>
@@ -157,6 +182,25 @@
                     
                 </div>
                 <!-- /.row -->
+
+                <div class="modal fade" id="submitModal" tabindex="-1" role="dialog"> 
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                                <h4 class="modal-title">Aktualizacja danych</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Twoje dane zostały pomyślnie zaktualizowane ( ͡° ͜ʖ ͡°)</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
             <!-- /.container-fluid -->

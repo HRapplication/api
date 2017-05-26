@@ -27,9 +27,10 @@ angular.module('HrApp')
 
             $scope.updateCrtUser = function() {
 
-                $http.patch('/update_user').
+                $http.patch('/update_user', $scope.currentUser).
                     success(function(data) {
                         console.log('Dane zaktualizowane');
+                        $('#submitModal').modal('show');   
                     }).
                     error(function(data) {
                         console.log('Error!!!'); 

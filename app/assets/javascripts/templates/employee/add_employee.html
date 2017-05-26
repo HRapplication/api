@@ -93,7 +93,7 @@
 
         <div id="page-wrapper">
 
-            <div class="container-fluid">
+            <div class="container-fluid"  ng-controller="addEmployeeCtrl">
 
                 <!-- Page Heading -->
                 <div class="row">
@@ -111,7 +111,7 @@
                 <!-- /.row -->
                 <br />
                 <div class="row">
-                   <div class="col-sm-12" ng-controller="addEmployeeCtrl">
+                   <div class="col-sm-12">
                        <form class="form-horizontal" ng-submit="addEmployee()">
                            <div class="form-group">
                                <label for="name" class="col-sm-2 control-label">Imię: </label>
@@ -190,6 +190,26 @@
                     
                 </div>
                 <!-- /.row -->
+
+                <div class="modal fade" id="submitModal" tabindex="-1" role="dialog"> 
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" ng-click="reloadView()">
+                                    <span>&times;</span>
+                                </button>
+                                <h4 class="modal-title">Nowy profil pracownika</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Dodanie nowego profilu pracownika zakończone pomyślnie ( ͡° ͜ʖ ͡°)</p>
+                                <p>Hasło do nowego konta: {{newEmpResponse.password}}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" ng-click="reloadView()" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
             <!-- /.container-fluid -->
