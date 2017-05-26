@@ -91,6 +91,16 @@
           "method": "delete"
         }
       ]
+    },
+    {
+      "path": "/homeoffice_forms/all",
+      "operations": [
+        {
+          "summary": "Zwraca wszystkie formularze danego usera",
+          "nickname": "HomeofficeForms#all",
+          "method": "get"
+        }
+      ]
     }
   ],
   "authorizations": null

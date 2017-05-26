@@ -121,6 +121,16 @@
           "method": "delete"
         }
       ]
+    },
+    {
+      "path": "/holiday_forms/all",
+      "operations": [
+        {
+          "summary": "Zwraca wszystkie formularze danego usera",
+          "nickname": "HolidayForms#all",
+          "method": "get"
+        }
+      ]
     }
   ],
   "authorizations": null

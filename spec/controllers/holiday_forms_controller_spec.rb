@@ -16,14 +16,21 @@ RSpec.describe HolidayFormsController, type: :controller do
       holiday_type: "compensation_for_overtime"
     }
   end
-  it "returns all sick leave forms" do
+  it "returns all holiday forms" do
     form = @user.details.holiday_forms.create(@data)
     get :index
     output = JSON.parse(response.body)
     expect(output.length).to be(1)
   end
 
-  it "creates sick leave forms" do
+  it "returns all current user holiday forms" do
+    form = @user.details.holiday_forms.create(@data)
+    get :all
+    output = JSON.parse(response.body)
+    expect(output.length).to be(1)
+  end
+
+  it "creates holiday forms" do
     post :create, @data
 
     output = JSON.parse(response.body)

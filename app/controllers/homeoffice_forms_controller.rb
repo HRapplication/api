@@ -17,6 +17,10 @@ class HomeofficeFormsController < ApplicationController
     render json: current_user.details.homeoffice_forms.where(id_param).first.destroy
   end
 
+  def all
+    render json: current_user.details.homeoffice_forms
+  end
+
   private
 
   def form_params
@@ -36,6 +40,10 @@ class HomeofficeFormsController < ApplicationController
 
   swagger_api :index do
     summary "Zwraca wszystkie formularze"
+  end
+
+  swagger_api :all do
+    summary "Zwraca wszystkie formularze danego usera"
   end
 
   swagger_api :create do

@@ -119,6 +119,16 @@
           "method": "delete"
         }
       ]
+    },
+    {
+      "path": "/business_trip_forms/all",
+      "operations": [
+        {
+          "summary": "Zwraca wszystkie formularze danego usera",
+          "nickname": "BusinessTripForms#all",
+          "method": "get"
+        }
+      ]
     }
   ],
   "authorizations": null

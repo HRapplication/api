@@ -16,6 +16,10 @@ class BusinessTripFormsController < ApplicationController
     render json: current_user.details.business_trip_forms.where(id_param).first.destroy
   end
 
+  def all
+    render json: current_user.details.business_trip_forms
+  end
+
   private
 
   def form_params
@@ -37,6 +41,10 @@ class BusinessTripFormsController < ApplicationController
 
   swagger_api :index do
     summary "Zwraca wszystkie formularze"
+  end
+
+  swagger_api :all do
+    summary "Zwraca wszystkie formularze danego usera"
   end
 
   swagger_api :create do

@@ -51,8 +51,8 @@
             {
               "paramType": "form",
               "name": "position",
-              "type": "integer",
-              "description": "Pozycja",
+              "type": "enum",
+              "description": "Pozycja ('hr', 'worker')",
               "required": true
             },
             {
@@ -146,8 +146,8 @@
             {
               "paramType": "form",
               "name": "position",
-              "type": "integer",
-              "description": "Pozycja",
+              "type": "enum",
+              "description": "Pozycja ('hr', 'worker')",
               "required": false
             },
             {
