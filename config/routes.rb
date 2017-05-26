@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     post "/enlist", to: 'events#enlist'
     delete "/enlist", to: 'events#unroll'
   end
+  get 'user_events', to: 'events#all'
 
   resources :business_trip_forms, :except => :show
   get 'business_trip_forms/all', to: "business_trip_forms#all"

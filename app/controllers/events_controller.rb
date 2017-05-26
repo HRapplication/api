@@ -36,6 +36,13 @@ class EventsController < ApplicationController
     render json: event.to_json(include: [:events_content, enlisted_for_events: { include: { employee: {}}}])
   end
 
+  def all
+    response = current_user.details.enlisted_for_events.as_json(include: [event: { include: { events_content: {}}}]).map do |enlisted|
+      enlisted["event"]
+    end
+    render json: response
+  end
+
   private
 
   def id_param
@@ -94,5 +101,9 @@ class EventsController < ApplicationController
   swagger_api :unroll do
     summary "Odpisuje aktualnego użytkownika z wydarzenia"
     param :path, :event_id, :integer, :required, "Id wydarzenia"
+  end
+
+  swagger_api :all do
+    summary "Wszystkie wydarzenia na które zapisany jest zalogowany użytkownik"
   end
 end

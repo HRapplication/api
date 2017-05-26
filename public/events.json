@@ -143,6 +143,16 @@
           "method": "delete"
         }
       ]
+    },
+    {
+      "path": "/user_events",
+      "operations": [
+        {
+          "summary": "Wszystkie wydarzenia na które zapisany jest zalogowany użytkownik",
+          "nickname": "Events#all",
+          "method": "get"
+        }
+      ]
     }
   ],
   "authorizations": null

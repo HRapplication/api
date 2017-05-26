@@ -44,7 +44,7 @@ RSpec.describe EventsController, type: :controller do
     post :enlist, {event_id: @event.id}
     get :show, id: @event.id
     output = JSON.parse(response.body)
-    ap output
+    # ap output
   end
 
   it "creates an event" do
@@ -94,6 +94,15 @@ RSpec.describe EventsController, type: :controller do
     output = JSON.parse(response.body)
     expect(enlisted_before).to be(1)
     expect(output["enlisted_for_events"].length).to be(0)
+  end
+
+  it "gets user events" do
+    event = Event.find(@event.id)
+    event.enlisted_for_events.create(employee: @user.details)
+    get :all
+
+    output = JSON.parse(response.body)
+    expect(output[0]["title"]).to eq(@example_event[:title])
   end
 
 
