@@ -5,10 +5,20 @@ RSpec.describe OffersController, type: :controller do
     @user = create(:user)
     @offer = @user.job_offers.create(
       title: "title1",
+      is_available: true,
       offers_content_attributes: {
         content: "param1"
         }
       )
+  end
+
+  it 'gets offers' do
+    get :index, {is_available: true}
+
+    output = JSON.parse(response.body)
+
+    expect(output.length).to be(1)
+    expect(output[0]["is_available"]).to be(true)
   end
   it 'shows offer' do
     get :show, {

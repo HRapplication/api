@@ -8,7 +8,16 @@
       "path": "/offers",
       "operations": [
         {
-          "summary": "Zwraca wszystkie dodane oferty pracy",
+          "summary": "Zwraca wszystkie dodane aktualne oferty pracy",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "is_available",
+              "type": "boolean",
+              "description": "dostępne/niedostępne",
+              "required": true
+            }
+          ],
           "nickname": "Offers#index",
           "method": "get"
         }

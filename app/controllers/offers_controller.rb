@@ -3,7 +3,7 @@ class OffersController < ApplicationController
 
 
 	def index
-    render json: JobOffer.all.to_json(include: :offers_content)
+    render json: JobOffer.all.where(is_available: available_param).to_json(include: :offers_content)
 	end
 
 	def show
@@ -13,6 +13,7 @@ class OffersController < ApplicationController
 	def create
     offer = current_user.job_offers.create(
       title: title_param,
+      is_available: true,
       offers_content_attributes: {
         content: content_param
         }
@@ -30,6 +31,10 @@ class OffersController < ApplicationController
     params.permit(:title)["title"]
   end
 
+  def available_param
+    params.permit(:is_available)["is_available"]
+  end
+
   def content_param
     params.permit(:content)["content"]
   end
@@ -42,7 +47,8 @@ class OffersController < ApplicationController
   swagger_controller :offers, "Offers Management"
 
   swagger_api :index do
-    summary "Zwraca wszystkie dodane oferty pracy"
+    summary "Zwraca wszystkie dodane aktualne oferty pracy"
+    param :form, :is_available, :boolean, :required, "dostępne/niedostępne"
   end
 
   swagger_api :show do
