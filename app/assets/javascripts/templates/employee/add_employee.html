@@ -115,69 +115,70 @@
                        <form class="form-horizontal" ng-submit="addEmployee()">
                            <div class="form-group">
                                <label for="name" class="col-sm-2 control-label">Imię: </label>
-                               <div class="col-sm-5">
+                               <div class="col-sm-7 col-lg-5">
                                    <input type="text" id="name" class="form-control" placeholder="Wprowadź imię..." ng-model="newEmployee.name" required />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="surname" class="col-sm-2 control-label">Nazwisko: </label>
-                               <div class="col-sm-5">
+                               <div class="col-sm-7 col-lg-5">
                                    <input type="text" id="surname" class="form-control" placeholder="Wprowadź nazwisko..." ng-model="newEmployee.surname" required />
                                </div>
                            </div>                           
                            <div class="form-group">
                                <label for="e_mail" class="col-sm-2 control-label">e-mail: </label>
-                               <div class="col-sm-5">
+                               <div class="col-sm-7 col-lg-5">
                                    <input type="email" id="e_mail" class="form-control" placeholder="Wprowadź email..." ng-model="newEmployee.email" required />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="phone_number" class="col-sm-2 control-label">Numer telefonu: </label>
-                               <div class="col-sm-5">
+                               <div class="col-sm-7 col-lg-5">
                                    <input type="tel" id="phone_number" class="form-control" placeholder="Wprowadź numer telefonu..." ng-model="newEmployee.phone_number" required />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="job_position" class="col-sm-2 control-label">Stanowisko: </label>
-                               <div class="col-sm-5">
+                               <div class="col-sm-7 col-lg-5">
                                    <select id="job_position" class="form-control" ng-model="newEmployee.postion" required>
-                                       <option ng-value="hr">hr</option>
-                                       <option ng-value="worker">worker</option>
+                                       <option disabled selected value>Wybierz stanowisko...</option>
+                                       <option value="hr">hr</option>
+                                       <option value="worker">worker</option>
                                    </select>
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="weekly_working_hours" class="col-sm-2 control-label">Ilość godzin pracy w tygodniu: </label>
-                               <div class="col-sm-5">
+                               <div class="col-sm-7 col-lg-5">
                                    <input type="number" min="0" placeholder="Wprowadź liczbę godzin..." id="weekly_working_hours" ng-model="newEmployee.weekly_working_hours" class="form-control" required />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="address" class="col-sm-2 control-label">Ulica: </label>
-                               <div class="col-sm-5">
+                               <div class="col-sm-7 col-lg-5">
                                    <input type="text" id="address" ng-model="newEmployee.address_attributes.address" class="form-control" />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="address_city" class="col-sm-2 control-label">Miasto: </label>
-                               <div class="col-sm-5">
+                               <div class="col-sm-7 col-lg-5">
                                    <input type="text" id="address_city" ng-model="newEmployee.address_attributes.city" class="form-control" />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="address_country" class="col-sm-2 control-label">Państwo: </label>
-                               <div class="col-sm-5">
+                               <div class="col-sm-7 col-lg-5">
                                    <input type="text" id="address_country" ng-model="newEmployee.address_attributes.country" class="form-control" />
                                </div>
                            </div>
                            <div class="form-group">
                                <label for="address_postcode" class="col-sm-2 control-label">Kod pocztowy: </label>
-                               <div class="col-sm-5">
+                               <div class="col-sm-7 col-lg-5">
                                    <input type="text" id="address_postcode" ng-model="newEmployee.address_attributes.postcode" class="form-control" />
                                </div>
                            </div>  
                            <br />                         
-                           <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-3">                               
+                           <div class="col-xs-12 col-sm-5 col-sm-offset-3 col-md-5 col-md-offset-3 col-lg-3">
                                <button type="submit" class="btn btn-block submit_btn">Zatwierdź dane</button>
                            </div>
                             <div class="row hidden-lg">
@@ -195,7 +196,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" ng-click="reloadView()">
+                                <button type="button" class="close" data-dismiss="modal">
                                     <span>&times;</span>
                                 </button>
                                 <h4 class="modal-title">Nowy profil pracownika</h4>
@@ -205,7 +206,26 @@
                                 <p>Hasło do nowego konta: {{newEmpResponse.password}}</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" ng-click="reloadView()" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="errorModal" tabindex="-1" role="dialog"> 
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                                <h4 class="modal-title">Nowy profil pracownika</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Wystąpił błąd. Spróbuj ponownie ( ͡° ͜ʖ ͡°)</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
                             </div>
                         </div>
                     </div>

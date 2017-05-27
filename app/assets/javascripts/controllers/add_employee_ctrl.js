@@ -10,17 +10,23 @@ angular.module('HrApp')
                     console.log('Udało się utworzyć użytkownika.');
                     console.log(data);
                     $scope.newEmpResponse = data;
-                    $('#submitModal').modal('show');
+                    showModal('#submitModal');
                 }).
                 error(function(data) {
                     console.log('Error!!!');
+                    showModal('#errorModal');
                 });
         };
 
-        $scope.reloadView = function() {
+        function showModal(modalId) {
+            $(modalId).modal('show');
+            $(modalId).on('hide.bs.modal', reloadView);
+        }
+
+        function reloadView() {
             $('body').removeClass('modal-open').css('padding-right', '');
             $('.modal-backdrop').remove();       
             $state.reload();
-        };
+        }
         
     });

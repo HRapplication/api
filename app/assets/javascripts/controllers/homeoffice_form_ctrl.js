@@ -8,18 +8,23 @@ angular.module('HrApp')
             success(function(data) {
                 console.log('Wysyłanie zakończone sukcesem.');
                 console.log(data);
-                $('#submitModal').modal('show');   
+                showModal('#submitModal'); 
             }).
             error(function(data) {
                 console.log('Error!!!');
-                $('#errorModal').modal('show');  
+                showModal('#errorModal');
             });
         };
 
-        $scope.reloadView = function() {
+        function showModal(modalId) {
+            $(modalId).modal('show');
+            $(modalId).on('hide.bs.modal', reloadView);
+        }
+
+        function reloadView() {
             $('body').removeClass('modal-open').css('padding-right', '');
             $('.modal-backdrop').remove();       
             $state.reload();
-        };
+        }
 
     });

@@ -1,211 +1,283 @@
-    <div id="wrapper">
+<div id="wrapper">
 
-        <!-- Navigation -->
-        <nav class="main-nav navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" ui-sref="home">KORPOPLAN</a>
-            </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> John Doe <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
+    <!-- Navigation -->
+    <nav class="main-nav navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="home">KORPOPLAN</a>
+        </div>
+        <!-- Top Menu Items -->
+        <ul class="nav navbar-right top-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> John Doe <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a ui-sref="login"><i class="glyphicon glyphicon-off"></i> Wyloguj</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar">
+            <ul class="nav navbar-nav side-nav" id="sidebar_list">
+                <li>
+                    <a ui-sref="home"><i class="glyphicon glyphicon-home"></i> Strona główna</a>
+                </li>
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#grafik"><i class="glyphicon glyphicon-calendar"></i> Grafik <i class="caret"></i></a>
+                    <ul id="grafik" class="collapse">
                         <li>
-                            <a ui-sref="login"><i class="glyphicon glyphicon-off"></i> Wyloguj</a>
+                            <a ui-sref="calendar">Kalendarz</a>
+                        </li>
+                        <li>
+                            <a ui-sref="schedule_preference">Ustal preferencje</a>
+                        </li>
+                        <li>
+                            <a ui-sref="edit_schedule">Edytuj grafik</a>
+                        </li>
+                        <li>
+                            <a ui-sref="submit_schedule">Zatwierdź grafik</a>
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#wydarzenia"><i class="glyphicon glyphicon-bell"></i> Wydarzenia <i class="caret"></i></a>
+                    <ul id="wydarzenia" class="collapse">
+                        <li>
+                            <a ui-sref="events">Aktualne wydarzenia</a>
+                        </li>
+                        <li>
+                            <a ui-sref="add_event">Dodaj wydarzenie</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#formularze"><i class="glyphicon glyphicon-edit"></i> Formularze <i class="caret"></i></a>
+                    <ul id="formularze" class="collapse">
+                        <li>
+                            <a ui-sref="holiday_form">Urlop</a>
+                        </li>
+                        <li>
+                            <a ui-sref="sick_leave_form">Urlop zdrowotny</a>
+                        </li>
+                        <li>
+                            <a ui-sref="homeoffice_form">Praca zdalna</a>
+                        </li>
+                        <li>
+                            <a ui-sref="business_trip_form">Delegacja</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="javascript:;" data-toggle="collapse" data-target="#pracownicy"><i class="glyphicon glyphicon-user"></i> Pracownicy <i class="caret"></i></a>
+                    <ul id="pracownicy" class="collapse">
+                        <li>
+                            <a ui-sref="add_employee">Dodaj profil pracownika</a>
+                        </li>
+                        <li>
+                            <a ui-sref="update_employee">Aktualizuj profil</a>
+                        </li>                                               
+                    </ul>
+                </li>
             </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar">
-                <ul class="nav navbar-nav side-nav" id="sidebar_list">
-                    <li>
-                        <a ui-sref="home"><i class="glyphicon glyphicon-home"></i> Strona główna</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#grafik"><i class="glyphicon glyphicon-calendar"></i> Grafik <i class="caret"></i></a>
-                        <ul id="grafik" class="collapse">
-                            <li>
-                                <a ui-sref="calendar">Kalendarz</a>
-                            </li>
-                            <li>
-                                <a ui-sref="schedule_preference">Ustal preferencje</a>
-                            </li>
-                            <li>
-                                <a ui-sref="edit_schedule">Edytuj grafik</a>
-                            </li>
-                            <li>
-                                <a ui-sref="submit_schedule">Zatwierdź grafik</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#wydarzenia"><i class="glyphicon glyphicon-bell"></i> Wydarzenia <i class="caret"></i></a>
-                        <ul id="wydarzenia" class="collapse">
-                            <li>
-                                <a ui-sref="events">Aktualne wydarzenia</a>
-                            </li>
-                            <li>
-                                <a ui-sref="add_event">Dodaj wydarzenie</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#formularze"><i class="glyphicon glyphicon-edit"></i> Formularze <i class="caret"></i></a>
-                        <ul id="formularze" class="collapse">
-                            <li>
-                                <a ui-sref="holiday_form">Urlop</a>
-                            </li>
-                            <li>
-                                <a ui-sref="sick_leave_form">Urlop zdrowotny</a>
-                            </li>
-                            <li>
-                                <a ui-sref="homeoffice_form">Praca zdalna</a>
-                            </li>
-                            <li>
-                                <a ui-sref="business_trip_form">Delegacja</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="active">
-                        <a href="javascript:;" data-toggle="collapse" data-target="#pracownicy"><i class="glyphicon glyphicon-user"></i> Pracownicy <i class="caret"></i></a>
-                        <ul id="pracownicy" class="collapse">
-                            <li>
-                                <a ui-sref="add_employee">Dodaj profil pracownika</a>
-                            </li>
-                            <li>
-                                <a ui-sref="update_employee">Aktualizuj profil</a>
-                            </li>                                               
-                        </ul>
-                   </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
 
-        <div id="page-wrapper">
+    <div id="page-wrapper">
 
-            <div class="container-fluid">
+        <div class="container-fluid" ng-controller="editEmployeeCtrl">
 
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="glyphicon glyphicon-home"></i> <a ui-sref="home">Home</a>
-                            </li>
-                            <li class="active">
-                                <i class="glyphicon glyphicon-pencil"></i> Dodaj profil pracownika
-                            </li>
-                        </ol>
-                    </div>
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="glyphicon glyphicon-home"></i> <a ui-sref="home">Home</a>
+                        </li>
+                        <li class="active">
+                            <i class="glyphicon glyphicon-pencil"></i> Edytuj profil pracownika
+                    </ol>
                 </div>
-                <!-- /.row -->
-                <br />
-                <div class="row">
+            </div>
+            <!-- /.row -->
+            <br />
+            <div class="row">
                 <div class="col-sm-12">
-                    <h2>Edytuj profil pracownika</h2>
-                       <form class="form-horizontal" ng-controller="editEmployeeCtrl">
-                           <div class="form-group">                            
-                                <label for="employee" class="col-sm-2 control-label">Pracownik:</label>
-                                <div class="col-sm-5">
-                                    <select id="employee" name="employee" class="form-control" ng-model="editEmployee.model">                                    
-                                        <option ng-repeat="option in editEmployee.employee" value="{{option.name}}">{{option.name}} {{option.surname}}</option>                            
-                                    </select>
-                                </div>
-                            </div>                    
-                           <div class="form-group">
-                               <label for="name" class="col-sm-2 control-label">Imię: </label>
-                               <div class="col-sm-5">
-                                   <input type="string" id="name" class="form-control" ng-model="editEmployee.model" value="{{editEmployee.name}}" />
-                               </div>
-                           </div>
-                           <div class="form-group"> 
-                               <label for="surname" class="col-sm-2 control-label">Nazwisko: </label>
-                               <div class="col-sm-5">
-                                   <input type="string" id="name" class="form-control" ng-model="editEmployee.model" value="{{editEmployee.surname}}" />
-                               </div>
-                           </div>                           
-                           <div class="form-group">
-                               <label for="e_mail" class="col-sm-2 control-label">e-mail: </label>
-                               <div class="col-sm-5">
-                                   <input type="email" id="e_mail" class="form-control" placeholder="Wprowadź email" />
-                               </div>
-                           </div>
-                           <div class="form-group">
-                               <label for="phone_number" class="col-sm-2 control-label">Numer telefonu: </label>
-                               <div class="col-sm-5">
-                                   <input type="string" id="phone_number" value="547 152 554" class="form-control" />
-                               </div>
-                           </div>
-                           <div class="form-group">
-                               <label for="job_position" class="col-sm-2 control-label">Stanowisko: </label>
-                               <div class="col-sm-5">
-                                   <input type="string" id="job_position" value="HR" class="form-control" />
-                               </div>
-                           </div>
-                           <div class="form-group">
-                               <label for="weekly_working_hours" class="col-sm-2 control-label">Ilość godzin pracy w tygodniu: </label>
-                               <div class="col-sm-5">
-                                   <input type="string" id="weekly_working_hours" value="20" class="form-control" />
-                               </div>
-                           </div>
-                           <div class="form-group">
-                               <label for="address" class="col-sm-2 control-label">Ulica: </label>
-                               <div class="col-sm-5">
-                                   <input type="string" id="address" value="20" class="form-control" />
-                               </div>
-                           </div>
-                           <div class="form-group">
-                               <label for="address_city" class="col-sm-2 control-label">Miasto: </label>
-                               <div class="col-sm-5">
-                                   <input type="string" id="address_city" value="20" class="form-control" />
-                               </div>
-                           </div>
-                           <div class="form-group">
-                               <label for="address_country" class="col-sm-2 control-label">Państwo: </label>
-                               <div class="col-sm-5">
-                                   <input type="string" id="address_country" value="20" class="form-control" />
-                               </div>
-                           </div>
-                           <div class="form-group">
-                               <label for="address_postcode" class="col-sm-2 control-label">Kod pocztowy: </label>
-                               <div class="col-sm-5">
-                                   <input type="string" id="address_postcode" value="20" class="form-control" />
-                               </div>
-                           </div>                           
-                           <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-3">                               
-                               <button type="submit" class="btn btn-block submit_btn">Zatwierdź dane</button>
-                           </div>                           
-                            <div class="row hidden-lg">
-                                <div class="col-xs-12">
-                                    <br />
-                                </div>
+                    <form class="form-horizontal" ng-submit="updateEmployee()">
+                        <div class="form-group">                            
+                            <label for="employee" class="col-sm-2 control-label">Pracownik:</label>
+                            <div class="col-sm-7 col-lg-5">
+                                <select id="employee" name="employee" class="form-control" ng-model="editEmployee.model" required>                                    
+                                    <option selected disabled value>Wybierz pracownika...</option>
+                                    <option ng-repeat="option in editEmployee.employee" value="{{option.name}}">{{option.name}} {{option.surname}}</option>                            
+                                </select>
                             </div>
-                       </form>                         
-                   </div>
-                    
+                        </div>       
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">Imię: </label>
+                            <div class="col-sm-7 col-lg-5">
+                                <input type="text" id="name" class="form-control" placeholder="Wprowadź imię..." ng-model="updatedEmployee.name" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="surname" class="col-sm-2 control-label">Nazwisko: </label>
+                            <div class="col-sm-7 col-lg-5">
+                                <input type="text" id="surname" class="form-control" placeholder="Wprowadź nazwisko..." ng-model="updatedEmployee.surname" required />
+                            </div>
+                        </div>                           
+                        <div class="form-group">
+                            <label for="e_mail" class="col-sm-2 control-label">e-mail: </label>
+                            <div class="col-sm-7 col-lg-5">
+                                <input type="email" id="e_mail" class="form-control" placeholder="Wprowadź email..." ng-model="updatedEmployee.email" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone_number" class="col-sm-2 control-label">Numer telefonu: </label>
+                            <div class="col-sm-7 col-lg-5">
+                                <input type="tel" id="phone_number" class="form-control" placeholder="Wprowadź numer telefonu..." ng-model="updatedEmployee.phone_number" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="job_position" class="col-sm-2 control-label">Stanowisko: </label>
+                            <div class="col-sm-7 col-lg-5">
+                                <select id="job_position" class="form-control" ng-model="updatedEmployee.postion" required>
+                                    <option disabled selected value>Wybierz stanowisko...</option>
+                                    <option value="hr">hr</option>
+                                    <option value="worker">worker</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="weekly_working_hours" class="col-sm-2 control-label">Ilość godzin pracy w tygodniu: </label>
+                            <div class="col-sm-7 col-lg-5">
+                                <input type="number" min="0" placeholder="Wprowadź liczbę godzin..." id="weekly_working_hours" ng-model="updatedEmployee.weekly_working_hours" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">Ulica: </label>
+                            <div class="col-sm-7 col-lg-5">
+                                <input type="text" id="address" ng-model="updatedEmployee.address_attributes.address" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address_city" class="col-sm-2 control-label">Miasto: </label>
+                            <div class="col-sm-7 col-lg-5">
+                                <input type="text" id="address_city" ng-model="updatedEmployee.address_attributes.city" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address_country" class="col-sm-2 control-label">Państwo: </label>
+                            <div class="col-sm-7 col-lg-5">
+                                <input type="text" id="address_country" ng-model="updatedEmployee.address_attributes.country" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address_postcode" class="col-sm-2 control-label">Kod pocztowy: </label>
+                            <div class="col-sm-7 col-lg-5">
+                                <input type="text" id="address_postcode" ng-model="updatedEmployee.address_attributes.postcode" class="form-control" />
+                            </div>
+                        </div>  
+                        <br />                         
+                        <div class="col-xs-12 col-sm-5 col-sm-offset-3 col-md-5 col-md-offset-3 col-lg-3">
+                            <button type="submit" class="btn btn-block submit_btn">Zatwierdź dane</button>
+                        </div>
+                        <br /><br /><br />
+                        <div class="col-xs-12 col-sm-5 col-sm-offset-3 col-md-5 col-md-offset-3 col-lg-3">                               
+                            <button type="button" ng-click="deleteEmployee()" class="btn btn-block submit_btn">Usuń pracownika</button>
+                        </div>
+                    </form>                    
                 </div>
-                <!-- /.row -->
-                </br>
-                <div class="row">
-                    <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-3">                               
-                        <button type="submit" class="btn btn-block submit_btn">Usuń pracownika</button>
-                    </div>
-                </div> 
             </div>
-            <!-- /.container-fluid -->
+            <!-- /.row -->
+            <br />
+
+            <div class="modal fade" id="submitModal" tabindex="-1" role="dialog"> 
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                                <h4 class="modal-title">Aktualicacja profilu pracownika</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Aktualicacja profilu pracownika zakończona pomyślnie ( ͡° ͜ʖ ͡°)</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="errorModal" tabindex="-1" role="dialog"> 
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                                <h4 class="modal-title">Aktualicacja profilu pracownika</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Wystąpił błąd. Spróbuj ponownie ( ͡° ͜ʖ ͡°)</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="submitModal" tabindex="-1" role="dialog"> 
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                                <h4 class="modal-title">Usuwanie profilu pracownika</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Usunięcie profilu pracownika zakończone pomyślnie ( ͡° ͜ʖ ͡°)</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="deleteModalError" tabindex="-1" role="dialog"> 
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                                <h4 class="modal-title">Usuwanie profilu pracownika</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Wystąpił błąd. Spróbuj ponownie ( ͡° ͜ʖ ͡°)</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
         </div>
-        <!-- /#page-wrapper -->
-
+        <!-- /.container-fluid -->
     </div>
-    <!-- /#wrapper -->
+    <!-- /#page-wrapper -->
+</div>
+<!-- /#wrapper -->
 
