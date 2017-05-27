@@ -18,10 +18,18 @@ RSpec.describe SickLeaveFormsController, type: :controller do
   end
   it "returns all sick leave forms" do
     form = @user.details.sick_leave_forms.create(@data)
-    get :index
+    get :index, { status: "waiting" }
     output = JSON.parse(response.body)
     expect(output.length).to be(1)
   end
+
+  it "returns all accepted holiday forms" do
+    form = @user.details.sick_leave_forms.create(@data)
+    get :index, { status: "accepted" }
+    output = JSON.parse(response.body)
+    expect(output.length).to be(0)
+  end
+
 
   it "returns all current usersick leave forms" do
     form = @user.details.sick_leave_forms.create(@data)

@@ -1,7 +1,8 @@
 class HomeofficeFormsController < ApplicationController
 
   def index
-    render json: HomeofficeForm.all
+    status = HomeofficeForm.statuses[status_param["status"]]
+    render json: HomeofficeForm.where(status: status)
   end
 
   def create
@@ -49,10 +50,17 @@ class HomeofficeFormsController < ApplicationController
     )
   end
 
+  def status_param
+    params.permit(
+      :status
+    )
+  end
+
   swagger_controller :homeoffice, "Homeoffice Form Management"
 
   swagger_api :index do
     summary "Zwraca wszystkie formularze"
+    param :query, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
   end
 
   swagger_api :all do

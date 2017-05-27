@@ -1,7 +1,8 @@
 class SickLeaveFormsController < ApplicationController
 
   def index
-    render json: SickLeaveForm.all
+    status = SickLeaveForm.statuses[status_param["status"]]
+    render json: SickLeaveForm.where(status: status)
   end
 
   def create
@@ -50,9 +51,9 @@ class SickLeaveFormsController < ApplicationController
     )
   end
 
-  def id_param
+  def status_param
     params.permit(
-      :id
+      :status
     )
   end
 
@@ -60,6 +61,7 @@ class SickLeaveFormsController < ApplicationController
 
   swagger_api :index do
     summary "Zwraca wszystkie formularze"
+    param :query, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
   end
 
   swagger_api :all do

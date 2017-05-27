@@ -1,7 +1,8 @@
 class BusinessTripFormsController < ApplicationController
 
   def index
-    render json: BusinessTripForm.all
+    status = BusinessTripForm.statuses[status_param["status"]]
+    render json: BusinessTripForm.where(status: status)
   end
 
   def create
@@ -51,10 +52,17 @@ class BusinessTripFormsController < ApplicationController
     )
   end
 
+  def status_param
+    params.permit(
+      :status
+    )
+  end
+
   swagger_controller :business_trip, "Business Trip Form Management"
 
   swagger_api :index do
     summary "Zwraca wszystkie formularze"
+    param :query, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
   end
 
   swagger_api :all do

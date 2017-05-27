@@ -1,7 +1,8 @@
 class HolidayFormsController < ApplicationController
 
   def index
-    render json: HolidayForm.all
+    status = HolidayForm.statuses[status_param["status"]]
+    render json: HolidayForm.where(status: status)
   end
 
   def create
@@ -52,10 +53,17 @@ class HolidayFormsController < ApplicationController
     )
   end
 
+  def status_param
+    params.permit(
+      :status
+    )
+  end
+
   swagger_controller :holiday, "Holiday Form Management"
 
   swagger_api :index do
     summary "Zwraca wszystkie formularze"
+    param :query, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
   end
 
   swagger_api :all do

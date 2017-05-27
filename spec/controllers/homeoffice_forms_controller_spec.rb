@@ -15,11 +15,18 @@ RSpec.describe HomeofficeFormsController, type: :controller do
       status: "waiting"
     }
   end
-  it "returns all homeoffice forms" do
+  it "returns all waiting homeoffice forms" do
     form = @user.details.homeoffice_forms.create(@data)
-    get :index
+    get :index, {status: "waiting"}
     output = JSON.parse(response.body)
     expect(output.length).to be(1)
+  end
+
+  it "returns all accepted holiday forms" do
+    form = @user.details.homeoffice_forms.create(@data)
+    get :index, { status: "accepted" }
+    output = JSON.parse(response.body)
+    expect(output.length).to be(0)
   end
 
   it "returns all current user homeoffice forms" do

@@ -17,11 +17,19 @@ RSpec.describe BusinessTripFormsController, type: :controller do
       status: "waiting"
     }
   end
-  it "returns all sick leave forms" do
+
+  it "returns all waiting sick leave forms" do
     form = @user.details.business_trip_forms.create(@data)
-    get :index
+    get :index, { status: "waiting" }
     output = JSON.parse(response.body)
     expect(output.length).to be(1)
+  end
+
+  it "returns all accepted sick leave forms" do
+    form = @user.details.business_trip_forms.create(@data)
+    get :index, { status: "accepted" }
+    output = JSON.parse(response.body)
+    expect(output.length).to be(0)
   end
 
   it "returns all current user sick leave forms" do
@@ -31,7 +39,7 @@ RSpec.describe BusinessTripFormsController, type: :controller do
     expect(output.length).to be(1)
   end
 
-  it "creates sick leave forms" do
+  it "creates trip leave forms" do
     post :create, @data
 
     output = JSON.parse(response.body)
