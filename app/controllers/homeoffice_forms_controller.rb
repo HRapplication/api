@@ -19,7 +19,8 @@ class HomeofficeFormsController < ApplicationController
   end
 
   def all
-    render json: current_user.details.homeoffice_forms
+    status = HomeofficeForm.statuses[status_param["status"]]
+    render json: current_user.details.homeoffice_forms.where(status: status)
   end
 
   def pdf_template
@@ -65,6 +66,7 @@ class HomeofficeFormsController < ApplicationController
 
   swagger_api :all do
     summary "Zwraca wszystkie formularze danego usera"
+    param :query, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
   end
 
   swagger_api :create do

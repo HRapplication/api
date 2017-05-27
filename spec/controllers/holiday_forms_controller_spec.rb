@@ -34,9 +34,16 @@ RSpec.describe HolidayFormsController, type: :controller do
 
   it "returns all current user holiday forms" do
     form = @user.details.holiday_forms.create(@data)
-    get :all
+    get :all, { status: "waiting" }
     output = JSON.parse(response.body)
     expect(output.length).to be(1)
+  end
+
+  it "returns all accepted holiday forms" do
+    form = @user.details.holiday_forms.create(@data)
+    get :all, { status: "accepted" }
+    output = JSON.parse(response.body)
+    expect(output.length).to be(0)
   end
 
   it "creates holiday forms" do

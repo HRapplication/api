@@ -140,6 +140,15 @@
       "operations": [
         {
           "summary": "Zwraca wszystkie formularze danego usera",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "status",
+              "type": "string",
+              "description": "status formularza (waiting, rejected, accepted)",
+              "required": true
+            }
+          ],
           "nickname": "HomeofficeForms#all",
           "method": "get"
         }

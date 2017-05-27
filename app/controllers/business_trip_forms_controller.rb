@@ -19,7 +19,8 @@ class BusinessTripFormsController < ApplicationController
   end
 
   def all
-    render json: current_user.details.business_trip_forms
+    status = BusinessTripForm.statuses[status_param["status"]]
+    render json: current_user.details.business_trip_forms.where(status: status)
   end
 
   def pdf_template
@@ -67,6 +68,7 @@ class BusinessTripFormsController < ApplicationController
 
   swagger_api :all do
     summary "Zwraca wszystkie formularze danego usera"
+    param :query, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
   end
 
   swagger_api :create do

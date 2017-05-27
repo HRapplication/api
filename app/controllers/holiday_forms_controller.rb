@@ -19,7 +19,8 @@ class HolidayFormsController < ApplicationController
   end
 
   def all
-    render json: current_user.details.holiday_forms
+    status = HolidayForm.statuses[status_param["status"]]
+    render json: current_user.details.holiday_forms.where(status: status)
   end
 
   def pdf_template
@@ -68,6 +69,7 @@ class HolidayFormsController < ApplicationController
 
   swagger_api :all do
     summary "Zwraca wszystkie formularze danego usera"
+    param :query, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
   end
 
   swagger_api :create do
