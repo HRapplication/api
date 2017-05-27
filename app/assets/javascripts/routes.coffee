@@ -41,6 +41,14 @@ angular.module 'HrApp'
         url: '/sick_leave_form',
         templateUrl: 'forms/sick_leave_form.html'
       })
+       .state('forms', { 
+        url: '/forms', 
+        templateUrl: 'forms/forms.html' 
+      }) 
+      .state('my_forms', { 
+        url: '/my_forms', 
+        templateUrl: 'forms/my_forms.html' 
+      }) 
       
       .state('edit_schedule', {
         url: '/edit_schedule',
