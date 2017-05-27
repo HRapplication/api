@@ -1,5 +1,5 @@
 angular.module('HrApp')
-    .controller('profileCtrl', function($scope, $http, $filter) {
+    .controller('profileCtrl', function($scope, $http, $filter, $state) {
 
         $scope.user = {};
         $scope.employees = {};
@@ -25,16 +25,30 @@ angular.module('HrApp')
                 concole.log('Error!!!');
             });
 
-            $scope.updateCrtUser = function() {
+        $scope.updateCrtUser = function() {
 
-                $http.patch('/update_user', $scope.currentUser).
-                    success(function(data) {
-                        console.log('Dane zaktualizowane');
-                        $('#submitModal').modal('show');   
-                    }).
-                    error(function(data) {
-                        console.log('Error!!!'); 
-                    });
-                    
-            };
+            $http.patch('/update_user', $scope.currentUser).
+                success(function(data) {
+                    console.log('Wysyłanie zakończone sukcesem.');
+                    console.log(data);
+                    showModal('#submitModal');
+                }).
+                error(function(data) {
+                    console.log('Error!!!');
+                    showModal('#errorModal');
+                });
+                
+        };
+
+        function showModal(modalId) {
+            $(modalId).modal('show');
+            $(modalId).on('hide.bs.modal', reloadView);
+        }
+
+        function reloadView() {
+            $('body').removeClass('modal-open').css('padding-right', '');
+            $('.modal-backdrop').remove();       
+            $state.reload();
+        }
+
     });
