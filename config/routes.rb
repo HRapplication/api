@@ -13,17 +13,23 @@ Rails.application.routes.draw do
   get 'user_events', to: 'events#all'
 
   resources :business_trip_forms, :except => :show do
-    get 'get_pdf', to: "business_trip_forms#pdf_template"
+    get 'form', to: "business_trip_forms#pdf_template"
   end
   get 'business_trip_forms/all', to: "business_trip_forms#all"
 
-  resources :holiday_forms, :except => :show
+  resources :holiday_forms, :except => :show do
+    get 'form', to: "holiday_forms#pdf_template"
+  end
   get 'holiday_forms/all', to: "holiday_forms#all"
 
-  resources :sick_leave_forms, :except => :show
+  resources :sick_leave_forms, :except => :show do
+    get 'form', to: "sick_leave_forms#pdf_template"
+  end
   get 'sick_leave_forms/all', to: "sick_leave_forms#all"
 
-  resources :homeoffice_forms, :except => :show
+  resources :homeoffice_forms, :except => :show do
+    get 'form', to: "homeoffice_forms#pdf_template"
+  end
   get 'homeoffice_forms/all', to: "homeoffice_forms#all"
 
   resources :schedules

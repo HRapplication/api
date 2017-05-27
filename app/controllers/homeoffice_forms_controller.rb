@@ -21,6 +21,18 @@ class HomeofficeFormsController < ApplicationController
     render json: current_user.details.homeoffice_forms
   end
 
+  def pdf_template
+    id = params.permit(:homeoffice_form_id)["homeoffice_form_id"]
+    @form_data = HomeofficeForm.find(id)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render  :pdf => "homeoffice_form.pdf",
+                :template => 'homeoffice_forms/pdf_template.html.slim'
+      end
+    end
+  end
+
   private
 
   def form_params
@@ -62,5 +74,11 @@ class HomeofficeFormsController < ApplicationController
   swagger_api :destroy do
     summary "Usuwa formularz"
     param :path, :id, :integer, :required, "Id formularza"
+  end
+
+  swagger_api :pdf_template do
+    summary "pobiera formularz w formacie pdf"
+    notes "Trzeba dopisać .pdf co ścieżki"
+    param :path, :homeoffice_form_id, :integer, :required, "Id formularza"
   end
 end

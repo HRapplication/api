@@ -21,6 +21,18 @@ class SickLeaveFormsController < ApplicationController
     render json: current_user.details.sick_leave_forms
   end
 
+  def pdf_template
+    id = params.permit(:sick_leave_form_id)["sick_leave_form_id"]
+    @form_data = SickLeaveForm.find(id)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render  :pdf => "sick_leave_form.pdf",
+                :template => 'sick_leave_forms/pdf_template.html.slim'
+      end
+    end
+  end
+
   private
 
   def form_params
@@ -28,6 +40,12 @@ class SickLeaveFormsController < ApplicationController
       :care_type,
       :end_date,
       :start_date
+    )
+  end
+
+  def id_param
+    params.permit(
+      :id
     )
   end
 
@@ -67,5 +85,11 @@ class SickLeaveFormsController < ApplicationController
   swagger_api :destroy do
     summary "Usuwa formularz"
     param :path, :id, :integer, :required, "Id formularza"
+  end
+
+  swagger_api :pdf_template do
+    summary "pobiera formularz w formacie pdf"
+    notes "Trzeba dopisać .pdf co ścieżki"
+    param :path, :sick_leave_form_id, :integer, :required, "Id formularza"
   end
 end

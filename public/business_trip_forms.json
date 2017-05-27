@@ -5,6 +5,26 @@
   "resourcePath": "business_trip_forms",
   "apis": [
     {
+      "path": "/business_trip_forms/{business_trip_form_id}/form",
+      "operations": [
+        {
+          "summary": "pobiera formularz w formacie pdf",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "business_trip_form_id",
+              "type": "integer",
+              "description": "Id formularza",
+              "required": true
+            }
+          ],
+          "notes": "Trzeba dopisać .pdf co ścieżki",
+          "nickname": "BusinessTripForms#pdf_template",
+          "method": "get"
+        }
+      ]
+    },
+    {
       "path": "/business_trip_forms",
       "operations": [
         {

@@ -21,10 +21,12 @@ class BusinessTripFormsController < ApplicationController
   end
 
   def pdf_template
+    id = params.permit(:business_trip_form_id)["business_trip_form_id"]
+    @form_data = BusinessTripForm.find(id)
     respond_to do |format|
       format.html
       format.pdf do
-        render  :pdf => "file.pdf",
+        render  :pdf => "business_trip_form.pdf",
                 :template => 'business_trip_forms/pdf_template.html.slim'
       end
     end
@@ -77,5 +79,11 @@ class BusinessTripFormsController < ApplicationController
   swagger_api :destroy do
     summary "Usuwa formularz"
     param :path, :id, :integer, :required, "Id formularza"
+  end
+
+  swagger_api :pdf_template do
+    summary "pobiera formularz w formacie pdf"
+    notes "Trzeba dopisać .pdf co ścieżki"
+    param :path, :business_trip_form_id, :integer, :required, "Id formularza"
   end
 end
