@@ -67,6 +67,13 @@
               "type": "string",
               "description": "Transport",
               "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "status",
+              "type": "string",
+              "description": "status formularza (waiting, rejected, accepted)",
+              "required": true
             }
           ],
           "nickname": "BusinessTripForms#create",
@@ -113,6 +120,13 @@
               "name": "transport",
               "type": "string",
               "description": "Transport",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "status",
+              "type": "string",
+              "description": "status formularza (waiting, rejected, accepted)",
               "required": true
             }
           ],

@@ -12,7 +12,8 @@ RSpec.describe SickLeaveFormsController, type: :controller do
     @data = {
       care_type: 'self',
       end_date: "2015-01-01",
-      start_date: "2015-02-01"
+      start_date: "2015-02-01",
+      status: "waiting"
     }
   end
   it "returns all sick leave forms" do
@@ -47,6 +48,22 @@ RSpec.describe SickLeaveFormsController, type: :controller do
     output = JSON.parse(response.body)
 
     expect(output["care_type"] == 'child').to be(true)
+  end
+
+  it "updates only status form" do
+    form = @user.details.sick_leave_forms.create(@data)
+
+    new_data = {
+      id: form.id,
+      status: "accepted"
+    }
+    patch :update, new_data
+
+    output = JSON.parse(response.body)
+
+    expect(output["end_date"] == @data[:end_date]).to be(true)
+    expect(output["start_date"] == @data[:start_date]).to be(true)
+    expect(output["status"] == "accepted").to be(true)
   end
 
   it "deletes form" do

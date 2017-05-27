@@ -60,6 +60,13 @@
               "type": "date",
               "description": "Czas rozpoczęcia",
               "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "status",
+              "type": "string",
+              "description": "status formularza (waiting, rejected, accepted)",
+              "required": true
             }
           ],
           "notes": "cate_types: 'self', 'child'",
@@ -100,6 +107,13 @@
               "name": "start_date",
               "type": "date",
               "description": "Czas rozpoczęcia",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "status",
+              "type": "string",
+              "description": "status formularza (waiting, rejected, accepted)",
               "required": true
             }
           ],

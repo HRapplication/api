@@ -11,7 +11,8 @@ RSpec.describe HomeofficeFormsController, type: :controller do
 
     @data = {
       end_date: "2015-01-01",
-      start_date: "2015-02-01"
+      start_date: "2015-02-01",
+      status: "waiting"
     }
   end
   it "returns all homeoffice forms" do
@@ -46,6 +47,22 @@ RSpec.describe HomeofficeFormsController, type: :controller do
     output = JSON.parse(response.body)
 
     expect(Date.parse(output["start_date"]) == Date.parse(new_date)).to be(true)
+  end
+
+  it "updates only status form" do
+    form = @user.details.homeoffice_forms.create(@data)
+
+    new_data = {
+      id: form.id,
+      status: "accepted"
+    }
+    patch :update, new_data
+
+    output = JSON.parse(response.body)
+
+    expect(output["end_date"] == @data[:end_date]).to be(true)
+    expect(output["start_date"] == @data[:start_date]).to be(true)
+    expect(output["status"] == "accepted").to be(true)
   end
 
   it "deletes form" do

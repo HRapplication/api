@@ -38,7 +38,8 @@ class HomeofficeFormsController < ApplicationController
   def form_params
     params.permit(
       :end_date,
-      :start_date
+      :start_date,
+      :status
     )
   end
 
@@ -62,6 +63,7 @@ class HomeofficeFormsController < ApplicationController
     summary "Dodaje formularz"
     param :form, :end_date, :date, :required, "Czas zakończenia"
     param :form, :start_date, :date, :required, "Czas rozpoczęcia"
+    param :form, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
   end
 
   swagger_api :update do
@@ -69,6 +71,7 @@ class HomeofficeFormsController < ApplicationController
     param :path, :id, :integer, :required, "Id formularza"
     param :form, :end_date, :date, :required, "Czas zakończenia"
     param :form, :start_date, :date, :required, "Czas rozpoczęcia"
+    param :form, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
   end
 
   swagger_api :destroy do

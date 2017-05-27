@@ -41,7 +41,8 @@ class HolidayFormsController < ApplicationController
       :comment,
       :end_date,
       :start_date,
-      :holiday_type
+      :holiday_type,
+      :status
     )
   end
 
@@ -69,6 +70,7 @@ class HolidayFormsController < ApplicationController
     param :form, :end_date, :date, :required, "Czas zakończenia"
     param :form, :start_date, :date, :required, "Czas rozpoczęcia"
     param :form, :holiday_type, :integer, :required, "Rodzaj wakacji?"
+    param :form, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
   end
 
   swagger_api :update do
@@ -80,6 +82,7 @@ class HolidayFormsController < ApplicationController
     param :form, :end_date, :date, :required, "Czas zakończenia"
     param :form, :start_date, :date, :required, "Czas rozpoczęcia"
     param :form, :holiday_type, :integer, :required, "Rodzaj wakacji?"
+    param :form, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
   end
 
   swagger_api :destroy do

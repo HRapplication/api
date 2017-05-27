@@ -1,4 +1,5 @@
 class BusinessTripFormsController < ApplicationController
+
   def index
     render json: BusinessTripForm.all
   end
@@ -39,7 +40,8 @@ class BusinessTripFormsController < ApplicationController
       :company,
       :end_date,
       :start_date,
-      :transport
+      :transport,
+      :status
     )
   end
 
@@ -65,6 +67,7 @@ class BusinessTripFormsController < ApplicationController
     param :form, :end_date, :date, :required, "Czas zakończenia"
     param :form, :start_date, :date, :required, "Czas rozpoczęcia"
     param :form, :transport, :string, :required, "Transport"
+    param :form, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
   end
 
   swagger_api :update do
@@ -74,6 +77,7 @@ class BusinessTripFormsController < ApplicationController
     param :form, :end_date, :date, :required, "Czas zakończenia"
     param :form, :start_date, :date, :required, "Czas rozpoczęcia"
     param :form, :transport, :string, :required, "Transport"
+    param :form, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
   end
 
   swagger_api :destroy do

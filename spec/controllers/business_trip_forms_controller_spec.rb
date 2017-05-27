@@ -13,7 +13,8 @@ RSpec.describe BusinessTripFormsController, type: :controller do
       company: "some company",
       end_date: "2015-01-01",
       start_date: "2015-02-01",
-      transport: "some transport"
+      transport: "some transport",
+      status: "waiting"
     }
   end
   it "returns all sick leave forms" do
@@ -48,6 +49,23 @@ RSpec.describe BusinessTripFormsController, type: :controller do
     output = JSON.parse(response.body)
 
     expect(output["company"] == "company1").to be(true)
+  end
+
+  it "updates only status form" do
+    form = @user.details.business_trip_forms.create(@data)
+
+    new_data = {
+      id: form.id,
+      status: "accepted"
+    }
+    patch :update, new_data
+
+    output = JSON.parse(response.body)
+
+    expect(output["company"] == @data[:company]).to be(true)
+    expect(output["end_date"] == @data[:end_date]).to be(true)
+    expect(output["start_date"] == @data[:start_date]).to be(true)
+    expect(output["status"] == "accepted").to be(true)
   end
 
   it "deletes form" do

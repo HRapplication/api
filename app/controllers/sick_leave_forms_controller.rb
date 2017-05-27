@@ -39,7 +39,8 @@ class SickLeaveFormsController < ApplicationController
     params.permit(
       :care_type,
       :end_date,
-      :start_date
+      :start_date,
+      :status
     )
   end
 
@@ -71,6 +72,7 @@ class SickLeaveFormsController < ApplicationController
     param :form, :care_type, :string, :required, "Nie mam pojęcia"
     param :form, :end_date, :date, :required, "Czas zakończenia"
     param :form, :start_date, :date, :required, "Czas rozpoczęcia"
+    param :form, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
   end
 
   swagger_api :update do
@@ -80,6 +82,7 @@ class SickLeaveFormsController < ApplicationController
     param :form, :care_type, :string, :required, "Nie mam pojęcia"
     param :form, :end_date, :date, :required, "Czas zakończenia"
     param :form, :start_date, :date, :required, "Czas rozpoczęcia"
+    param :form, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
   end
 
   swagger_api :destroy do

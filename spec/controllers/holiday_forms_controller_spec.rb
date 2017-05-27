@@ -13,7 +13,8 @@ RSpec.describe HolidayFormsController, type: :controller do
       comment: "comment",
       end_date: "2015-01-01",
       start_date: "2015-02-01",
-      holiday_type: "compensation_for_overtime"
+      holiday_type: "compensation_for_overtime",
+      status: "waiting"
     }
   end
   it "returns all holiday forms" do
@@ -48,6 +49,23 @@ RSpec.describe HolidayFormsController, type: :controller do
     output = JSON.parse(response.body)
 
     expect(output["comment"] == "comment1").to be(true)
+  end
+
+  it "updates only status form" do
+    form = @user.details.holiday_forms.create(@data)
+
+    new_data = {
+      id: form.id,
+      status: "accepted"
+    }
+    patch :update, new_data
+
+    output = JSON.parse(response.body)
+
+    expect(output["commpent"] == @data[:commpent]).to be(true)
+    expect(output["end_date"] == @data[:end_date]).to be(true)
+    expect(output["start_date"] == @data[:start_date]).to be(true)
+    expect(output["status"] == "accepted").to be(true)
   end
 
   it "deletes form" do
