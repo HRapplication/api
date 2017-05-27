@@ -20,6 +20,16 @@ class BusinessTripFormsController < ApplicationController
     render json: current_user.details.business_trip_forms
   end
 
+  def pdf_template
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render  :pdf => "file.pdf",
+                :template => 'business_trip_forms/pdf_template.html.slim'
+      end
+    end
+  end
+
   private
 
   def form_params

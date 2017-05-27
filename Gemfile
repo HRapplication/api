@@ -34,6 +34,8 @@ gem 'draper'
 gem 'pundit'
 gem 'awesome_print'
 gem 'swagger-docs'
+gem 'wicked_pdf', '~> 1.1'
+gem 'wkhtmltopdf-binary'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views

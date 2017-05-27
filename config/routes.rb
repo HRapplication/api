@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   end
   get 'user_events', to: 'events#all'
 
-  resources :business_trip_forms, :except => :show
+  resources :business_trip_forms, :except => :show do
+    get 'get_pdf', to: "business_trip_forms#pdf_template"
+  end
   get 'business_trip_forms/all', to: "business_trip_forms#all"
 
   resources :holiday_forms, :except => :show
