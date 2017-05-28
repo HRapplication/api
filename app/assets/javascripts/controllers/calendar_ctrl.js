@@ -13,33 +13,27 @@ angular.module('HrApp')
       selectable: true,
       selectHelper: true,
       editable: true,
-      eventLimit: true,
-      events: '/events.json',
-
-      select: function(start, end) {
-        $.getScript('/events/new', function() {});
-
-        calendar.fullCalendar('unselect');
-      },
-
-      eventDrop: function(event, delta, revertFunc) {
-        event_data = { 
-          event: {
-            id: event.id,
-            start: event.start.format(),
-            end: event.end.format()
-          }
-        };
-        $.ajax({
-            url: event.update_url,
-            data: event_data,
-            type: 'PATCH'
-        });
-      },
-      
-      eventClick: function(event, jsEvent, view) {
-        $.getScript(event.edit_url, function() {});
-      }
+      eventLimit: true,      
+      events: [
+                                {
+                                    title: 'Praca',
+                                    start: '2017-05-29T07:00:00',
+                                    end: '2017-05-29T16:00:00'
+                                },
+                                {
+                                    title: 'Praca',
+                                    start: '2017-05-30T12:00:00',
+                                    end: '2017-05-30T16:00:00'
+                                },
+                                {
+                                    title: 'Praca',
+                                    start: '2017-05-31T07:00:00',
+                                    end: '2017-05-31T16:00:00'
+                                },
+                                
+                           
+                            ]                   
+     
         });
 
     });
