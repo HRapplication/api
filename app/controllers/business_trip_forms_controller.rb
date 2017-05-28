@@ -1,26 +1,8 @@
-class BusinessTripFormsController < ApplicationController
+class BusinessTripFormsController < FormsController
 
-  def index
-    status = BusinessTripForm.statuses[status_param["status"]]
-    render json: BusinessTripForm.where(status: status)
-  end
-
-  def create
-    render json: current_user.details.business_trip_forms.create(form_params)
-  end
-
-  def update
-    current_user.details.business_trip_forms.where(id_param).first.update(form_params)
-    render json: current_user.details.business_trip_forms.where(id_param).first
-  end
-
-  def destroy
-    render json: current_user.details.business_trip_forms.where(id_param).first.destroy
-  end
-
-  def all
-    status = BusinessTripForm.statuses[status_param["status"]]
-    render json: current_user.details.business_trip_forms.where(status: status)
+  def initialize
+    @base_class = BusinessTripForm
+    @base_method = "business_trip_forms"
   end
 
   def pdf_template
@@ -43,18 +25,6 @@ class BusinessTripFormsController < ApplicationController
       :end_date,
       :start_date,
       :transport,
-      :status
-    )
-  end
-
-  def id_param
-    params.permit(
-      :id
-    )
-  end
-
-  def status_param
-    params.permit(
       :status
     )
   end

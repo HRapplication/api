@@ -1,26 +1,8 @@
-class HolidayFormsController < ApplicationController
+class HolidayFormsController < FormsController
 
-  def index
-    status = HolidayForm.statuses[status_param["status"]]
-    render json: HolidayForm.where(status: status)
-  end
-
-  def create
-    render json: current_user.details.holiday_forms.create(form_params)
-  end
-
-  def update
-    current_user.details.holiday_forms.where(id_param).first.update(form_params)
-    render json: current_user.details.holiday_forms.where(id_param).first
-  end
-
-  def destroy
-    render json: current_user.details.holiday_forms.where(id_param).first.destroy
-  end
-
-  def all
-    status = HolidayForm.statuses[status_param["status"]]
-    render json: current_user.details.holiday_forms.where(status: status)
+  def initialize
+    @base_class = HolidayForm
+    @base_method = "holiday_forms"
   end
 
   def pdf_template
@@ -44,18 +26,6 @@ class HolidayFormsController < ApplicationController
       :end_date,
       :start_date,
       :holiday_type,
-      :status
-    )
-  end
-
-  def id_param
-    params.permit(
-      :id
-    )
-  end
-
-  def status_param
-    params.permit(
       :status
     )
   end

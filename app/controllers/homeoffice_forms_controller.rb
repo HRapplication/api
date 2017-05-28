@@ -1,26 +1,8 @@
-class HomeofficeFormsController < ApplicationController
+class HomeofficeFormsController < FormsController
 
-  def index
-    status = HomeofficeForm.statuses[status_param["status"]]
-    render json: HomeofficeForm.where(status: status)
-  end
-
-  def create
-    render json: current_user.details.homeoffice_forms.create(form_params)
-  end
-
-  def update
-    current_user.details.homeoffice_forms.where(id_param).first.update(form_params)
-    render json: current_user.details.homeoffice_forms.where(id_param).first
-  end
-
-  def destroy
-    render json: current_user.details.homeoffice_forms.where(id_param).first.destroy
-  end
-
-  def all
-    status = HomeofficeForm.statuses[status_param["status"]]
-    render json: current_user.details.homeoffice_forms.where(status: status)
+  def initialize
+    @base_class = HomeofficeForm
+    @base_method = "homeoffice_forms"
   end
 
   def pdf_template
@@ -41,18 +23,6 @@ class HomeofficeFormsController < ApplicationController
     params.permit(
       :end_date,
       :start_date,
-      :status
-    )
-  end
-
-  def id_param
-    params.permit(
-      :id
-    )
-  end
-
-  def status_param
-    params.permit(
       :status
     )
   end

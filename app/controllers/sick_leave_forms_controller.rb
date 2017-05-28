@@ -1,26 +1,7 @@
-class SickLeaveFormsController < ApplicationController
-
-  def index
-    status = SickLeaveForm.statuses[status_param["status"]]
-    render json: SickLeaveForm.where(status: status)
-  end
-
-  def create
-    render json: current_user.details.sick_leave_forms.create(form_params)
-  end
-
-  def update
-    current_user.details.sick_leave_forms.where(id_param).first.update(form_params)
-    render json: current_user.details.sick_leave_forms.where(id_param).first
-  end
-
-  def destroy
-    render json: current_user.details.sick_leave_forms.where(id_param).first.destroy
-  end
-
-  def all
-    status = SickLeaveForm.statuses[status_param["status"]]
-    render json: current_user.details.sick_leave_forms.where(status: status)
+class SickLeaveFormsController < FormsController
+  def initialize
+    @base_class = SickLeaveForm
+    @base_method = "sick_leave_forms"
   end
 
   def pdf_template
@@ -42,18 +23,6 @@ class SickLeaveFormsController < ApplicationController
       :care_type,
       :end_date,
       :start_date,
-      :status
-    )
-  end
-
-  def id_param
-    params.permit(
-      :id
-    )
-  end
-
-  def status_param
-    params.permit(
       :status
     )
   end
