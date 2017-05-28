@@ -1,14 +1,54 @@
 angular.module('HrApp')
-    .controller('editScheduleCtrl', function($scope) {
-        $scope.editSchedule= {
-            employee: [
-                {id: '1', name: 'Jacek Gąsior'},
-                {id: '2', name: 'Wincenty Klich'},
-                {id: '3', name: 'Druzjan Wątły'}
-            ],
-            start_date: '22/05/2017',
-            end_date: '22/05/2017',
-            start_time: '15:00',
-            end_time: '17:00',
+    .controller('editScheduleCtrl', function($scope, $http, $state) {
+        
+        $scope.employeesList = {};
+        $scope.selectedEmployeeId;
+
+        $scope.monday = {};
+        $scope.monday.is_weekend = false;
+
+        $scope.tuesday = {};
+        $scope.tuesday.is_weekend = false;
+
+        $scope.wednesday = {};
+        $scope.wednesday.is_weekend = false;
+
+        $scope.thursday = {};
+        $scope.thursday.is_weekend = false;
+
+        $scope.friday = {};
+        $scope.friday.is_weekend = false;
+        
+        $scope.saturday = {};
+        $scope.saturday.is_weekend = true;
+
+        $scope.sunday = {};
+        $scope.sunday.is_weekend = true;
+
+        $http.get('/employees').
+            success(function(data) {
+                $scope.employeesList = data;
+            }).
+            error(function(data) {
+                concole.log('Error!!!');
+            });
+        
+        $scope.sendSchedule = function() {
+            
+            console.log($scope.selectedEmployeeId);
+            showModal('#submitModal');
+
         };
+
+        function showModal(modalId) {
+            $(modalId).modal('show');
+            $(modalId).on('hide.bs.modal', reloadView);
+        }
+
+        function reloadView() {
+            $('body').removeClass('modal-open').css('padding-right', '');
+            $('.modal-backdrop').remove();       
+            $state.reload();
+        }
+
     });

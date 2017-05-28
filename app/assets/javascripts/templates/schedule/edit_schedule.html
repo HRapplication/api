@@ -1,178 +1,334 @@
-    <div id="wrapper">
+<div id="wrapper">
 
-        <!-- Navigation -->
-        <nav class="main-nav navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" ui-sref="home">KORPOPLAN</a>
-            </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> John Doe <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
+    <!-- Navigation -->
+    <nav class="main-nav navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="profileCtrl">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="home">KORPOPLAN</a>
+        </div>
+        <!-- Top Menu Items -->
+        <ul class="nav navbar-right top-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> John Doe <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a ui-sref="login"><i class="glyphicon glyphicon-off"></i> Wyloguj</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar">
+            <ul class="nav navbar-nav side-nav" id="sidebar_list">
+                <li>
+                    <a ui-sref="home"><i class="glyphicon glyphicon-home"></i> Strona główna</a>
+                </li>
+                <li class="active">
+                    <a href="javascript:;" data-toggle="collapse" data-target="#grafik"><i class="glyphicon glyphicon-calendar"></i> Grafik <i class="caret"></i></a>
+                    <ul id="grafik" class="collapse">
                         <li>
-                            <a ui-sref="login"><i class="glyphicon glyphicon-off"></i> Wyloguj</a>
+                            <a ui-sref="calendar">Kalendarz</a>
+                        </li>
+                        <li>
+                            <a ui-sref="edit_schedule">Edytuj grafik</a>
+                        </li>
+                        <li>
+                            <a ui-sref="submit_schedule">Zatwierdź grafik</a>
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#wydarzenia"><i class="glyphicon glyphicon-bell"></i> Wydarzenia <i class="caret"></i></a>
+                    <ul id="wydarzenia" class="collapse">
+                        <li>
+                            <a ui-sref="events">Aktualne wydarzenia</a>
+                        </li>
+                        <li>
+                            <a ui-sref="add_event">Dodaj wydarzenie</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#formularze"><i class="glyphicon glyphicon-edit"></i> Formularze <i class="caret"></i></a>
+                    <ul id="formularze" class="collapse">
+                        <li>
+                        <a ui-sref="my_forms">Moje formularze</a>
+                        </li>
+                        <li>
+                            <a ui-sref="holiday_form">Urlop</a>
+                        </li>
+                        <li>
+                            <a ui-sref="sick_leave_form">Urlop zdrowotny</a>
+                        </li>
+                        <li>
+                            <a ui-sref="homeoffice_form">Praca zdalna</a>
+                        </li>
+                        <li>
+                            <a ui-sref="business_trip_form">Delegacja</a>
+                        </li>
+                        <li>
+                        <a ui-sref="forms">Lista formularzy</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="hr-only">
+                    <a href="javascript:;" data-toggle="collapse" data-target="#pracownicy"><i class="glyphicon glyphicon-user"></i> Pracownicy <i class="caret"></i></a>
+                    <ul id="pracownicy" class="collapse">
+                        <li>
+                            <a ui-sref="add_employee">Dodaj profil pracownika</a>
+                        </li>
+                        <li>
+                            <a ui-sref="update_employee">Aktualizuj profil</a>
+                        </li>                                               
+                    </ul>
+                </li>
             </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar">
-                <ul class="nav navbar-nav side-nav" id="sidebar_list">
-                    <li>
-                        <a ui-sref="home"><i class="glyphicon glyphicon-home"></i> Strona główna</a>
-                    </li>
-                    <li class="active">
-                        <a href="javascript:;" data-toggle="collapse" data-target="#grafik"><i class="glyphicon glyphicon-calendar"></i> Grafik <i class="caret"></i></a>
-                        <ul id="grafik" class="collapse">
-                            <li>
-                                <a ui-sref="calendar">Kalendarz</a>
-                            </li>
-                            <li>
-                                <a ui-sref="edit_schedule">Edytuj grafik</a>
-                            </li>
-                            <li>
-                                <a ui-sref="submit_schedule">Zatwierdź grafik</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#wydarzenia"><i class="glyphicon glyphicon-bell"></i> Wydarzenia <i class="caret"></i></a>
-                        <ul id="wydarzenia" class="collapse">
-                            <li>
-                                <a ui-sref="events">Aktualne wydarzenia</a>
-                            </li>
-                            <li>
-                                <a ui-sref="add_event">Dodaj wydarzenie</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#formularze"><i class="glyphicon glyphicon-edit"></i> Formularze <i class="caret"></i></a>
-                        <ul id="formularze" class="collapse">
-                            <li>
-                            <a ui-sref="my_forms">Moje formularze</a>
-                            </li>
-                            <li>
-                                <a ui-sref="holiday_form">Urlop</a>
-                            </li>
-                            <li>
-                                <a ui-sref="sick_leave_form">Urlop zdrowotny</a>
-                            </li>
-                            <li>
-                                <a ui-sref="homeoffice_form">Praca zdalna</a>
-                            </li>
-                            <li>
-                                <a ui-sref="business_trip_form">Delegacja</a>
-                            </li>
-                            <li>
-                            <a ui-sref="forms">Lista formularzy</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#pracownicy"><i class="glyphicon glyphicon-user"></i> Pracownicy <i class="caret"></i></a>
-                        <ul id="pracownicy" class="collapse">
-                            <li>
-                                <a ui-sref="add_employee">Dodaj profil pracownika</a>
-                            </li>
-                            <li>
-                                <a ui-sref="update_employee">Aktualizuj profil</a>
-                            </li>                                               
-                        </ul>
-                   </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
 
-        <div id="page-wrapper">
+    <div id="page-wrapper">
 
-            <div class="container-fluid">
+        <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="glyphicon glyphicon-home"></i>  <a ui-sref="home">Home</a>
-                            </li>
-                            <li class="active">
-                                <i class="glyphicon glyphicon-calendar"></i> Grafik
-                            </li>
-                        </ol>
-                    </div>
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="glyphicon glyphicon-home"></i>  <a ui-sref="home">Home</a>
+                        </li>
+                        <li class="active">
+                            <i class="glyphicon glyphicon-calendar"></i> Grafik
+                        </li>
+                    </ol>
                 </div>
-                
-                <div class="row">
-                    <div class="col-lg-5">
-                        <form ng-controller="editScheduleCtrl">
-                            <div class="form-group">
-                            <h2>Edytuj grafik</h2>
-                                <label for="employee">Pracownik:</label>
-                                <select id="employee" name="employee" class="form-control">                                    
-                                    <option ng-repeat="option in editSchedule.employee" value="{{option.id}}">{{option.name}}</option>                            
-                                </select>
-                            </div>                                                   
-                            <h4>Data</h4>
-                            <div class="row">  
-                                <div class="col-lg-5">
-                                    <div class="form-group">
-                                        <label for="date">Od:</label><br />                                
-                                        <input type="date" class="form-control date_form" ng-model="editSchedule.start_date"/>
-                                    </div>   
-                                </div>                          
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="date">Do:</label><br />
-                                        <input type="date" class="form-control date_form" ng-model="editSchedule.end_date"/>                                
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    <form ng-submit="sendSchedule()" ng-controller="editScheduleCtrl">
+                        <div class="row">
+                            <div class="col-xs-10 col-sm-9 col-md-7 col-lg-6">
+                                <div class="form-group">
+                                    <h2>Edytuj grafik</h2>
+                                    <label for="employee">Pracownik:</label>
+                                    <select id="employee" class="form-control" ng-model="selectedEmployeeId">       
+                                        <option ng-repeat="employee in employeesList" value="{{employee.id}}">{{employee.name + ' ' + employee.surname}}</option>                           
+                                    </select>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title"><i class="glyphicon glyphicon-calendar"></i> Grafik tygodniowy</h3>
                                     </div>
+                                    <div class="table-responsive">
+                                        <table ng-controller="profileCtrl" class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">Dzień</th>
+                                                    <th class="text-center">Data</th>
+                                                    <th class="text-center">Od godziny</th>
+                                                    <th class="text-center">Do godziny</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th class="text-center"><label for="monday">Poniedziałek</th>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="date" id="monday" step="7" min="2017-01-02" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="time" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="time" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="text-center"><label for="tuesday">Wtorek</label></th>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="date" id="tuesday" step="7" min="2017-01-03" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="time" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="time" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="text-center"><label for="wednesday">Środa</label></th>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="date" id="wednesday" step="7" min="2017-01-04" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="time" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="time" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="text-center"><label for="thursday">Czwartek</label></th>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="date" id="thursday" step="7" min="2017-01-05" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="time" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="time" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="text-center"><label for="friday">Piątek</label></th>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="date" id="friday" step="7" min="2017-01-06" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="time" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="time" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="text-center"><label for="saturday">Sobota</label></th>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="date" id="saturday" step="7" min="2017-01-07" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="time" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="time" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="text-center"><label for="sunday">Niedziela</label></th>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="date" id="sunday" step="7" min="2017-01-08" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="time" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="form-group">
+                                                            <input type="time" class="form-control date_form" ng-model="editSchedule.start_date"/>
+                                                        </div> 
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>     
                                 </div>
                             </div>
+                        </div>
+                        <br />
+                        <div class="col-lg-5 col-lg-offset-3">
+                            <button type="submit" class="btn btn-default btn-block">Zatwierdź</button>
+                        </div>                                       
+                    </form>                        
+                </div>
+            </div>
+            <!-- /.row -->
+            <br /><br />
 
-                            <h4>Czas</h4>
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    <div class="form-group">
-                                        <label for="time">Od:</label><br />
-                                        <input type="time" class="form-control time_form" ng-model="editSchedule.start_time"/>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="time">Do:</label><br />
-                                        <input type="time" class="form-control time_form" ng-model="editSchedule.end_time"/>                             
-                                    </div>
-                                </div>
-                            </div>
-                                <br />
-                            <div class="col-lg-5 col-lg-offset-3">
-                                <button type="submit" class="btn btn-default btn-block">Zatwierdź</button>
-                            </div>                                       
-                        </form>                        
-                    </div>
-                    <div ng-controller="CalendarCtrl">
-                        <div class="col-lg-7">
-                            <div id='calendar'></div>
-                            <div class='calendar' ></div> 
+
+            <div class="modal fade" id="submitModal" tabindex="-1" role="dialog"> 
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                            <h4 class="modal-title">Ustalanie tygodniowego terminarza</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Terminarz został przesłany pomyślnie  ( ͡° ͜ʖ ͡°)</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
                         </div>
                     </div>
-               </div>
-               <!-- /.row -->
-
+                </div>
             </div>
-            <!-- /.container-fluid -->   
+
+            <div class="modal fade" id="errorModal" tabindex="-1" role="dialog"> 
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                            <h4 class="modal-title">Ustalanie tygodniowego terminarza</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Wystąpił błąd. Spóbuj ponownie ( ͡° ͜ʖ ͡°)</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
 
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /.container-fluid -->   
 
     </div>
-    <!-- /#wrapper -->
+    <!-- /#page-wrapper -->
 
+</div>
+<!-- /#wrapper -->
