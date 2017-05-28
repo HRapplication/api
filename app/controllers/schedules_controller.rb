@@ -2,7 +2,7 @@ class SchedulesController < ApplicationController
 
   def index
     render json: current_user.schedules
-      .where('work_date > ? AND work_date < ?', schedules_params["start_date"], schedules_params["end_date"])
+      .where('work_date >= ? AND work_date <= ?', schedules_params["start_date"], schedules_params["end_date"])
   end
 
   def show
