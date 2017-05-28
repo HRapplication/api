@@ -12,4 +12,10 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :details
   accepts_nested_attributes_for :employees
+
+  after_create do
+    e = Employee.create(name: nil)
+    self.details = e
+    self.save
+  end
 end
