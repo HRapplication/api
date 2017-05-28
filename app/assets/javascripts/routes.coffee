@@ -54,9 +54,9 @@ angular.module 'HrApp'
         url: '/edit_schedule',
         templateUrl: 'schedule/edit_schedule.html'
       })
-      .state('schedule_preference', {
-        url: '/schedule_preference',
-        templateUrl: 'schedule/schedule_preference.html'
+      .state('add_schedule', {
+        url: '/add_schedule',
+        templateUrl: 'schedule/add_schedule.html'
       })
       .state('submit_schedule', {
         url: '/submit_schedule',
