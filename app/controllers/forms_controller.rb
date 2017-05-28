@@ -28,6 +28,28 @@ class FormsController < ApplicationController
     render json: current_user.details.send(@base_method).where(status: status)
   end
 
+  def combined
+    forms = []
+    status = SickLeaveForm.statuses[status_param["status"]]
+    forms += SickLeaveForm.where(status: status)
+    forms += BusinessTripForm.where(status: status)
+    forms += HolidayForm.where(status: status)
+    forms += HomeofficeForm.where(status: status)
+
+    render json: forms
+  end
+
+  def user_combined
+    forms = []
+    status = SickLeaveForm.statuses[status_param["status"]]
+    forms += current_user.details.sick_leave_forms.where(status: status)
+    forms += current_user.details.holiday_forms.where(status: status)
+    forms += current_user.details.homeoffice_forms.where(status: status)
+    forms += current_user.details.business_trip_forms.where(status: status)
+
+    render json: forms
+  end
+
   def id_param
     params.permit(
       :id
@@ -39,4 +61,17 @@ class FormsController < ApplicationController
       :status
     )
   end
+
+  swagger_controller :sick_leave, "Forms Management"
+
+  swagger_api :combined do
+    summary "Zwraca wszystkie formularze o danym statusie"
+    param :query, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
+  end
+
+  swagger_api :user_combined do
+    summary "Zwraca wszystkie formularze zalogowanego usera o danym statusie"
+    param :query, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
+  end
+
 end

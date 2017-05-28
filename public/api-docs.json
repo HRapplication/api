@@ -12,6 +12,10 @@
       "description": "Events Management"
     },
     {
+      "path": "/forms.{format}",
+      "description": "Forms Management"
+    },
+    {
       "path": "/business_trip_forms.{format}",
       "description": "Business Trip Form Management"
     },

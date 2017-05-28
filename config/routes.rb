@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   end
   get 'user_events', to: 'events#all'
 
+  get 'forms/combined', to: "forms#combined"
+  get 'forms/user_combined', to: "forms#user_combined"
+
   resources :business_trip_forms, :except => :show do
     get 'form', to: "business_trip_forms#pdf_template"
   end
