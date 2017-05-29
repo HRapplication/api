@@ -43,9 +43,9 @@ class FormsController < ApplicationController
     forms = []
     status = SickLeaveForm.statuses[status_param["status"]]
     forms += current_user.details.sick_leave_forms.where(status: status).map { |form| form.as_json.merge!(name: 'sick_leave_form') }
-    forms += current_user.details.holiday_forms.where(status: status).map { |form| form.as_json.merge!(name: 'business_trip_form') }
-    forms += current_user.details.homeoffice_forms.where(status: status).map { |form| form.as_json.merge!(name: 'holiday_form') }
-    forms += current_user.details.business_trip_forms.where(status: status).map { |form| form.as_json.merge!(name: 'homeoffice_form') }
+    forms += current_user.details.holiday_forms.where(status: status).map { |form| form.as_json.merge!(name: 'holiday_form') }
+    forms += current_user.details.homeoffice_forms.where(status: status).map { |form| form.as_json.merge!(name: 'homeoffice_form') }
+    forms += current_user.details.business_trip_forms.where(status: status).map { |form| form.as_json.merge!(name: 'business_trip_form') }
 
     render json: forms
   end
