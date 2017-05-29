@@ -1,16 +1,19 @@
 class SchedulesController < ApplicationController
 
   def index
-    render json: current_user.schedules
+    user = User.find(user_param[:user_id])
+    render json: user.schedules
       .where('work_date >= ? AND work_date <= ?', schedules_params["start_date"], schedules_params["end_date"])
   end
 
   def show
-    render json: current_user.schedules.where(id_param).first
+    user = User.find(user_param[:user_id])
+    render json: user.schedules.where(id_param).first
   end
 
   def create
-    render json: current_user.schedules.create({
+    user = User.find(user_param[:user_id])
+    render json: user.schedules.create({
       start_hour: Time.parse(schedule_params["start_hour"]).utc,
       end_hour: Time.parse(schedule_params["end_hour"]).utc,
       is_weekend: schedule_params["is_weekend"],
@@ -19,7 +22,8 @@ class SchedulesController < ApplicationController
   end
 
   def destroy
-    render json: current_user.schedules.where(id_param).first.destroy
+    user = User.find(user_param[:user_id])
+    render json: user.schedules.where(id_param).first.destroy
   end
 
   private
@@ -45,6 +49,11 @@ class SchedulesController < ApplicationController
       :id
     )
   end
+  def user_param
+    params.permit(
+      :user_id
+    )
+  end
 
   swagger_controller :schedules, "Schedule Management"
 
@@ -53,12 +62,14 @@ class SchedulesController < ApplicationController
     notes "godziny są zwracane w strefie UTC"
     param :query, :start_date, :date, :required, "Data początkowa"
     param :query, :end_date, :date, :required, "Data końcowa"
+    param :path, :user_id, :integer, :required, "id usera"
   end
 
   swagger_api :show do
     summary "Zwraca jedną pozycję z formularza"
-    notes "godziny są zwracane w strefie UTC"
+    notes "Godziny są zwracane w strefie UTC"
     param :path, :id, :integer, :required, "Id danej pozycji"
+    param :path, :user_id, :integer, :required, "id usera"
   end
 
   swagger_api :create do
@@ -68,10 +79,12 @@ class SchedulesController < ApplicationController
     param :form, :end_hour, :string, :required, "Czas zakończenia"
     param :form, :is_weekend, :boolean, :required, "Czy dana pozycja odbywa się w weekend"
     param :form, :work_date, :string, :required, "Data danego dnia"
+    param :path, :user_id, :integer, :required, "id usera"
   end
 
   swagger_api :destroy do
     summary "Usuwa pozycję z formularza z danym id"
     param :path, :id, :integer, :required, "Id danej pozycji"
+    param :path, :user_id, :integer, :required, "id usera"
   end
 end

@@ -5,7 +5,7 @@
   "resourcePath": "schedules",
   "apis": [
     {
-      "path": "/schedules",
+      "path": "/users/{user_id}/schedules",
       "operations": [
         {
           "summary": "Pokazuje całą zaplanowaną pracę pomiędzy datami",
@@ -23,6 +23,13 @@
               "type": "date",
               "description": "Data końcowa",
               "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "type": "integer",
+              "description": "id usera",
+              "required": true
             }
           ],
           "notes": "godziny są zwracane w strefie UTC",
@@ -32,7 +39,7 @@
       ]
     },
     {
-      "path": "/schedules",
+      "path": "/users/{user_id}/schedules",
       "operations": [
         {
           "summary": "Tworzy pozyjcę na terminarzu",
@@ -64,6 +71,13 @@
               "type": "string",
               "description": "Data danego dnia",
               "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "type": "integer",
+              "description": "id usera",
+              "required": true
             }
           ],
           "notes": "godziny są zwracane w strefie UTC",
@@ -73,7 +87,7 @@
       ]
     },
     {
-      "path": "/schedules/{id}",
+      "path": "/users/{user_id}/schedules/{id}",
       "operations": [
         {
           "summary": "Zwraca jedną pozycję z formularza",
@@ -84,16 +98,23 @@
               "type": "integer",
               "description": "Id danej pozycji",
               "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "type": "integer",
+              "description": "id usera",
+              "required": true
             }
           ],
-          "notes": "godziny są zwracane w strefie UTC",
+          "notes": "Godziny są zwracane w strefie UTC",
           "nickname": "Schedules#show",
           "method": "get"
         }
       ]
     },
     {
-      "path": "/schedules/{id}",
+      "path": "/users/{user_id}/schedules/{id}",
       "operations": [
         {
           "summary": "Usuwa pozycję z formularza z danym id",
@@ -103,6 +124,13 @@
               "name": "id",
               "type": "integer",
               "description": "Id danej pozycji",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "type": "integer",
+              "description": "id usera",
               "required": true
             }
           ],

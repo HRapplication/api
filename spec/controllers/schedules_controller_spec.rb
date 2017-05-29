@@ -16,7 +16,7 @@ RSpec.describe SchedulesController, type: :controller do
     sign_in @user
     start_date = '2016-08-20'
     end_date = '2016-10-01'
-    get :index, {start_date: start_date, end_date: end_date}
+    get :index, {start_date: start_date, end_date: end_date, user_id: @user.id }
 
     output = JSON.parse(response.body)
     expect(output.length > 0).to be(true)
@@ -26,7 +26,7 @@ RSpec.describe SchedulesController, type: :controller do
 
   it "show one schedule" do
     sign_in @user
-    get :show, id: @user.schedules.first.id
+    get :show, { id: @user.schedules.first.id, user_id: @user.id }
 
     output = JSON.parse(response.body)
     expect(output.nil?).to be(false)
@@ -44,7 +44,8 @@ RSpec.describe SchedulesController, type: :controller do
       start_hour: start_hour,
       end_hour: end_hour,
       is_weekend: false,
-      work_date: work_date
+      work_date: work_date,
+      user_id: @user.id
     }
 
     output = JSON.parse(response.body)
@@ -55,7 +56,7 @@ RSpec.describe SchedulesController, type: :controller do
 
   it "returns http success" do
     sign_in @user
-    delete :destroy, id: @user.schedules.first.id
+    delete :destroy, { id: @user.schedules.first.id, user_id: @user.id }
 
     expect(@user.schedules.count > 0).to be(false)
   end

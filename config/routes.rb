@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'users/index'
 
   devise_for :users
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -35,12 +36,13 @@ Rails.application.routes.draw do
   end
   get 'homeoffice_forms/all', to: "homeoffice_forms#all"
 
-  resources :schedules
   resources :offers
   resources :employees
   patch "/update_user", to: 'employees#update_user'
 
-  resources :users, only: [:index]
+  resources :users, only: [:index] do
+    resources :schedules
+  end
 
 
   root 'home#index'
