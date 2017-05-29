@@ -10,6 +10,11 @@ class OffersController < ApplicationController
     render json: JobOffer.where(id: id_param).first.to_json(include: :offers_content)
 	end
 
+  def update
+    JobOffer.where(id: id_param).first.update(is_available: available_param)
+    render json: JobOffer.where(id: id_param).first
+  end
+
 	def create
     offer = current_user.job_offers.create(
       title: title_param,
@@ -55,6 +60,13 @@ class OffersController < ApplicationController
     summary "Zwraca jedną pozycję ofery pracy"
     param :path, :id, :integer, :required, "Id danej pozycji"
   end
+
+  swagger_api :update do
+    summary "Aktualizuje is_available jeden pozycji ofery pracy"
+    param :path, :id, :integer, :required, "Id danej pozycji"
+    param :form, :is_available, :boolean, :required, "Id danej pozycji"
+  end
+
 
   swagger_api :create do
     summary "Tworzy pozyjcę na terminarzu"

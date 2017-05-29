@@ -73,6 +73,32 @@
       "path": "/offers/{id}",
       "operations": [
         {
+          "summary": "Aktualizuje is_available jeden pozycji ofery pracy",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Id danej pozycji",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "is_available",
+              "type": "boolean",
+              "description": "Id danej pozycji",
+              "required": true
+            }
+          ],
+          "nickname": "Offers#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/offers/{id}",
+      "operations": [
+        {
           "summary": "Usuwa pozycję oferty pracy z danym id",
           "parameters": [
             {

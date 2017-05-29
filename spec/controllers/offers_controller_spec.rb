@@ -20,6 +20,7 @@ RSpec.describe OffersController, type: :controller do
     expect(output.length).to be(1)
     expect(output[0]["is_available"]).to be(true)
   end
+
   it 'shows offer' do
     get :show, {
       id: @offer.id
@@ -29,6 +30,18 @@ RSpec.describe OffersController, type: :controller do
 
     expect(output["title"]).to eq(@offer.title)
     expect(output["offers_content"]["content"]).to eq(@offer.offers_content.content)
+  end
+
+  it 'updates offer' do
+    sign_in @user
+    get :update, {
+      id: @offer.id,
+      is_available: !@offer.is_available
+    }
+
+    output = JSON.parse(response.body)
+
+    expect(output["is_available"]).to eq(!@offer.is_available)
   end
 
   it 'create offer' do
