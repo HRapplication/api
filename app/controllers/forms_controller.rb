@@ -31,10 +31,10 @@ class FormsController < ApplicationController
   def combined
     forms = []
     status = SickLeaveForm.statuses[status_param["status"]]
-    forms += SickLeaveForm.where(status: status)
-    forms += BusinessTripForm.where(status: status)
-    forms += HolidayForm.where(status: status)
-    forms += HomeofficeForm.where(status: status)
+    forms += SickLeaveForm.where(status: status).map { |form| form.as_json.merge!(name: 'sick_leave_form') }
+    forms += BusinessTripForm.where(status: status).map { |form| form.as_json.merge!(name: 'business_trip_form') }
+    forms += HolidayForm.where(status: status).map { |form| form.as_json.merge!(name: 'holiday_form') }
+    forms += HomeofficeForm.where(status: status).map { |form| form.as_json.merge!(name: 'homeoffice_form') }
 
     render json: forms
   end
@@ -42,10 +42,10 @@ class FormsController < ApplicationController
   def user_combined
     forms = []
     status = SickLeaveForm.statuses[status_param["status"]]
-    forms += current_user.details.sick_leave_forms.where(status: status)
-    forms += current_user.details.holiday_forms.where(status: status)
-    forms += current_user.details.homeoffice_forms.where(status: status)
-    forms += current_user.details.business_trip_forms.where(status: status)
+    forms += current_user.details.sick_leave_forms.where(status: status).map { |form| form.as_json.merge!(name: 'sick_leave_form') }
+    forms += current_user.details.holiday_forms.where(status: status).map { |form| form.as_json.merge!(name: 'business_trip_form') }
+    forms += current_user.details.homeoffice_forms.where(status: status).map { |form| form.as_json.merge!(name: 'holiday_form') }
+    forms += current_user.details.business_trip_forms.where(status: status).map { |form| form.as_json.merge!(name: 'homeoffice_form') }
 
     render json: forms
   end

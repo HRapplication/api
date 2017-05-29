@@ -80,6 +80,7 @@ RSpec.describe FormsController, type: :controller do
   it "returns user all accepted forms " do
     get :user_combined, {status: "accepted"}
     output = JSON.parse(response.body)
+    expect(output[0]["name"] == "sick_leave_form").to be(true)
     expect(output.length).to be(2)
   end
 end
