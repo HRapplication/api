@@ -2,13 +2,22 @@ angular.module('HrApp')
     .controller('CalendarCtrl', function($scope, $http) {
 
     $scope.events = {};
+    $scope.userId = {};
     
+    $http.get('/users/index').
+        success(function(data){
+            $scope.userId = data.id;
+            console.log($scope.userId);
+        }).
+        error(function(data) {
+            console.log('Error!!!');
+        });
 
-    $http.get('/schedules', {params: {start_date: '2017-05-29', end_date:'2017-05-30'}}).
+    $http.get('/users/'+$scope.userId+'/schedules', {params: {start_date: '2017-05-29', end_date:'2017-05-30', user_id: $scope.user_Id}}).
     success(function(data){
         console.log(data);
         $scope.events = data;
-    })
+    });
 
         $(document).ready(function() {
 
@@ -27,8 +36,8 @@ angular.module('HrApp')
       events: [
                     {
                         //title: 'Praca',
-                        start: $scope.events[0].work_date+$scope.events[0].start_hour.substr(11,19),
-                        end: $scope.events[0].work_date+$scope.events[0].end_hour.substr(11,19)
+                        //start: $scope.events[0].work_date+$scope.events[0].start_hour.substr(11,19),
+                        //end: $scope.events[0].work_date+$scope.events[0].end_hour.substr(11,19)
                     },
                     {
                         //title: 'Praca',

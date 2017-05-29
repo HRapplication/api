@@ -24,7 +24,7 @@ angular.module('HrApp')
                 console.log($scope.employees);
             }).
             error(function(data) {
-                concole.log('Error!!!');
+                console.log('Error!!!');
             });
 
         $scope.updateEmployee = function() {
