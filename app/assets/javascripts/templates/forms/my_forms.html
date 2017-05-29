@@ -118,8 +118,13 @@
                     <h2>Moje formularze</h2>
                     <div class="col-lg-12 list-group" ng-controller="myFormsCtrl">
                         <a ui-sref="#" ng-repeat="form in forms" class="list-group-item">
-                            <h4 class="list-group-item-heading">Tytuł</h4>
-                            <p class="list-group-item-text">{{form.status}}</p>
+                            <h4 class="list-group-item-heading">{{form.newName}}</h4> 
+                            <p class="list-group-item-text">{{"Data utworzenia: "+form.created_at.substr(0,10)}}</p>
+                            <p class="list-group-item-text">{{"Status: "+form.newStatus}}</p>
+
+
+
+                            
                         </a>
                     </div>
                 </div>

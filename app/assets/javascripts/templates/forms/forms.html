@@ -126,30 +126,35 @@
                     </div>     
                 </div> 
                 <!-- /.row --> 
+
+                <br />
                  
                 <div class="row" id="waiting_forms"> 
                     <div class="col-lg-12 list-group" ng-controller="formsCtrl"> 
-                        <a ui-sref="#" ng-repeat="form in waiting_forms" class="list-group-item"> 
-                            <h4 class="list-group-item-heading">{{title}}</h4> 
-                            <p class="list-group-item-text">{{form.company}}</p> 
+                        <a ui-sref="#" ng-repeat="form in waiting_forms" class="contentList list-group-item"> 
+                            <h4 class="list-group-item-heading">{{form.newName}}</h4> 
+                            <p class="list-group-item-text">{{"Data utworzenia: "+form.created_at.substr(0,10)}}</p>
+                            <p class="list-group-item-text">{{"ID pracownika: "+form.employee_id}}</p> 
                         </a> 
                     </div> 
                 </div> 
  
                 <div class="row" id="rejected_forms"> 
                     <div class="col-lg-12 list-group" ng-controller="formsCtrl"> 
-                        <a ui-sref="#" ng-repeat="form in rejected_forms" class="list-group-item"> 
-                            <h4 class="list-group-item-heading">Ja</h4> 
-                            <p class="list-group-item-text">{{form.employee_id}}</p> 
+                        <a ui-sref="#" ng-repeat="form in rejected_forms" class="contentList list-group-item"> 
+                            <h4 class="list-group-item-heading">{{form.newName}}</h4> 
+                            <p class="list-group-item-text">{{"Data utworzenia: "+form.created_at.substr(0,10)}}</p>
+                            <p class="list-group-item-text">{{"ID pracownika: "+form.employee_id}}</p>
                         </a> 
                     </div> 
                 </div> 
  
                  <div class="row" id="accepted_forms"> 
                     <div class="col-lg-12 list-group" ng-controller="formsCtrl"> 
-                        <a ui-sref="#" ng-repeat="form in accepted_forms" class="list-group-item"> 
-                            <h4 class="list-group-item-heading">Konik</h4> 
-                            <p class="list-group-item-text">{{form.employee_id}}</p> 
+                        <a ui-sref="#" ng-repeat="form in accepted_forms" class="contentList list-group-item"> 
+                            <h4 class="list-group-item-heading">{{form.newName}}</h4> 
+                            <p class="list-group-item-text">{{"Data utworzenia: "+form.created_at.substr(0,10)}}</p>
+                            <p class="list-group-item-text">{{"ID pracownika: "+form.employee_id}}</p>
                         </a> 
                     </div> 
                 </div>  
