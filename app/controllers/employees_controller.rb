@@ -39,11 +39,11 @@ class EmployeesController < ApplicationController
 
   def update_user
     if current_user.details.nil?
-      employee = Employee.create(employee_params)
+      employee = Employee.create(users_employee_params)
       current_user.details = employee
       current_user.save
     else
-      current_user.details.update(employee_params)
+      current_user.details.update(users_employee_params)
     end
 
     render json: current_user
@@ -56,6 +56,22 @@ class EmployeesController < ApplicationController
   private
 
   def employee_params
+    params.permit(
+      :name,
+      :surname,
+      :phone_number,
+      :position,
+      :weekly_working_hours,
+      address_attributes: [
+        :address,
+        :city,
+        :country,
+        :postcode
+      ]
+    )
+  end
+
+  def users_employee_params
     params.permit(
       :name,
       :surname,

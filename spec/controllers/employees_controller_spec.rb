@@ -57,20 +57,23 @@ RSpec.describe EmployeesController, type: :controller do
   it "updates employee with id" do
 
     user = create(:user)
+    e = Employee.create(@input.except(:email))
+    user.details = e
+    user.save
+
     sign_in user
 
     new_name = "pracownik2"
+    new_working_hours = 2
     updated_input = @input
     updated_input[:name] = new_name
+    updated_input[:weekly_working_hours] = new_working_hours
 
     put :update_user, updated_input
 
     output = JSON.parse(response.body)
-
-    # ap user
-    # ap output
-
     expect(output["details"]["name"]).to eq(new_name)
+    expect(output["details"]["weekly_working_hours"]).to eq(@input[:weekly_working_hours])
   end
 
 
