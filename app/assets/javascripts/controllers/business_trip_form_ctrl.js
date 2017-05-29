@@ -1,7 +1,7 @@
 angular.module('HrApp')
     .controller('businessCtrl', function($scope, $http, $state) {
 
-        $scope.business = {};
+        $scope.business = {status: "waiting"};
 
         $scope.sendBusiness = function() {
             $http.post('/business_trip_forms', $scope.business).

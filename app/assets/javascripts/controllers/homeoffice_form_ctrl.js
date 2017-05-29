@@ -1,7 +1,7 @@
 angular.module('HrApp')
     .controller('homeOfficeCtrl', function($scope, $http, $state) {
 
-        $scope.homeOffice = {};
+        $scope.homeOffice = {status: "waiting"};
 
         $scope.sendHomeOffice = function() {
             $http.post('/homeoffice_forms', $scope.homeOffice).

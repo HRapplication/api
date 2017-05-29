@@ -1,7 +1,7 @@
 angular.module('HrApp')
     .controller('holidayCtrl', function($scope, $http, $state) {
 
-        $scope.holiday = {};
+        $scope.holiday = {status: "waiting"};
 
         $scope.sendHoliday = function() {
             $http.post('/holiday_forms', $scope.holiday).

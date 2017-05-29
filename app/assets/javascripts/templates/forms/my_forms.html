@@ -114,42 +114,15 @@
                     </div>
                 </div>
                 <!-- /.row -->                            
-                <div class="row" id="business_form">
+                <div class="row" id="forms">
+                    <h2>Moje formularze</h2>
                     <div class="col-lg-12 list-group" ng-controller="myFormsCtrl">
-                        <a ui-sref="#" ng-repeat="form in business_forms" class="list-group-item">
-                            <h4 class="list-group-item-heading">Delegacja</h4>
-                            <p class="list-group-item-text">{{form.company}}</p>
+                        <a ui-sref="#" ng-repeat="form in forms" class="list-group-item">
+                            <h4 class="list-group-item-heading">Tytuł</h4>
+                            <p class="list-group-item-text">{{form.status}}</p>
                         </a>
                     </div>
                 </div>
-
-                <div class="row" id="holiday_form">
-                    <div class="col-lg-12 list-group" ng-controller="myFormsCtrl">
-                        <a ui-sref="#" ng-repeat="form in holiday_forms" class="list-group-item">
-                            <h4 class="list-group-item-heading">Urlop</h4>
-                            <p class="list-group-item-text">{{form.employee_id}}</p>
-                        </a>
-                    </div>
-                </div>
- 
-                 <div class="row" id="sick_form">
-                    <div class="col-lg-12 list-group" ng-controller="myFormsCtrl">
-                        <a ui-sref="#" ng-repeat="form in sick_forms" class="list-group-item">
-                            <h4 class="list-group-item-heading">Zwolnienie lekarskie</h4>
-                            <p class="list-group-item-text">{{form.employee_id}}</p>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="row" id="home_form">
-                    <div class="col-lg-12 list-group" ng-controller="myFormsCtrl">
-                        <a ui-sref="#" ng-repeat="form in home_forms" class="list-group-item">
-                            <h4 class="list-group-item-heading">Praca zdalna</h4>
-                            <p class="list-group-item-text">{{form.employee_id}}</p>
-                        </a>
-                    </div>
-                </div>
-
             </div>
             <!-- /.container-fluid -->
 

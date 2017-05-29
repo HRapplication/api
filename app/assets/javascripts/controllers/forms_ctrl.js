@@ -1,81 +1,68 @@
 angular.module('HrApp') 
     .controller('formsCtrl', function($scope, $http) { 
          
-        $scope.business_forms = []; 
-        $scope.holiday_forms = []; 
-        $scope.sick_forms = []; 
-        $scope.home_forms = []; 
+        $scope.waiting_forms = [];
+        $scope.rejected_forms = []; 
+        $scope.accepted_forms = []; 
+        $scope.waitingTitles = [];
+    
  
- 
-        $http.get('/business_trip_forms'). 
+        $http.get('/forms/combined', {params: {status: 'waiting'}}). 
             success(function(data) { 
-                $scope.business_forms = data;                 
-                console.log($scope.business_form); 
+                $scope.waiting_forms = data;                 
+                console.log($scope.waiting_forms); 
+                angular.forEach($scope.waiting_forms, viewTitle);
             }). 
              error(function(data) { 
                 console.log("Error!!!"); 
             }); 
- 
- 
-        $http.get('/holiday_forms'). 
-            success(function(data) { 
-                $scope.holiday_forms = data;                  
-                console.log($scope.holiday_forms); 
-            }). 
-            error(function(data) { 
-                console.log("Error!!!"); 
-            }); 
 
-         $http.get('/sick_leave_forms'). 
+        $http.get('/forms/combined', {params: {status: 'rejected'}}). 
             success(function(data) { 
-                $scope.sick_forms = data; 
-                console.log($scope.sick_forms); 
+                $scope.rejected_forms = data;                 
+                console.log($scope.rejected_forms); 
             }). 
-            error(function(data) { 
+             error(function(data) { 
                 console.log("Error!!!"); 
-            }); 
- 
-        $http.get('/homeoffice_forms'). 
+            });
+
+        $http.get('/forms/combined', {params: {status: 'accepted'}}). 
             success(function(data) { 
-                $scope.home_forms = data; 
-                console.log($scope.home_forms); 
+                $scope.accepted_forms = data;                 
+                console.log($scope.accepted_forms); 
             }). 
-            error(function(data) { 
+             error(function(data) { 
                 console.log("Error!!!"); 
-            }); 
+            });        
  
-        $scope.showHoliday = function(clickEvent){ 
+        $scope.showWaiting = function(){ 
                $('.btn-group > .btn').removeClass('active'); 
                $('.btn-group > .btn').eq(0).addClass('active'); 
-               $("#holiday_form").show(); 
-               $("#business_form").hide(); 
-               $("#sick_form").hide(); 
-               $("#home_form").hide(); 
+               $("#waiting_forms").show(); 
+               $("#rejected_forms").hide(); 
+               $("#accepted_forms").hide();  
            };  
-        $scope.showBusiness = function(){ 
+        $scope.showRejected = function(clickEvent){ 
                $('.btn-group > .btn').removeClass('active'); 
-               $('.btn-group > .btn').eq(3).addClass('active'); 
-               $("#holiday_form").hide(); 
-               $("#business_form").show(); 
-               $("#sick_form").hide(); 
-               $("#home_form").hide(); 
+               $('.btn-group > .btn').eq(0).addClass('active'); 
+               $("#waiting_forms").hide(); 
+               $("#rejected_forms").show(); 
+               $("#accepted_forms").hide();                 
            }; 
-        $scope.showSick = function(){ 
+        $scope.showAccepted = function(clickEvent){ 
                $('.btn-group > .btn').removeClass('active'); 
-               $('.btn-group > .btn').eq(1).addClass('active'); 
-               $("#holiday_form").hide(); 
-               $("#business_form").hide(); 
-               $("#sick_form").show(); 
-               $("#home_form").hide(); 
+               $('.btn-group > .btn').eq(0).addClass('active'); 
+               $("#waiting_forms").hide(); 
+               $("#rejected_forms").hide(); 
+               $("#accepted_forms").show();                 
             }; 
- 
-        $scope.showHome = function(){ 
-               $('.btn-group > .btn').removeClass('active'); 
-               $('.btn-group > .btn').eq(2).addClass('active'); 
-               $("#holiday_form").hide(); 
-               $("#business_form").hide(); 
-               $("#sick_form").hide(); 
-               $("#home_form").show(); 
-           }; 
+
+        function viewTitle() {
+            if(this.hasOwnProperty('care_type'))
+            {
+                $scope.title = 'Urlop zdrowotny';
+                console.log($scope.title);
+            }
+        }
              
   });

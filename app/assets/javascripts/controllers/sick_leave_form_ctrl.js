@@ -1,7 +1,7 @@
 angular.module('HrApp')
     .controller('sickLeaveCtrl', function($scope, $http, $state) {
 
-        $scope.sickLeave = {};
+        $scope.sickLeave = {status: "waiting"};
 
         $scope.sendSickLeave = function() {
             $http.post('/sick_leave_forms', $scope.sickLeave).
