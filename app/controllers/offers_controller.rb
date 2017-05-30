@@ -53,7 +53,7 @@ class OffersController < ApplicationController
 
   swagger_api :index do
     summary "Zwraca wszystkie dodane aktualne oferty pracy"
-    param :form, :is_available, :boolean, :required, "dostępne/niedostępne"
+    param :query, :is_available, :boolean, :required, "dostępne/niedostępne"
   end
 
   swagger_api :show do

@@ -74,13 +74,6 @@
             },
             {
               "paramType": "form",
-              "name": "attending",
-              "type": "integer",
-              "description": "liczba biorących udział",
-              "required": true
-            },
-            {
-              "paramType": "form",
               "name": "spots",
               "type": "integer",
               "description": "Liczba wolnych miejsc",

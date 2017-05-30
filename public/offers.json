@@ -11,7 +11,7 @@
           "summary": "Zwraca wszystkie dodane aktualne oferty pracy",
           "parameters": [
             {
-              "paramType": "form",
+              "paramType": "query",
               "name": "is_available",
               "type": "boolean",
               "description": "dostępne/niedostępne",
