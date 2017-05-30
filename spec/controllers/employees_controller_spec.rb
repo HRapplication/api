@@ -76,5 +76,27 @@ RSpec.describe EmployeesController, type: :controller do
     expect(output["details"]["weekly_working_hours"]).to eq(@input[:weekly_working_hours])
   end
 
+  it "updates employee with id" do
+
+    user = create(:user)
+    e = Employee.create(@input.except(:email))
+    user.details = e
+    user.save
+
+    sign_in user
+
+    new_name = "pracownik2"
+    new_working_hours = 2
+    updated_input = @input
+    updated_input[:name] = new_name
+    updated_input[:weekly_working_hours] = new_working_hours
+    updated_input.merge!(id: e.id)
+
+    put :update, updated_input
+
+    output = JSON.parse(response.body)
+    expect(output["details"]["name"]).to eq(new_name)
+    expect(output["details"]["weekly_working_hours"]).to eq(@input[:weekly_working_hours])
+  end
 
 end

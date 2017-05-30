@@ -29,12 +29,9 @@ class EmployeesController < ApplicationController
   end
 
   def update
-    if current_user.id == user_params["id"].to_i
-      user = current_user.details.update(employee_params)
-      render json: current_user.to_json(include: :details)
-    else
-      render json: false
-    end
+    employee = Employee.find(user_params["id"])
+    employee.update(employee_params)
+    render json: employee.user.to_json(include: :details)
   end
 
   def update_user
@@ -112,6 +109,21 @@ class EmployeesController < ApplicationController
     param :form, :phone_number, :string, :required, "Numer telefonu"
     param :form, :position, :enum, :required, "Pozycja ('hr', 'worker')"
     param :form, :weekly_working_hours, :integer, :required, "Ilość godzin przepracowanych w tygodniu?"
+    param :form, "address_attributes[address]", :optional, :string, "Adres?"
+    param :form, "address_attributes[city]", :optional, :string, "Miasto"
+    param :form, "address_attributes[country]", :optional, :string, "Państwo"
+    param :form, "address_attributes[postcode]", :optional, :string, "Kod pocztowy"
+  end
+
+  swagger_api :update do
+    summary "Nadpisuje dane aktualnego użytkownika"
+    notes "positions: 'hr', 'worker'"
+    param :path, :id, :integer, :optional, "id employee"
+    param :form, :name, :string, :optional, "Imie"
+    param :form, :surname, :string, :optional, "Nazwisko"
+    param :form, :phone_number, :string, :optional, "Numer telefonu"
+    param :form, :position, :enum, :optional, "Pozycja ('hr', 'worker')"
+    param :form, :weekly_working_hours, :integer, :optional, "Ilość godzin przepracowanych w tygodniu?"
     param :form, "address_attributes[address]", :optional, :string, "Adres?"
     param :form, "address_attributes[city]", :optional, :string, "Miasto"
     param :form, "address_attributes[country]", :optional, :string, "Państwo"
