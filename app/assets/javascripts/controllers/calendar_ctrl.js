@@ -3,10 +3,11 @@ angular.module('HrApp')
 
     $scope.schedule = {};
     $scope.user = {};
+    $scope.scheduleEvents = [];
     var today = new Date();
     var year = today.getFullYear();
-    var start = year+'-01-01';
-    var end = year+'-12-31'
+    var startDay = year+'-01-01';
+    var endDay = year+'-12-31'
     
     $http.get('/users/index').
         success(function(data){
@@ -18,44 +19,39 @@ angular.module('HrApp')
         });
 
     function getSchedule(userId, date){
-        $http.get('/users/'+userId+'/schedules', {params: {start_date: start, end_date: end, user_id:userId}}).
+        $http.get('/users/'+userId+'/schedules', {params: {start_date: startDay, end_date: endDay, user_id:userId}}).
             success(function(data){
                 $scope.schedule = data;
                 console.log($scope.schedule);
+                console.log($scope.schedule[0].work_date + $scope.schedule[0].start_hour.substr(10));
+                angular.forEach($scope.schedule, function(value, key) {
+                    $scope.scheduleEvents.push({start: value.work_date+value.start_hour.substr(10), end: value.work_date+value.end_hour.substr(10)});
+                });
+                calendarInit();
             }).
             error(function(data) {
                 console.log('Error!!!');
             });
     }
 
-        $(document).ready(function() {
+       
 
     // page is now ready, initialize the calendar...
-
-    $('#calendar').fullCalendar({
-        header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay'
-      },
-      selectable: true,
-      selectHelper: true,
-      editable: true,
-      eventLimit: true,      
-      events: [
-                    {
-                        title: 'Praca',
-                        start: start,
-                        end: end
-                    },
-                    {
-                        title: 'Praca',
-                        start: '2017-05-25T22:44:00Z',
-                        end: '2017-05-25T01:44:00Z'
-                    }
-                ]                   
-    });
-    //fullCalendar
-    });
+    function calendarInit(){
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            selectable: true,
+            selectHelper: true,
+            editable: true,
+            eventLimit: true,      
+            events: $scope.scheduleEvents
+        });
+    }
+    
+    
 });
 

@@ -42,13 +42,6 @@ angular.module('HrApp')
 
         function showModal(modalId) {
             $(modalId).modal('show');
-            $(modalId).on('hide.bs.modal', reloadView);
-        }
-
-        function reloadView() {
-            $('body').removeClass('modal-open').css('padding-right', '');
-            $('.modal-backdrop').remove();       
-            $state.reload();
         }
 
     });
