@@ -59,7 +59,10 @@
                     </li> 
                     <li class="active"> 
                         <a href="javascript:;" data-toggle="collapse" data-target="#formularze"><i class="glyphicon glyphicon-edit"></i> Formularze <i class="caret"></i></a> 
-                        <ul id="formularze" class="collapse"> 
+                        <ul id="formularze" class="collapse">
+                            <li>
+                                <a ui-sref="my_forms">Moje formularze</a>
+                            </li> 
                             <li> 
                                 <a ui-sref="holiday_form">Urlop</a> 
                             </li> 
@@ -118,7 +121,7 @@
                             <button class="btn btn-default" type="button" ng-click="showWaiting()">Oczekujące</button> 
                         </div> 
                         <div class="btn-group"> 
-                            <button class="btn btn-default" type="button" ng-click="showRejected()">Niezaakceptowane</button> 
+                            <button class="btn btn-default" type="button" ng-click="showRejected()">Odrzucone</button> 
                         </div> 
                         <div class="btn-group"> 
                             <button class="btn btn-default" type="button" ng-click="showAccepted()">Zaakceptowane</button> 
@@ -126,36 +129,88 @@
                     </div>     
                 </div> 
                 <!-- /.row --> 
-
-                <br />
-                 
+                <br />            
                 <div class="row" id="waiting_forms"> 
                     <div class="col-lg-12 list-group" ng-controller="formsCtrl"> 
-                        <a ui-sref="#" ng-repeat="form in waiting_forms" class="contentList list-group-item"> 
-                            <h4 class="list-group-item-heading">{{form.newName}}</h4> 
-                            <p class="list-group-item-text">{{"Data utworzenia: "+form.created_at.substr(0,10)}}</p>
-                            <p class="list-group-item-text">{{"ID pracownika: "+form.employee_id}}</p> 
-                        </a> 
-                    </div> 
-                </div> 
- 
-                <div class="row" id="rejected_forms"> 
-                    <div class="col-lg-12 list-group" ng-controller="formsCtrl"> 
-                        <a ui-sref="#" ng-repeat="form in rejected_forms" class="contentList list-group-item"> 
+                        <div ng-repeat="form in waiting_forms" class="contentList list-group-item"> 
                             <h4 class="list-group-item-heading">{{form.newName}}</h4> 
                             <p class="list-group-item-text">{{"Data utworzenia: "+form.created_at.substr(0,10)}}</p>
                             <p class="list-group-item-text">{{"ID pracownika: "+form.employee_id}}</p>
-                        </a> 
+                            <details id="details" ng-open="open">
+                                <summary>Więcej...</summary>
+                                    <p class="list-group-item-text">{{"Data od: "+form.start_date.substr(0,10)}}</p>
+                                    <p class="list-group-item-text">{{"Data do: "+form.end_date.substr(0,10)}}</p>
+                                    <p class="list-group-item-text">{{form.careType}}</p>
+                                    <p class="list-group-item-text">{{form.holidayType}}</p>
+                                    <p class="list-group-item-text">{{form.commentPrint}}</p>
+                                    <p class="list-group-item-text">{{form.companyPrint}}</p>
+                                    <p class="list-group-item-text">{{form.transportPrint}}</p>                                    
+                                    <div class="row">
+                                    <br/>
+                                        <div class="col-lg-6">
+                                            <button type="button" ng-click="acceptBtn()" class="btn btn-default" >Zaakceptuj</button>
+                                            <button type="button" ng-click="rejectBtn()" class="btn btn-default" >Odrzuć</button>
+                                            <button type="button" ng-click="deleteBtn()" class="btn btn-default hr_only" >Usuń formularz</button>
+                                        </div>
+                                    </div>
+                            </details>
+                        </div>                        
+                    </div> 
+                </div> 
+            
+                <div class="row" id="rejected_forms"> 
+                    <div class="col-lg-12 list-group" ng-controller="formsCtrl"> 
+                        <div ng-repeat="form in rejected_forms" class="contentList list-group-item"> 
+                            <h4 class="list-group-item-heading">{{form.newName}}</h4> 
+                            <p class="list-group-item-text">{{"Data utworzenia: "+form.created_at.substr(0,10)}}</p>
+                            <p class="list-group-item-text">{{"ID pracownika: "+form.employee_id}}</p>
+                            <details id="details" ng-open="open">
+                                <summary>Więcej...</summary>
+                                    <p class="list-group-item-text">{{"Data od: "+form.start_date.substr(0,10)}}</p>
+                                    <p class="list-group-item-text">{{"Data do: "+form.end_date.substr(0,10)}}</p>
+                                    <p class="list-group-item-text">{{form.careType}}</p>
+                                    <p class="list-group-item-text">{{form.holidayType}}</p>
+                                    <p class="list-group-item-text">{{form.commentPrint}}</p>
+                                    <p class="list-group-item-text">{{form.companyPrint}}</p>
+                                    <p class="list-group-item-text">{{form.transportPrint}}</p>
+                                    <br/>                                    
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <button type="button" ng-click="acceptBtn()" class="btn btn-default" >Zaakceptuj</button>
+                                            <button type="button" ng-click="rejectBtn()" class="btn btn-default" >Odrzuć</button>
+                                            <button type="button" ng-click="deleteBtn()" class="btn btn-default hr_only" >Usuń formularz</button>
+                                        </div>
+                                    </div>
+                            </details>
+                        </div> 
                     </div> 
                 </div> 
  
                  <div class="row" id="accepted_forms"> 
                     <div class="col-lg-12 list-group" ng-controller="formsCtrl"> 
-                        <a ui-sref="#" ng-repeat="form in accepted_forms" class="contentList list-group-item"> 
+                        <div ng-repeat="form in accepted_forms" class="contentList list-group-item"> 
                             <h4 class="list-group-item-heading">{{form.newName}}</h4> 
                             <p class="list-group-item-text">{{"Data utworzenia: "+form.created_at.substr(0,10)}}</p>
                             <p class="list-group-item-text">{{"ID pracownika: "+form.employee_id}}</p>
-                        </a> 
+                            <details id="details" ng-open="open">
+                                <summary>Więcej...</summary>
+                                    <p class="list-group-item-text">{{"Data od: "+form.start_date.substr(0,10)}}</p>
+                                    <p class="list-group-item-text">{{"Data do: "+form.end_date.substr(0,10)}}</p>
+                                    <p class="list-group-item-text">{{form.careType}}</p>
+                                    <p class="list-group-item-text">{{form.holidayType}}</p>
+                                    <p class="list-group-item-text">{{form.commentPrint}}</p>
+                                    <p class="list-group-item-text">{{form.companyPrint}}</p>
+                                    <p class="list-group-item-text">{{form.transportPrint}}</p>
+                                    <br/>                                                                       
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <button type="button" ng-click="acceptBtn()" class="btn btn-default" >Zaakceptuj</button>
+                                            <button type="button" ng-click="rejectBtn()" class="btn btn-default" >Odrzuć</button>
+                                            <button type="button" ng-click="deleteBtn()" class="btn btn-default" >Usuń formularz</button>
+                                        </div>
+                                    </div>
+                            </details>
+                        </div> 
                     </div> 
                 </div>  
             </div> 

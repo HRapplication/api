@@ -15,12 +15,45 @@ angular.module('HrApp')
                 angular.forEach($scope.waiting_forms, function(value, key) {
                     if(value.name == 'sick_leave_form'){
                         value.newName = 'Urlop zdrowotny';
+                        if(value.care_type == "self"){
+                            value.careType = "Opieka zdrowotna: własna"
+                        }
+                        else if(value.care_type == "child"){
+                            value.careType = "Opieka zdrowotna: rodzicielska"
+                        }
                     }
                     else if(value.name == 'business_trip_form'){
                         value.newName = 'Delegacja';
+                        if(value.company){
+                            value.companyPrint = "Firma: "+value.company
+                        }
+                        if(value.transport){
+                            value.transportPrint = "Forma transportu: "+value.transport
+                        }
                     }
                     else if(value.name == 'holiday_form'){
                         value.newName = 'Urlop';
+                        if(value.holiday_type == "military"){
+                            value.holidayType = "Typ urlopu: Służba wojskowa"
+                        }
+                        else if(value.holiday_type == "compensation_for_overtime"){
+                            value.holidayType = "Typ urlopu: Urlop za nadgodziny"
+                        }
+                        else if(value.holiday_type == "justified_paid_not"){
+                            value.holidayType = "Typ urlopu: Bezpłatny"
+                        }
+                        else if(value.holiday_type == "parental"){
+                            value.holidayType = "Typ urlopu: Opiekuńczy"
+                        }
+                        else if(value.holiday_type == "blood_donation"){
+                            value.holidayType = "Typ urlopu: Krwiodawstwo"
+                        }
+                        else if(value.holiday_type == "training"){
+                            value.holidayType = "Typ urlopu: Szkolenie"
+                        }
+                        if(value.comment){
+                            value.commentPrint = "Komentarz: "+value.comment
+                        }
                     }
                     else if(value.name == 'homeoffice_form'){
                         value.newName = 'Praca zdalna';
@@ -39,12 +72,45 @@ angular.module('HrApp')
                 angular.forEach($scope.rejected_forms, function(value, key) {
                     if(value.name == 'sick_leave_form'){
                         value.newName = 'Urlop zdrowotny';
+                        if(value.care_type == "self"){
+                            value.careType = "Opieka zdrowotna: własna"
+                        }
+                        else if(value.care_type == "child"){
+                            value.careType = "Opieka zdrowotna: rodzicielska"
+                        }
                     }
                     else if(value.name == 'business_trip_form'){
                         value.newName = 'Delegacja';
+                        if(value.company){
+                            value.companyPrint = "Firma: "+value.company
+                        }
+                        if(value.transport){
+                            value.transportPrint = "Forma transportu: "+value.transport
+                        }
                     }
                     else if(value.name == 'holiday_form'){
                         value.newName = 'Urlop';
+                        if(value.holiday_type == "military"){
+                            value.holidayType = "Typ urlopu: Służba wojskowa"
+                        }
+                        else if(value.holiday_type == "compensation_for_overtime"){
+                            value.holidayType = "Typ urlopu: Urlop za nadgodziny"
+                        }
+                        else if(value.holiday_type == "justified_paid_not"){
+                            value.holidayType = "Typ urlopu: Bezpłatny"
+                        }
+                        else if(value.holiday_type == "parental"){
+                            value.holidayType = "Typ urlopu: Opiekuńczy"
+                        }
+                        else if(value.holiday_type == "blood_donation"){
+                            value.holidayType = "Typ urlopu: Krwiodawstwo"
+                        }
+                        else if(value.holiday_type == "training"){
+                            value.holidayType = "Typ urlopu: Szkolenie"
+                        }
+                        if(value.comment){
+                            value.commentPrint = "Komentarz: "+value.comment
+                        }
                     }
                     else if(value.name == 'homeoffice_form'){
                         value.newName = 'Praca zdalna';
@@ -62,12 +128,45 @@ angular.module('HrApp')
                 angular.forEach($scope.accepted_forms, function(value, key) {
                     if(value.name == 'sick_leave_form'){
                         value.newName = 'Urlop zdrowotny';
+                        if(value.care_type == "self"){
+                            value.careType = "Opieka zdrowotna: własna"
+                        }
+                        else if(value.care_type == "child"){
+                            value.careType = "Opieka zdrowotna: rodzicielska"
+                        }
                     }
                     else if(value.name == 'business_trip_form'){
                         value.newName = 'Delegacja';
+                        if(value.company){
+                            value.companyPrint = "Firma: "+value.company
+                        }
+                        if(value.transport){
+                            value.transportPrint = "Forma transportu: "+value.transport
+                        }
                     }
                     else if(value.name == 'holiday_form'){
                         value.newName = 'Urlop';
+                        if(value.holiday_type == "military"){
+                            value.holidayType = "Typ urlopu: Służba wojskowa"
+                        }
+                        else if(value.holiday_type == "compensation_for_overtime"){
+                            value.holidayType = "Typ urlopu: Urlop za nadgodziny"
+                        }
+                        else if(value.holiday_type == "justified_paid_not"){
+                            value.holidayType = "Typ urlopu: Bezpłatny"
+                        }
+                        else if(value.holiday_type == "parental"){
+                            value.holidayType = "Typ urlopu: Opiekuńczy"
+                        }
+                        else if(value.holiday_type == "blood_donation"){
+                            value.holidayType = "Typ urlopu: Krwiodawstwo"
+                        }
+                        else if(value.holiday_type == "training"){
+                            value.holidayType = "Typ urlopu: Szkolenie"
+                        }
+                        if(value.comment){
+                            value.commentPrint = "Komentarz: "+value.comment
+                        }
                     }
                     else if(value.name == 'homeoffice_form'){
                         value.newName = 'Praca zdalna';
@@ -99,20 +198,25 @@ angular.module('HrApp')
                $("#waiting_forms").hide(); 
                $("#rejected_forms").hide(); 
                $("#accepted_forms").show();                 
-            }; 
+            };
 
-        /*function viewTitle() {
+        $scope.acceptBtn = function(){
+            $scope.status = "accepted"
+            $http.patch('/forms/combined', $scope.status).
+                success(function(data) {
+                    console.log('Zaakceptowano formularz.');
+                    console.log(data);
+                   // showModal('#submitModal');
+                }).
+                error(function(data) {
+                    console.log('Error!!!');
+                    showModal('#errorModal');
+                });
+        };
+        $scope.rejectBtn = function(){
+            $scope.status = "rejected"
+        };
 
-            var titles = [];
-
-            for(i=0; i<this.length; i++){
-                if(this[i].name=="leave_sick_form"){
-                    titles[i] = 'Urlop zdrowotny';
-                    console.log(titles[i]);
-                }
-            }
-
-            return titles;
-        }*/
+       
              
   });
