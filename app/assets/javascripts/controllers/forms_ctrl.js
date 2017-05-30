@@ -200,23 +200,43 @@ angular.module('HrApp')
                $("#accepted_forms").show();                 
             };
 
-        $scope.acceptBtn = function(){
-            $scope.status = "accepted"
-            $http.patch('/forms/combined', $scope.status).
+        $scope.acceptBtn = function(form){
+            form.status = "accepted";
+
+            if(form.name == 'business_trip_form') {
+                
+                delete form.newName;
+                delete form.companyPrint;
+                delete form.transportPrint;
+                delete form.updated_at;
+                delete form.created_at;
+                delete form.employee_id;
+                delete form.name;
+                delete form.$$hashKey;
+
+                console.log(form);
+
+                $http.patch('/business_trip_forms/'+form.id, form).
+                    success(function(data){
+                        console.log(data);
+                    });
+            }
+          /*  $http.patch('/forms/combined', $scope.status).
                 success(function(data) {
                     console.log('Zaakceptowano formularz.');
                     console.log(data);
-                   // showModal('#submitModal');
+                    showModal('#submitModal');
                 }).
                 error(function(data) {
                     console.log('Error!!!');
                     showModal('#errorModal');
-                });
+                });*/
         };
         $scope.rejectBtn = function(){
             $scope.status = "rejected"
         };
 
        
-             
+        
+        
   });

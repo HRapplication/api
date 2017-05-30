@@ -148,7 +148,7 @@
                                     <div class="row">
                                     <br/>
                                         <div class="col-lg-6">
-                                            <button type="button" ng-click="acceptBtn()" class="btn btn-default" >Zaakceptuj</button>
+                                            <button type="button" ng-click="acceptBtn(form)" class="btn btn-default" >Zaakceptuj</button>
                                             <button type="button" ng-click="rejectBtn()" class="btn btn-default" >Odrzuć</button>
                                             <button type="button" ng-click="deleteBtn()" class="btn btn-default hr_only" >Usuń formularz</button>
                                         </div>
@@ -176,8 +176,7 @@
                                     <br/>                                    
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <button type="button" ng-click="acceptBtn()" class="btn btn-default" >Zaakceptuj</button>
-                                            <button type="button" ng-click="rejectBtn()" class="btn btn-default" >Odrzuć</button>
+                                            <button type="button" ng-click="acceptBtn()" class="btn btn-default" >Zaakceptuj</button>                                            
                                             <button type="button" ng-click="deleteBtn()" class="btn btn-default hr_only" >Usuń formularz</button>
                                         </div>
                                     </div>
@@ -203,16 +202,55 @@
                                     <p class="list-group-item-text">{{form.transportPrint}}</p>
                                     <br/>                                                                       
                                     <div class="row">
-                                        <div class="col-lg-6">
-                                            <button type="button" ng-click="acceptBtn()" class="btn btn-default" >Zaakceptuj</button>
-                                            <button type="button" ng-click="rejectBtn()" class="btn btn-default" >Odrzuć</button>
+                                        <div class="col-lg-6">                                            
                                             <button type="button" ng-click="deleteBtn()" class="btn btn-default" >Usuń formularz</button>
                                         </div>
                                     </div>
                             </details>
                         </div> 
                     </div> 
-                </div>  
+                </div>
+
+                
+            <div class="modal fade" id="submitModal" tabindex="-1" role="dialog"> 
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                            <h4 class="modal-title">Formularz</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Zaakceptowano formularz ( ͡° ͜ʖ ͡°)</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="errorModal" tabindex="-1" role="dialog"> 
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                            <h4 class="modal-title">Formularz</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Wystąpił błąd. Spróbuj ponownie ( ͡° ͜ʖ ͡°)</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             </div> 
             <!-- /.container-fluid --> 
  
