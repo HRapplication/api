@@ -101,6 +101,89 @@
       "path": "/employees/{id}",
       "operations": [
         {
+          "summary": "Nadpisuje dane aktualnego użytkownika",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "id employee",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "name",
+              "type": "string",
+              "description": "Imie",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "surname",
+              "type": "string",
+              "description": "Nazwisko",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "phone_number",
+              "type": "string",
+              "description": "Numer telefonu",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "position",
+              "type": "enum",
+              "description": "Pozycja ('hr', 'worker')",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "weekly_working_hours",
+              "type": "integer",
+              "description": "Ilość godzin przepracowanych w tygodniu?",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "address_attributes[address]",
+              "type": "optional",
+              "description": "Adres?",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "address_attributes[city]",
+              "type": "optional",
+              "description": "Miasto",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "address_attributes[country]",
+              "type": "optional",
+              "description": "Państwo",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "address_attributes[postcode]",
+              "type": "optional",
+              "description": "Kod pocztowy",
+              "required": false
+            }
+          ],
+          "notes": "positions: 'hr', 'worker'",
+          "nickname": "Employees#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/employees/{id}",
+      "operations": [
+        {
           "summary": "Usuwa użytkownika o danym id",
           "parameters": [
             {
