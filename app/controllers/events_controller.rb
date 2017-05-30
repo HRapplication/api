@@ -57,7 +57,6 @@ class EventsController < ApplicationController
     params.permit(
       :title,
       :duedate,
-      :attending,
       :spots,
       :place,
       )
@@ -82,7 +81,6 @@ class EventsController < ApplicationController
     summary "Tworzy wydarzenie"
     param :form, :title, :string, :required, "Tytuł wydarzenia"
     param :form, :content, :string, :required, "Opis wydarzenia"
-    param :form, :attending, :integer, :required, "liczba biorących udział"
     param :form, :spots, :integer, :required, "Liczba wolnych miejsc"
     param :form, :place, :string, :required, "Miejsce wydarzenia"
     param :form, :duedate, :date, :required, "Data kiedy wydarzenie się odbędzie"
