@@ -114,7 +114,7 @@ Event.create('title': 'Impreza integracyjna', 'user_id': 7, 'duedate': DateTime.
 Event.create('title': 'Konferencja', 'user_id': 9, 'duedate': DateTime.new(2017, 7, 05), 'spots': 10, 'place': 'Sala konferencyjna')
 Event.create('title': 'Jubileusz firmy', 'user_id': 10, 'duedate': DateTime.new(2017, 7, 14), 'spots': 10, 'place': 'Gdzies')
 Event.create('title': 'Piknik firmowy', 'user_id': 4, 'duedate': DateTime.new(2017, 8, 23), 'spots': 10, 'place': 'Za miastem')
-Event.create('title': 'Paintball integracyjny': 8, 'duedate': DateTime.new(2017, 8, 27), 'spots': 10, 'place': 'Pole do paintballa')
+Event.create('title': 'Paintball integracyjny', 'user_id': 8, 'duedate': DateTime.new(2017, 8, 27), 'spots': 10, 'place': 'Pole do paintballa')
 Event.create('title': 'Konferencja', 'user_id': 3, 'duedate': DateTime.new(2017, 9, 11), 'spots': 10, 'place': 'Sala konferencyjna')
 Event.create('title': 'Cos sie bedzie dzialo', 'user_id': 1, 'duedate': DateTime.new(2017, 10, 20), 'spots': 10, 'place': 'Nie wiem gdzie')
 Event.create('title': 'Tutaj tez cos sie bedzie dzialo', 'user_id': 6, 'duedate': DateTime.new(2017, 11, 15), 'spots': 16, 'place': 'Aucune Idee')
