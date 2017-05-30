@@ -122,8 +122,8 @@
                                 <div class="form-group">
                                     <h2>Ustal grafik</h2>
                                     <label for="employee">Pracownik:</label>
-                                    <select id="employee" class="form-control" ng-model="selectedEmployeeId">       
-                                        <option ng-repeat="employee in employeesList" value="{{employee.id}}">{{employee.name + ' ' + employee.surname}}</option>                           
+                                    <select id="employee" class="form-control" ng-model="selectedEmployeeId" required>       
+                                        <option ng-repeat="employee in employeesList" value="{{employee.id}}">{{'(ID: ' + employee.id + ') ' + employee.name + ' ' + employee.surname}}</option>                           
                                     </select>
                                 </div>  
                             </div>
@@ -135,7 +135,7 @@
                                         <h3 class="panel-title"><i class="glyphicon glyphicon-calendar"></i> Grafik tygodniowy</h3>
                                     </div>
                                     <div class="table-responsive">
-                                        <table ng-controller="profileCtrl" class="table table-bordered table-hover">
+                                        <table class="table table-bordered table-hover">
                                             <thead>
                                                 <tr>
                                                     <th class="text-center">Dzień</th>
@@ -149,17 +149,17 @@
                                                     <th class="text-center"><label for="monday">Poniedziałek</th>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="date" id="monday" step="7" min="2017-01-02" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="date" id="monday" step="7" min="2017-01-02" class="form-control date_form" ng-model="monday.work_date" />
                                                         </div> 
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="time" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="time" class="form-control date_form" ng-model="monday.start_hour" />
                                                         </div> 
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="time" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="time" class="form-control date_form" ng-model="monday.end_hour" />
                                                         </div> 
                                                     </td>
                                                 </tr>
@@ -167,17 +167,17 @@
                                                     <th class="text-center"><label for="tuesday">Wtorek</label></th>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="date" id="tuesday" step="7" min="2017-01-03" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="date" id="tuesday" step="7" min="2017-01-03" class="form-control date_form" ng-model="tuesday.work_date" />
                                                         </div> 
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="time" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="time" class="form-control date_form" ng-model="tuesday.start_hour" />
                                                         </div> 
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="time" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="time" class="form-control date_form" ng-model="tuesday.end_hour" />
                                                         </div> 
                                                     </td>
                                                 </tr>
@@ -185,17 +185,17 @@
                                                     <th class="text-center"><label for="wednesday">Środa</label></th>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="date" id="wednesday" step="7" min="2017-01-04" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="date" id="wednesday" step="7" min="2017-01-04" class="form-control date_form" ng-model="wednesday.work_date" />
                                                         </div> 
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="time" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="time" class="form-control date_form" ng-model="wednesday.start_hour" />
                                                         </div> 
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="time" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="time" class="form-control date_form" ng-model="wednesday.end_hour" />
                                                         </div> 
                                                     </td>
                                                 </tr>
@@ -203,17 +203,17 @@
                                                     <th class="text-center"><label for="thursday">Czwartek</label></th>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="date" id="thursday" step="7" min="2017-01-05" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="date" id="thursday" step="7" min="2017-01-05" class="form-control date_form" ng-model="thursday.work_date" />
                                                         </div> 
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="time" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="time" class="form-control date_form" ng-model="thursday.start_hour" />
                                                         </div> 
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="time" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="time" class="form-control date_form" ng-model="thursday.end_hour" />
                                                         </div> 
                                                     </td>
                                                 </tr>
@@ -221,17 +221,17 @@
                                                     <th class="text-center"><label for="friday">Piątek</label></th>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="date" id="friday" step="7" min="2017-01-06" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="date" id="friday" step="7" min="2017-01-06" class="form-control date_form" ng-model="friday.work_date" />
                                                         </div> 
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="time" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="time" class="form-control date_form" ng-model="friday.start_hour" />
                                                         </div> 
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="time" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="time" class="form-control date_form" ng-model="friday.end_hour" />
                                                         </div> 
                                                     </td>
                                                 </tr>
@@ -239,17 +239,17 @@
                                                     <th class="text-center"><label for="saturday">Sobota</label></th>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="date" id="saturday" step="7" min="2017-01-07" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="date" id="saturday" step="7" min="2017-01-07" class="form-control date_form" ng-model="saturday.work_date" />
                                                         </div> 
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="time" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="time" class="form-control date_form" ng-model="saturday.start_hour" />
                                                         </div> 
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="time" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="time" class="form-control date_form" ng-model="saturday.end_hour" />
                                                         </div> 
                                                     </td>
                                                 </tr>
@@ -257,17 +257,17 @@
                                                     <th class="text-center"><label for="sunday">Niedziela</label></th>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="date" id="sunday" step="7" min="2017-01-08" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="date" id="sunday" step="7" min="2017-01-08" class="form-control date_form" ng-model="sunday.work_date" />
                                                         </div> 
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="time" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="time" class="form-control date_form" ng-model="sunday.start_hour" />
                                                         </div> 
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="form-group">
-                                                            <input type="time" class="form-control date_form" ng-model="addSchedule.start_date"/>
+                                                            <input type="time" class="form-control date_form" ng-model="sunday.end_hour" />
                                                         </div> 
                                                     </td>
                                                 </tr>
@@ -279,7 +279,7 @@
                         </div>
                         <br />
                         <div class="col-lg-5 col-lg-offset-3">
-                            <button type="submit" class="btn btn-default btn-block">Zatwierdź</button>
+                            <button type="submit" ng-disabled="selectedEmployeeId == null" class="btn btn-default btn-block submit_btn">Zatwierdź</button>
                         </div>                                       
                     </form>                        
                 </div>
@@ -318,6 +318,26 @@
                         </div>
                         <div class="modal-body">
                             <p>Wystąpił błąd. Spóbuj ponownie ( ͡° ͜ʖ ͡°)</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="hintModal" tabindex="-1" role="dialog"> 
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                            <h4 class="modal-title">Ustalanie tygodniowego terminarza</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Nie wybrano żadnego dnia. ( ͡° ͜ʖ ͡°)</p>
+                            <p>W celu ustalenia terminarza wybierz pracownika, a następnie określ godziny pracy dla przynajmniej jednego dnia. ( ͡° ͜ʖ ͡°)</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>

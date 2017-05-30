@@ -1,0 +1,10 @@
+.contentList {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+div.contentList:hover {
+    color: #555;
+    background-color: #f5f5f5;
+}
+

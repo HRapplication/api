@@ -21,7 +21,6 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Recent Job offers" do
           table_for JobOffer.order('id desc').limit(10).each do |job_offer|
             column(:title)    {|job_offer| link_to(job_offer.title, admin_job_offer_path(job_offer)) }
-            column(:is_available)    {|job_offer| link_to(job_offer.is_available, admin_job_offer_path(job_offer)) }
             column(:created_at)    {|job_offer| link_to(job_offer.created_at, admin_job_offer_path(job_offer)) }
           end
         end
