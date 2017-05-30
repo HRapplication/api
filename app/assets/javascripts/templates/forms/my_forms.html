@@ -114,10 +114,10 @@
                     </div>
                 </div>
                 <!-- /.row -->                            
-                <div class="row" id="forms">
+                
                     <h2>Moje formularze</h2>
                     <div class="col-lg-12 list-group" ng-controller="myFormsCtrl">
-                        <div ng-repeat="form in forms" class="list-group-item">
+                        <div ng-repeat="form in wForms" class="list-group-item">
                             <h4 class="list-group-item-heading">{{form.newName}}</h4> 
                             <p class="list-group-item-text">{{"Data utworzenia: "+form.created_at.substr(0,10)}}</p>
                             <p class="list-group-item-text">{{"Status: "+form.newStatus}}</p>
@@ -133,8 +133,44 @@
                             </details>                            
                         </div>
                     </div>
-                </div>
-            </div>
+            
+                    <div class="col-lg-12 list-group" ng-controller="myFormsCtrl">
+                        <div ng-repeat="form in aForms" class="list-group-item">
+                            <h4 class="list-group-item-heading">{{form.newName}}</h4> 
+                            <p class="list-group-item-text">{{"Data utworzenia: "+form.created_at.substr(0,10)}}</p>
+                            <p class="list-group-item-text">{{"Status: "+form.newStatus}}</p>
+                            <details id="details" ng-open="open">
+                                <summary>Więcej...</summary>
+                                    <p class="list-group-item-text">{{"Data od: "+form.start_date.substr(0,10)}}</p>
+                                    <p class="list-group-item-text">{{"Data do: "+form.end_date.substr(0,10)}}</p>
+                                    <p class="list-group-item-text">{{form.careType}}</p>
+                                    <p class="list-group-item-text">{{form.holidayType}}</p>
+                                    <p class="list-group-item-text">{{form.commentPrint}}</p>
+                                    <p class="list-group-item-text">{{form.companyPrint}}</p>
+                                    <p class="list-group-item-text">{{form.transportPrint}}</p>                                    
+                            </details>                            
+                        </div>
+                    </div>            
+            
+                    <div class="col-lg-12 list-group" ng-controller="myFormsCtrl">
+                        <div ng-repeat="form in rForms" class="list-group-item">
+                            <h4 class="list-group-item-heading">{{form.newName}}</h4> 
+                            <p class="list-group-item-text">{{"Data utworzenia: "+form.created_at.substr(0,10)}}</p>
+                            <p class="list-group-item-text">{{"Status: "+form.newStatus}}</p>
+                            <details id="details" ng-open="open">
+                                <summary>Więcej...</summary>
+                                    <p class="list-group-item-text">{{"Data od: "+form.start_date.substr(0,10)}}</p>
+                                    <p class="list-group-item-text">{{"Data do: "+form.end_date.substr(0,10)}}</p>
+                                    <p class="list-group-item-text">{{form.careType}}</p>
+                                    <p class="list-group-item-text">{{form.holidayType}}</p>
+                                    <p class="list-group-item-text">{{form.commentPrint}}</p>
+                                    <p class="list-group-item-text">{{form.companyPrint}}</p>
+                                    <p class="list-group-item-text">{{form.transportPrint}}</p>                                    
+                            </details>                            
+                        </div>
+                    </div>
+               
+           
             <!-- /.container-fluid -->
 
         </div>
