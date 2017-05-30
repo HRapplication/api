@@ -149,8 +149,7 @@
                                     <br/>
                                         <div class="col-lg-6">
                                             <button type="button" ng-click="acceptBtn(form)" class="btn btn-default" >Zaakceptuj</button>
-                                            <button type="button" ng-click="rejectBtn()" class="btn btn-default" >Odrzuć</button>
-                                            <button type="button" ng-click="deleteBtn()" class="btn btn-default hr_only" >Usuń formularz</button>
+                                            <button type="button" ng-click="rejectBtn(form)" class="btn btn-default" >Odrzuć</button>                                            
                                         </div>
                                     </div>
                             </details>
@@ -176,8 +175,7 @@
                                     <br/>                                    
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <button type="button" ng-click="acceptBtn()" class="btn btn-default" >Zaakceptuj</button>                                            
-                                            <button type="button" ng-click="deleteBtn()" class="btn btn-default hr_only" >Usuń formularz</button>
+                                            <button type="button" ng-click="acceptBtn(form)" class="btn btn-default" >Zaakceptuj</button>                                      
                                         </div>
                                     </div>
                             </details>
@@ -200,12 +198,7 @@
                                     <p class="list-group-item-text">{{form.commentPrint}}</p>
                                     <p class="list-group-item-text">{{form.companyPrint}}</p>
                                     <p class="list-group-item-text">{{form.transportPrint}}</p>
-                                    <br/>                                                                       
-                                    <div class="row">
-                                        <div class="col-lg-6">                                            
-                                            <button type="button" ng-click="deleteBtn()" class="btn btn-default" >Usuń formularz</button>
-                                        </div>
-                                    </div>
+                                    <br/>                                
                             </details>
                         </div> 
                     </div> 
@@ -222,7 +215,7 @@
                             <h4 class="modal-title">Formularz</h4>
                         </div>
                         <div class="modal-body">
-                            <p>Zaakceptowano formularz ( ͡° ͜ʖ ͡°)</p>
+                            <p>Zmieniono status formularza ( ͡° ͜ʖ ͡°)</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
