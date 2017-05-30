@@ -140,20 +140,22 @@
                                 <div class="form-group">
                                     <label for="event_description">Opis wydarzenia:</label><br />
                                     <textarea ng-model="event.content" class="form-control" rows="3" cols="50" id="event_description" placeholder="Wprowadź opis wydarzenia..." ></textarea>
-                                </div>                    
+                                </div>
+                                <div class="form-group">
+                                    <label for="event_spots">Liczba wolnych miejsc:</label><br />
+                                    <input type="number" class="form-control" ng-model="event.spots" required />
+                                </div> 
+                                <div class="form-group">
+                                    <label for="event_spots">Miejsce wydarzenia:</label><br />
+                                    <input type="text" class="form-control" ng-model="event.place" required />
+                                </div>                     
                             <button type="submit" class="btn btn-default" >Dodaj wydarzenie</button>
                             </div>
                         </div>                        
                     </form>
                     
                 </div>                
-                <!-- /.col-lg-8 -->
-                <div ng-controller="CalendarCtrl">
-                    <div class="col-lg-7">
-                        <div id='calendar'></div>
-                        <div class='calendar' ></div> 
-                    </div>
-                </div>
+                <!-- /.col-lg-8 -->                
             </div>
             <!-- /.row -->
 

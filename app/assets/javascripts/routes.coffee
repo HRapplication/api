@@ -13,6 +13,10 @@ angular.module 'HrApp'
         templateUrl: 'edit_profile.html'
       })
 
+      .state('my_events', {
+        url: '/my_events',
+        templateUrl: 'events/my_events.html'
+      })
       .state('add_event', {
         url: '/add_event',
         templateUrl: 'events/add_event.html'

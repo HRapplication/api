@@ -1,29 +1,15 @@
 angular.module('HrApp')
-    .controller('eventsCtrl', function($scope, $http) {
+    .controller('myEventsCtrl', function($scope, $http) {
 
         $scope.events = {};
 
-        $http.get('/events').
+        $http.get('/user_events').
             success(function(data) {
                 $scope.events = data;                
             }).
             error(function(data) {
                 console.log("Error!!!");
             });
-
-        $scope.eventEnlist = function(event) {
-            console.log(event);
-            $http.post('/events/'+event.id+'/enlist/',event).
-                success(function(data) {
-                    console.log('Zapisano.');
-                    console.log(data);
-                    showModal('#submitModal');
-                }).
-                error(function(data) {
-                    console.log('Error!!!');
-                    showModal('#errorModal');
-            });
-        };
 
         function showModal(modalId) {
             $(modalId).modal('show');
