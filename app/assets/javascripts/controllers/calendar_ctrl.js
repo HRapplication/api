@@ -1,30 +1,39 @@
 angular.module('HrApp')
     .controller('CalendarCtrl', function($scope, $http) {
 
-    $scope.events = {};
-    $scope.userId = {};
+    $scope.schedule = {};
+    $scope.user = {};
+    var today = new Date();
+    var year = today.getFullYear();
+    var start = year+'-01-01';
+    var end = year+'-12-31'
     
     $http.get('/users/index').
         success(function(data){
-            $scope.userId = data.id;
-            console.log($scope.userId);
+            $scope.user = data;
+            getSchedule($scope.user.id);
         }).
         error(function(data) {
             console.log('Error!!!');
         });
 
-    $http.get('/users/'+$scope.userId+'/schedules', {params: {start_date: '2017-05-29', end_date:'2017-05-30', user_id: $scope.user_Id}}).
-    success(function(data){
-        console.log(data);
-        $scope.events = data;
-    });
+    function getSchedule(userId, date){
+        $http.get('/users/'+userId+'/schedules', {params: {start_date: start, end_date: end, user_id:userId}}).
+            success(function(data){
+                $scope.schedule = data;
+                console.log($scope.schedule);
+            }).
+            error(function(data) {
+                console.log('Error!!!');
+            });
+    }
 
         $(document).ready(function() {
 
     // page is now ready, initialize the calendar...
 
     $('#calendar').fullCalendar({
-         header: {
+        header: {
         left: 'prev,next today',
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
@@ -35,20 +44,18 @@ angular.module('HrApp')
       eventLimit: true,      
       events: [
                     {
-                        //title: 'Praca',
-                        //start: $scope.events[0].work_date+$scope.events[0].start_hour.substr(11,19),
-                        //end: $scope.events[0].work_date+$scope.events[0].end_hour.substr(11,19)
+                        title: 'Praca',
+                        start: start,
+                        end: end
                     },
                     {
-                        //title: 'Praca',
-                        start: '2017-05-29T10:00:00',
-                        end: '2017-05-29T16:00:00'
-                    },
-                
+                        title: 'Praca',
+                        start: '2017-05-25T22:44:00Z',
+                        end: '2017-05-25T01:44:00Z'
+                    }
                 ]                   
-     
-        });
-
+    });
+    //fullCalendar
     });
 });
 
