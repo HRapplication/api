@@ -1,28 +1,29 @@
+
 <div id="wrapper">
 
-    <!-- Navigation -->
-    <nav class="main-nav navbar navbar-inverse navbar-fixed-top" role="navigation" id="topNav">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" id="toggle" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" ui-sref="home">KORPOPLAN</a>
-        </div>
-        <!-- Top Menu Items -->
-        
+      <!-- Navigation -->
+        <nav class="main-nav navbar navbar-inverse navbar-fixed-top" role="navigation" id="topNav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" id="toggle" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" ui-sref="home">KORPOPLAN</a>
+            </div>
+            <!-- Top Menu Items -->
+  
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar">
             <ul class="nav navbar-nav side-nav" id="sidebar_list">
-                <li class="active">
+                <li>
                     <a ui-sref="home"><i class="glyphicon glyphicon-home"></i> Strona główna</a>
                 </li>
                 <li>
                     <a href="javascript:;" data-toggle="collapse" data-target="#grafik"><i class="glyphicon glyphicon-calendar"></i> Grafik <i class="caret"></i></a>
-                    <ul id="grafik" class="collapse">
+                    <ul id="grafik" class="collapse">                        
                         <li>
                             <a ui-sref="calendar">Kalendarz</a>
                         </li>
@@ -34,7 +35,7 @@
                         </li>
                         <li>
                             <a ui-sref="submit_schedule">Zatwierdź grafik</a>
-                        </li>
+                        </li>                        
                     </ul>
                 </li>
                 <li>
@@ -72,29 +73,28 @@
                         <li>
                             <a ui-sref="forms">Lista formularzy</a>
                         </li>
-                        
                     </ul>
                 </li>
-                 <li>
+                <li>
                     <a href="javascript:;" data-toggle="collapse" data-target="#pracownicy"><i class="glyphicon glyphicon-user"></i> Pracownicy <i class="caret"></i></a>
                     <ul id="pracownicy" class="collapse">
-                        <li>
+                         <li>
                             <a ui-sref="add_employee">Dodaj profil pracownika</a>
                         </li>
-                        <li>
+                         <li>
                             <a ui-sref="update_employee">Aktualizuj profil</a>
                         </li>                                               
                     </ul>
                 </li>
-                 <li>
+                <li class="active">
                     <a href="javascript:;" data-toggle="collapse" data-target="#oferty"><i class="glyphicon glyphicon-briefcase"></i> Oferty pracy <i class="caret"></i></a>
                     <ul id="oferty" class="collapse">
-                        <li>
-                            <a ui-sref="offers">Oferty</a>
-                        </li>
-                        <li>
+                         <li>
                             <a ui-sref="add_offer">Dodaj ofertę</a>
                         </li>
+                         <li>
+                            <a ui-sref="offers">Oferty pracy</a>
+                        </li>                                               
                     </ul>
                 </li>
             </ul>
@@ -104,73 +104,57 @@
 
     <div id="page-wrapper">
 
-        <div ui-view class="container-fluid">
+        <div class="container-fluid">
 
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
                     <ol class="breadcrumb">
+                        <li>
+                            <i class="glyphicon glyphicon-home"></i>  <a ui-sref="home">Home</a>
+                        </li>
                         <li class="active">
-                            <i class="glyphicon glyphicon-home"></i> Home
+                            <i class="glyphicon glyphicon-briefcase"></i> Oferty pracy
                         </li>
                     </ol>
                 </div>
             </div>
-            <!-- /.row -->
-
+            
             <div class="row">
-                <div class="col-lg-10 col-lg-offset-1">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><i class="glyphicon glyphicon-user"></i> Dane pracownika</h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table ng-controller="profileCtrl" class="table table-bordered table-hover">
-                                    <tr>
-                                        <th>Imię</th>
-                                        <td>{{currentUser.name}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Nazwisko</th>
-                                        <td>{{currentUser.surname}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>ID</th>
-                                        <td>{{currentUser.id}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Telefon</th>
-                                        <td>{{currentUser.phone_number}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>e-mail</th>
-                                        <td>{{user.email}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Stanowisko</th>
-                                        <td>{{currentUser.position}}</td>
-                                    </tr>
-                                </table>
+                <div class="col-lg-5" ng-controller="addOfferCtrl">
+
+                    <h2>Nowa oferta</h2>
+                    <h3><strong>{{offer.title}}</strong></h3>
+
+                    <form name="addOfferForm" ng-submit="addOffer()">
+                        
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="event_title">Nazwa oferty:</label><br />
+                                    <textarea ng-model="offer.title" class="form-control" maxlength="75" rows="1" cols="50" id="offer_title" placeholder="Wprowadź nazwę oferty..." ></textarea>
+                                </div>
+                                  
+                                <div class="form-group">
+                                    <label for="offer_content">Opis oferty:</label><br />                 
+                                    <textarea rows="4" class="form-control" ng-model="offer.content" placeholder="Opis oferty..." required></textarea>
+                                </div>
+                            <button type="submit" class="btn btn-default" >Dodaj ofertę</button>
                             </div>
-                            <div class="text-right">
-                                <a ui-sref="edit_profile">Edytuj dane <i class="glyphicon glyphicon-circle-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </div>                        
+                    </form>
+                    
+                </div>                
+                <!-- /.col-lg-8 -->                
             </div>
             <!-- /.row -->
 
         </div>
-        <!-- /.container-fluid -->
+        <!-- /.container-fluid --> 
 
     </div>
     <!-- /#page-wrapper -->
 
 </div>
 <!-- /#wrapper -->
-
-
-
 

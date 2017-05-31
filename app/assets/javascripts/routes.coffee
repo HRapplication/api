@@ -79,3 +79,16 @@ angular.module 'HrApp'
         url: '/update_employee',
         templateUrl: 'employee/update_employee.html'
       })
+
+      .state('offers', {
+        url: '/offers',
+        templateUrl: 'offers/offers.html'
+      })
+      .state('add_offer', {
+        url: '/add_offer',
+        templateUrl: 'offers/add_offer.html'
+      })
+      .state('av_offers', {
+        url: '/av_offers',
+        templateUrl: 'offers/available_offers.html'
+      })

@@ -1,6 +1,6 @@
     <div id="wrapper">
 
-                <!-- Navigation -->
+             <!-- Navigation -->
         <nav class="main-nav navbar navbar-inverse navbar-fixed-top" role="navigation" id="topNav">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -13,7 +13,7 @@
                 <a class="navbar-brand" ui-sref="home">KORPOPLAN</a>
             </div>
             <!-- Top Menu Items -->
-    
+  
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar">
                 <ul class="nav navbar-nav side-nav" id="sidebar_list">
@@ -37,7 +37,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#wydarzenia"><i class="glyphicon glyphicon-bell"></i> Wydarzenia <i class="caret"></i></a>
                         <ul id="wydarzenia" class="collapse">
                             <li>
@@ -85,17 +85,20 @@
                             </li>                                               
                         </ul>
                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#oferty"><i class="glyphicon glyphicon-briefcase"></i> Oferty pracy <i class="caret"></i></a>
-                        <ul id="oferty" class="collapse">
-                            <li>
-                                <a ui-sref="offers">Oferty</a>
-                            </li>
-                            <li>
-                                <a ui-sref="add_offer">Dodaj ofertę</a>
-                            </li>
-                        </ul>
-                    </li>
+                   <li class="active">
+                    <a href="javascript:;" data-toggle="collapse" data-target="#oferty"><i class="glyphicon glyphicon-briefcase"></i> Oferty pracy <i class="caret"></i></a>
+                    <ul id="oferty" class="collapse">
+                         <li>
+                            <a ui-sref="add_offer">Dodaj ofertę</a>
+                        </li>
+                         <li>
+                            <a ui-sref="offers">Oferty pracy</a>
+                        </li>
+                        <li>
+                            <a ui-sref="av_offers">Udostępnione oferty pracy</a>
+                        </li>                                                
+                    </ul>
+                </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -113,25 +116,45 @@
                                 <i class="glyphicon glyphicon-home"></i> <a ui-sref="home">Home</a>
                             </li>
                             <li class="active">
-                                <i class="glyphicon glyphicon-bell"></i> Wydarzenia
+                                <i class="glyphicon glyphicon-briefcase"></i> Oferty pracy
                             </li>
                         </ol>
                     </div>
                 </div>
                 <!-- /.row -->
 
-                 <div class="row" id="events"> 
-                    <div class="col-lg-12 list-group" ng-controller="myEventsCtrl"> 
-                        <div ng-repeat="event in events" class="contentList list-group-item"> 
-                            <h4 class="list-group-item-heading">{{event.title}}</h4> 
-                            <p class="list-group-item-text">{{"Data wydarzenia: "+event.duedate.substr(0,10)}}</p>
+                 <div class="row" id="offers"> 
+                    <div class="col-lg-12 list-group" ng-controller="offersCtrl"> 
+                        <div ng-repeat="offer in availableOffers" class="contentList list-group-item"> 
+                            <h4 class="list-group-item-heading">{{offer.title}}</h4>
+                            <h6 class="list-group-item-heading">{{"Stan: "+offer.isAvailable}}</h6> 
                             <details id="details" ng-open="open">
                                 <summary>Więcej...</summary>
-                                    <p class="list-group-item-text">{{"Miejsce wydarzenia: "+event.place}}</p>
-                                    <p class="list-group-item-text">{{"Liczba wolnych miejsc: "+event.spots}}</p>
-                                    <p class="list-group-item-text">{{"Opis wydarzenia: "+event.events_content.content}}</p>
+                                    <label for="offer_content">Opis oferty:</label>
+                                    <p class="list-group-item-text">{{offer.offers_content.content}}</p>
                                     <br/>
-                                                                   
+                                    <div>                                           
+                                        <button type="button" ng-click="changeState(offer)" class="btn btn-default" >Niedostępna</button>
+                                    </div>                                                                    
+                            </details>
+                        </div> 
+                    </div> 
+                </div>
+
+                <div class="row" id="offers"> 
+                    <div class="col-lg-12 list-group" ng-controller="offersCtrl"> 
+                        <div ng-repeat="offer in disavailableOffers" class="contentList list-group-item"> 
+                            <h4 class="list-group-item-heading">{{offer.title}}</h4>
+                            <h6 class="list-group-item-heading">{{"Stan: "+offer.isAvailable}}</h6> 
+                            <details id="details" ng-open="open">
+                                <summary>Więcej...</summary>
+                                    <label for="offer_content">Opis oferty:</label>
+                                    <p class="list-group-item-text">{{offer.offers_content.content}}</p>
+                                    <br/>
+                                    <div>
+                                        <button type="button" ng-click="changeState(offer)" class="btn btn-default" >Dostępna</button>
+                                    </div>
+                                                                    
                             </details>
                         </div> 
                     </div> 

@@ -1,28 +1,19 @@
 <div id="wrapper"> 
  
-        <!-- Navigation --> 
-        <nav class="main-nav navbar navbar-inverse navbar-fixed-top" role="navigation"> 
-            <!-- Brand and toggle get grouped for better mobile display --> 
-            <div class="navbar-header"> 
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> 
-                    <span class="sr-only">Toggle navigation</span> 
-                    <span class="icon-bar"></span> 
-                    <span class="icon-bar"></span> 
-                    <span class="icon-bar"></span> 
-                </button> 
-                <a class="navbar-brand" ui-sref="home">KORPOPLAN</a> 
-            </div> 
-            <!-- Top Menu Items --> 
-            <ul class="nav navbar-right top-nav"> 
-                <li class="dropdown"> 
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> John Doe <b class="caret"></b></a> 
-                    <ul class="dropdown-menu"> 
-                        <li> 
-                            <a ui-sref="login"><i class="glyphicon glyphicon-off"></i> Wyloguj</a> 
-                        </li> 
-                    </ul> 
-                </li> 
-            </ul> 
+              <!-- Navigation -->
+            <nav class="main-nav navbar navbar-inverse navbar-fixed-top" role="navigation" id="topNav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" id="toggle" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" ui-sref="home">KORPOPLAN</a>
+            </div>
+            <!-- Top Menu Items -->
+  
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens --> 
             <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar"> 
                 <ul class="nav navbar-nav side-nav" id="sidebar_list"> 
@@ -48,7 +39,10 @@
                     </li> 
                     <li> 
                         <a href="javascript:;" data-toggle="collapse" data-target="#wydarzenia"><i class="glyphicon glyphicon-bell"></i> Wydarzenia <i class="caret"></i></a> 
-                        <ul id="wydarzenia" class="collapse"> 
+                        <ul id="wydarzenia" class="collapse">
+                            <li>
+                                <a ui-sref="my_events">Moje wydarzenia</a>
+                            </li> 
                             <li> 
                                 <a ui-sref="events">Aktualne wydarzenia</a> 
                             </li> 
@@ -90,7 +84,18 @@
                                 <a ui-sref="update_employee">Aktualizuj profil</a> 
                             </li>                                                
                         </ul> 
-                   </li> 
+                   </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#oferty"><i class="glyphicon glyphicon-briefcase"></i> Oferty pracy <i class="caret"></i></a>
+                        <ul id="oferty" class="collapse">
+                            <li>
+                                <a ui-sref="offers">Oferty</a>
+                            </li>
+                            <li>
+                                <a ui-sref="add_offer">Dodaj ofertę</a>
+                            </li>
+                        </ul>
+                    </li> 
                 </ul> 
             </div> 
             <!-- /.navbar-collapse --> 
@@ -198,7 +203,7 @@
                                     <p class="list-group-item-text">{{form.commentPrint}}</p>
                                     <p class="list-group-item-text">{{form.companyPrint}}</p>
                                     <p class="list-group-item-text">{{form.transportPrint}}</p>
-                                    <br/>                                
+                                    <br/>                                                                   
                             </details>
                         </div> 
                     </div> 
