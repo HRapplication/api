@@ -212,7 +212,12 @@
                                     <p class="list-group-item-text">{{form.commentPrint}}</p>
                                     <p class="list-group-item-text">{{form.companyPrint}}</p>
                                     <p class="list-group-item-text">{{form.transportPrint}}</p>
-                                    <br/>                                
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <button type="button" ng-click="pdfGen(form)" class="btn btn-default" >Generuj formularz PDF</button>                                      
+                                        </div>
+                                    </div>                                
                             </details>
                         </div> 
                     </div> 
