@@ -1,4 +1,5 @@
 # = require jquery
+# = require jquery_ujs
 # = require bootstrap
 # = require angular
 # = require angular-rails-templates
@@ -8,7 +9,7 @@
 # = require bootstrap-daterangepicker
 # = require angular-bootstrap-calendar
 
-# = require_tree ./templates    
+# = require_tree ./templates
 # = require init
 # = require routes
 # = require_tree ./controllers
