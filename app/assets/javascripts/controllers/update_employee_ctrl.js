@@ -1,34 +1,33 @@
 angular.module('HrApp')
-    .controller('editEmployeeCtrl', function($scope, $http, $state) {
+    .controller('updateEmployeeCtrl', function($scope, $http, $state, $filter) {
        
-        $scope.editEmployee= {
-            model1: null,
-            model2: null,
-            employee: [
-                {name: 'Jacek', surname: 'Gąsior'},
-                {name: 'Wincenty', surname: 'Klich'},
-                {name: 'Druzjan', surname: 'Wątły'}
-            ],
-        };
-
-        $scope.employees = {};
+        $scope.empList = {};
+        $scope.employeeListFilt = [];
+        $scope.updatedEmployeeId = {};
         $scope.updatedEmployee = {};
         $scope.updateResponse = {};
 
-      //  $scope.updatedEmployee = $filter('filter')($scope.employees, {id:$scope.user.id});
-       //         $scope.updatedEmployee = $scope.updatedEmployee[0];
-
         $http.get('/employees').
             success(function(data) {
-                $scope.employees = data;
-                console.log($scope.employees);
+                $scope.empList = data;
+                angular.forEach($scope.empList, function(value, key) {
+                    if(value.name != null && value.surname != null && value.phone_number != null) {
+                        $scope.employeeListFilt.push(value);
+                    }
+                });
             }).
             error(function(data) {
-                console.log('Error!!!');
+                concole.log('Error!!!');
             });
 
+
+        $scope.selectEmployee = function() {
+            $scope.updatedEmployee = $filter('filter')($scope.employeeListFilt, {id:$scope.updatedEmployeeId});
+            $scope.updatedEmployee = $scope.updatedEmployee[0];
+        };
+
         $scope.updateEmployee = function() {
-            $http.patch('/update_user', $scope.updatedEmployee).
+            $http.patch('/employees/'+$scope.updatedEmployeeId, $scope.updatedEmployee).
                 success(function(data) {
                     console.log('Udało się zauktualizować użytkownika.');
                     console.log(data);
@@ -41,7 +40,7 @@ angular.module('HrApp')
         };
 
         $scope.deleteEmployee = function() {
-            $http.delete('/employees/'+$scope.updatedEmployee.employee_id).
+            $http.delete('/employees/'+$scope.updatedEmployeeId).
                 success(function(data) {
                     console.log('Udało się usunąć użytkownika.');
                     console.log(data);
@@ -49,7 +48,7 @@ angular.module('HrApp')
                 }).
                 error(function(data) {
                     console.log('Error!!!');
-                    showModal('#errorModal');
+                    showModal('#deleteModalError');
                 });
         };
 

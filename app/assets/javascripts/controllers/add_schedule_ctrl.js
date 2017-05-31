@@ -3,6 +3,7 @@ angular.module('HrApp')
 
         $scope.employeesList = {};
         $scope.selectedEmployeeId = null;
+        $scope.empListFilter = [];
 
         $scope.monday = {};
         $scope.monday.is_weekend = false;
@@ -30,6 +31,11 @@ angular.module('HrApp')
         $http.get('/employees').
             success(function(data) {
                 $scope.employeesList = data;
+                angular.forEach($scope.employeesList, function(value, key) {
+                    if(value.name != null && value.surname != null && value.phone_number != null) {
+                        $scope.empListFilter.push(value);
+                    }
+                });
             }).
             error(function(data) {
                 concole.log('Error!!!');

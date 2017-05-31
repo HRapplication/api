@@ -98,7 +98,7 @@
 
     <div id="page-wrapper">
 
-        <div class="container-fluid" ng-controller="editEmployeeCtrl">
+        <div class="container-fluid" ng-controller="updateEmployeeCtrl">
 
             <!-- Page Heading -->
             <div class="row">
@@ -120,9 +120,8 @@
                         <div class="form-group">                            
                             <label for="employee" class="col-sm-2 control-label">Pracownik:</label>
                             <div class="col-sm-7 col-lg-5">
-                                <select id="employee" name="employee" class="form-control" ng-model="editEmployee.model" required>                                    
-                                    <option selected disabled value>Wybierz pracownika...</option>
-                                    <option ng-repeat="option in editEmployee.employee" value="{{option.name}}">{{option.name}} {{option.surname}}</option>                            
+                                <select id="employee" class="form-control" ng-model="updatedEmployeeId" ng-change="selectEmployee()" required>       
+                                    <option ng-repeat="employee in employeeListFilt" value="{{employee.id}}">{{'(ID: ' + employee.id + ') ' + employee.name + ' ' + employee.surname}}</option>                           
                                 </select>
                             </div>
                         </div>       
@@ -153,7 +152,7 @@
                         <div class="form-group">
                             <label for="job_position" class="col-sm-2 control-label">Stanowisko: </label>
                             <div class="col-sm-7 col-lg-5">
-                                <select id="job_position" class="form-control" ng-model="updatedEmployee.postion" required>
+                                <select id="job_position" class="form-control" ng-model="updatedEmployee.position" required>
                                     <option disabled selected value>Wybierz stanowisko...</option>
                                     <option value="hr">hr</option>
                                     <option value="worker">worker</option>
@@ -225,7 +224,7 @@
 
                 <div class="modal fade" id="errorModal" tabindex="-1" role="dialog"> 
                     <div class="modal-dialog">
-                        <div class="modal-content">
+                        <div class="modal-conupdatedEmployee.employee_idtent">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">
                                     <span>&times;</span>
@@ -242,7 +241,7 @@
                     </div>
                 </div>
 
-                <div class="modal fade" id="submitModal" tabindex="-1" role="dialog"> 
+                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"> 
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
