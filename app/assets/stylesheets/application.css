@@ -17,6 +17,7 @@
  *= require sb-admin
  *= require index
  *= require add_event
+ *= require view_position
  *= require logout
  *= require edit_profile
  *= require lists

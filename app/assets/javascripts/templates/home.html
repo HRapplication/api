@@ -15,7 +15,7 @@
         <!-- Top Menu Items -->
         
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar">
+        <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar" ng-controller="viewCtrl">
             <ul class="nav navbar-nav side-nav" id="sidebar_list">
                 <li class="active">
                     <a ui-sref="home"><i class="glyphicon glyphicon-home"></i> Strona główna</a>
@@ -32,8 +32,8 @@
                         <li>
                             <a ui-sref="edit_schedule">Edytuj grafik</a>
                         </li>
-                        <li>
-                            <a ui-sref="submit_schedule">Zatwierdź grafik</a>
+                        <li class="hr-only">
+                            <a href="#">Zatwierdź grafik</a>
                         </li>
                     </ul>
                 </li>
