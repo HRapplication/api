@@ -13,10 +13,8 @@
                 </button>
                 <a class="navbar-brand" ui-sref="home">KORPOPLAN</a>
             </div>
-            <!-- Top Menu Items -->
-  
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar">
+        <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar" ng-controller="profileCtrl">
             <ul class="nav navbar-nav side-nav" id="sidebar_list">
                 <li>
                     <a ui-sref="home"><i class="glyphicon glyphicon-home"></i> Strona główna</a>
@@ -27,14 +25,11 @@
                         <li>
                             <a ui-sref="calendar">Kalendarz</a>
                         </li>
-                        <li>
+                        <li ng-show="user.details.position == 'hr'">
                             <a ui-sref="add_schedule">Ustal grafik</a>
                         </li>
-                        <li>
+                        <li ng-show="user.details.position == 'hr'">
                             <a ui-sref="edit_schedule">Edytuj grafik</a>
-                        </li>
-                        <li>
-                            <a ui-sref="submit_schedule">Zatwierdź grafik</a>
                         </li>
                     </ul>
                 </li>
@@ -47,7 +42,7 @@
                         <li>
                             <a ui-sref="events">Aktualne wydarzenia</a>
                         </li>
-                        <li>
+                        <li ng-show="user.details.position == 'hr'">
                             <a ui-sref="add_event">Dodaj wydarzenie</a>
                         </li>
                     </ul>
@@ -70,12 +65,12 @@
                         <li>
                             <a ui-sref="business_trip_form">Delegacja</a>
                         </li>
-                        <li>
+                        <li ng-show="user.details.position == 'hr'">
                             <a ui-sref="forms">Lista formularzy</a>
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li ng-show="user.details.position == 'hr'">
                     <a href="javascript:;" data-toggle="collapse" data-target="#pracownicy"><i class="glyphicon glyphicon-user"></i> Pracownicy <i class="caret"></i></a>
                     <ul id="pracownicy" class="collapse">
                         <li>
@@ -92,7 +87,7 @@
                         <li>
                             <a ui-sref="offers">Oferty</a>
                         </li>
-                        <li>
+                        <li ng-show="user.details.position == 'hr'">
                             <a ui-sref="add_offer">Dodaj ofertę</a>
                         </li>
                     </ul>
@@ -123,17 +118,17 @@
             <br />
             <div class="row">
                 <div class="col-sm-12">
-                    <form class="form-horizontal" ng-submit="updateCrtUser()">
+                    <form class="form-horizontal" ng-submit="updateUser()">
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">Imię: </label>
                             <div class="col-sm-7 col-lg-5">
-                                <input type="text" id="name" class="form-control" placeholder="Wprowadź imię..." ng-model="currentUser.name" required />
+                                <input type="text" id="name" class="form-control" placeholder="Wprowadź imię..." ng-model="user.details.name" required />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="surname" class="col-sm-2 control-label">Nazwisko: </label>
                             <div class="col-sm-7 col-lg-5">
-                                <input type="text" id="surname" class="form-control" placeholder="Wprowadź nazwisko..." ng-model="currentUser.surname" required />
+                                <input type="text" id="surname" class="form-control" placeholder="Wprowadź nazwisko..." ng-model="user.details.surname" required />
                             </div>
                         </div>                           
                         <div class="form-group">
@@ -145,43 +140,43 @@
                         <div class="form-group">
                             <label for="phone_number" class="col-sm-2 control-label">Numer telefonu: </label>
                             <div class="col-sm-7 col-lg-5">
-                                <input type="tel" id="phone_number" class="form-control" placeholder="Wprowadź numer telefonu..." ng-model="currentUser.phone_number" required />
+                                <input type="tel" id="phone_number" class="form-control" placeholder="Wprowadź numer telefonu..." ng-model="user.details.phone_number" required />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="job_position" class="col-sm-2 control-label">Stanowisko: </label>
                             <div class="col-sm-7 col-lg-5">
-                                <input type="text" id="job_position" class="form-control" ng-model="currentUser.position" readonly />
+                                <input type="text" id="job_position" class="form-control" ng-model="user.details.position" readonly />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="weekly_working_hours" class="col-sm-2 control-label">Ilość godzin pracy w tygodniu: </label>
                             <div class="col-sm-7 col-lg-5">
-                                <input type="text" id="weekly_working_hours" ng-model="currentUser.weekly_working_hours" class="form-control" readonly />
+                                <input type="text" id="weekly_working_hours" ng-model="user.details.weekly_working_hours" class="form-control" readonly />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="address" class="col-sm-2 control-label">Ulica: </label>
                             <div class="col-sm-7 col-lg-5">
-                                <input type="text" id="address" ng-model="currentUser.address.address" class="form-control" />
+                                <input type="text" id="address" ng-model="user.details.address.address" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="address_city" class="col-sm-2 control-label">Miasto: </label>
                             <div class="col-sm-7 col-lg-5">
-                                <input type="text" id="address_city" ng-model="currentUser.address.city" class="form-control" />
+                                <input type="text" id="address_city" ng-model="user.details.address.city" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="address_country" class="col-sm-2 control-label">Państwo: </label>
                             <div class="col-sm-7 col-lg-5">
-                                <input type="text" id="address_country" ng-model="currentUser.address.country" class="form-control" />
+                                <input type="text" id="address_country" ng-model="user.details.address.country" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="address_postcode" class="col-sm-2 control-label">Kod pocztowy: </label>
                             <div class="col-sm-7 col-lg-5">
-                                <input type="text" id="address_postcode" ng-model="currentUser.address.postcode" class="form-control" />
+                                <input type="text" id="address_postcode" ng-model="user.details.address.postcode" class="form-control" />
                             </div>
                         </div>  
                         <br />                         

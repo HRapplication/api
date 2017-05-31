@@ -12,10 +12,8 @@
             </button>
             <a class="navbar-brand" ui-sref="home">KORPOPLAN</a>
         </div>
-        <!-- Top Menu Items -->
-        
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar" ng-controller="viewCtrl">
+        <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar" ng-controller="profileCtrl">
             <ul class="nav navbar-nav side-nav" id="sidebar_list">
                 <li class="active">
                     <a ui-sref="home"><i class="glyphicon glyphicon-home"></i> Strona główna</a>
@@ -26,14 +24,11 @@
                         <li>
                             <a ui-sref="calendar">Kalendarz</a>
                         </li>
-                        <li>
+                        <li ng-show="user.details.position == 'hr'">
                             <a ui-sref="add_schedule">Ustal grafik</a>
                         </li>
-                        <li>
+                        <li ng-show="user.details.position == 'hr'">
                             <a ui-sref="edit_schedule">Edytuj grafik</a>
-                        </li>
-                        <li class="hr-only">
-                            <a href="#">Zatwierdź grafik</a>
                         </li>
                     </ul>
                 </li>
@@ -46,7 +41,7 @@
                         <li>
                             <a ui-sref="events">Aktualne wydarzenia</a>
                         </li>
-                        <li>
+                        <li ng-show="user.details.position == 'hr'">
                             <a ui-sref="add_event">Dodaj wydarzenie</a>
                         </li>
                     </ul>
@@ -70,12 +65,12 @@
                             <a ui-sref="business_trip_form">Delegacja</a>
                         </li>
                         <li>
-                            <a ui-sref="forms">Lista formularzy</a>
+                            <a ui-sref="forms" ng-show="user.details.position == 'hr'">Lista formularzy</a>
                         </li>
                         
                     </ul>
                 </li>
-                 <li>
+                 <li ng-show="user.details.position == 'hr'">
                     <a href="javascript:;" data-toggle="collapse" data-target="#pracownicy"><i class="glyphicon glyphicon-user"></i> Pracownicy <i class="caret"></i></a>
                     <ul id="pracownicy" class="collapse">
                         <li>
@@ -92,7 +87,7 @@
                         <li>
                             <a ui-sref="offers">Oferty</a>
                         </li>
-                        <li>
+                        <li ng-show="user.details.position == 'hr'">
                             <a ui-sref="add_offer">Dodaj ofertę</a>
                         </li>
                     </ul>
@@ -129,19 +124,19 @@
                                 <table ng-controller="profileCtrl" class="table table-bordered table-hover">
                                     <tr>
                                         <th>Imię</th>
-                                        <td>{{currentUser.name}}</td>
+                                        <td>{{user.details.name}}</td>
                                     </tr>
                                     <tr>
                                         <th>Nazwisko</th>
-                                        <td>{{currentUser.surname}}</td>
+                                        <td>{{user.details.surname}}</td>
                                     </tr>
                                     <tr>
                                         <th>ID</th>
-                                        <td>{{currentUser.id}}</td>
+                                        <td>{{user.id}}</td>
                                     </tr>
                                     <tr>
                                         <th>Telefon</th>
-                                        <td>{{currentUser.phone_number}}</td>
+                                        <td>{{user.details.phone_number}}</td>
                                     </tr>
                                     <tr>
                                         <th>e-mail</th>
@@ -149,7 +144,7 @@
                                     </tr>
                                     <tr>
                                         <th>Stanowisko</th>
-                                        <td>{{currentUser.position}}</td>
+                                        <td>{{user.details.position}}</td>
                                     </tr>
                                 </table>
                             </div>

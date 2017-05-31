@@ -201,7 +201,7 @@ angular.module('HrApp')
                 console.log("Error!!!"); 
             }); 
 
-
+/*
         $scope.pdfGen = function(form){
             if(form.name == 'business_trip_form') {                            
                 $http.get('/business_trip_forms/'+form.id+'/form'+'.pdf').
@@ -213,7 +213,17 @@ angular.module('HrApp')
                     console.log("Error!!!");
                 });
             }
-        }   
+            else if(form.name == 'business_trip_form') {                            
+                $http.get('/business_trip_forms/'+form.id+'/form'+'.pdf').
+                  success(function(data) {
+                    $scope.events = data;
+                    console.log("Wysłano PDF");                
+                }).
+                error(function(data) {
+                    console.log("Error!!!");
+                });
+            }
+        }  */
     }); 
 
   

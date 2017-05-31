@@ -3,8 +3,6 @@ angular.module('HrApp')
 
         $scope.user = {};
         $scope.employees = {};
-        $scope.currentUser = {};
-        
 
         $http.get('/users/index').
             success(function(data) {
@@ -18,16 +16,16 @@ angular.module('HrApp')
             success(function(data) {
                 $scope.employees = data;
                 console.log($scope.employees);
-                $scope.currentUser = $filter('filter')($scope.employees, {id:$scope.user.id});
-                $scope.currentUser = $scope.currentUser[0];
             }).
             error(function(data) {
                 concole.log('Error!!!');
             });
 
-        $scope.updateCrtUser = function() {
+        $scope.updateUser = function() {
 
-            $http.patch('/update_user', $scope.currentUser).
+           // $scope.user.address_attributes.address = $scope.user.details.address.address;
+
+            $http.patch('/update_user', $scope.user).
                 success(function(data) {
                     console.log('Wysyłanie zakończone sukcesem.');
                     console.log(data);

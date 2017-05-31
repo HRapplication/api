@@ -15,7 +15,7 @@
             <!-- Top Menu Items -->
   
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar">
+            <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar" ng-controller="profileCtrl">
                 <ul class="nav navbar-nav side-nav" id="sidebar_list">
                     <li>
                         <a ui-sref="home"><i class="glyphicon glyphicon-home"></i> Strona główna</a>
@@ -26,15 +26,12 @@
                             <li>
                                 <a ui-sref="calendar">Kalendarz</a>
                             </li>
-                            <li>
+                            <li ng-show="user.details.position == 'hr'">
                                 <a ui-sref="add_schedule">Ustal grafik</a>
                             </li>                            
-                            <li>
+                            <li ng-show="user.details.position == 'hr'">
                                 <a ui-sref="edit_schedule">Edytuj grafik</a>
-                            </li>
-                            <li>
-                                <a ui-sref="submit_schedule">Zatwierdź grafik</a>
-                            </li>
+                            </li>                            
                         </ul>
                     </li>
                     <li>
@@ -46,7 +43,7 @@
                             <li>
                                 <a ui-sref="events">Aktualne wydarzenia</a>
                             </li>
-                            <li>
+                            <li ng-show="user.details.position == 'hr'">
                                 <a ui-sref="add_event">Dodaj wydarzenie</a>
                             </li>
                         </ul>
@@ -69,12 +66,12 @@
                             <li>
                                 <a ui-sref="business_trip_form">Delegacja</a>
                             </li>
-                            <li>
+                            <li ng-show="user.details.position == 'hr'">
                             <a ui-sref="forms">Przeglądaj formularze</a>
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <li ng-show="user.details.position == 'hr'">
                         <a href="javascript:;" data-toggle="collapse" data-target="#pracownicy"><i class="glyphicon glyphicon-user"></i> Pracownicy <i class="caret"></i></a>
                         <ul id="pracownicy" class="collapse">
                             <li>
@@ -91,7 +88,7 @@
                             <li>
                                 <a ui-sref="offers">Oferty</a>
                             </li>
-                            <li>
+                            <li ng-show="user.details.position == 'hr'">
                                 <a ui-sref="add_offer">Dodaj ofertę</a>
                             </li>
                         </ul>
@@ -155,7 +152,7 @@
                                     <p class="list-group-item-text">{{form.transportPrint}}</p> 
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <button type="button" ng-click="pdfGen(form)" class="btn btn-default" >Generuj formularz PDF</button>                                      
+                                            <a href="/business_trip_forms/{{form.id}}/form.pdf" class="btn btn-default" >Generuj formularz PDF</a>                                      
                                         </div>
                                     </div>                                    
                             </details>                            
