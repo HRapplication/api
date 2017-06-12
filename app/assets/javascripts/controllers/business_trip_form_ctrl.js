@@ -4,7 +4,19 @@ angular.module('HrApp')
         $scope.business = {status: "waiting"};
 
         $scope.sendBusiness = function() {
-            $http.post('/business_trip_forms', $scope.business).
+
+            var businessToSend = {};            
+                
+            console.log($scope.business.start_date.toString().substr(4,11));
+            console.log($scope.business.end_date.toString().substr(4,11));
+
+            businessToSend.start_date = $scope.business.start_date.toString().substr(4,11);
+            businessToSend.end_date = $scope.business.end_date.toString().substr(4,11);
+            businessToSend.transport = $scope.business.transport;
+            businessToSend.company = $scope.business.company;
+            businessToSend.status = $scope.business.status;
+
+            $http.post('/business_trip_forms', businessToSend).
             success(function(data) {
                 console.log('Wysyłanie zakończone sukcesem.');
                 console.log(data);

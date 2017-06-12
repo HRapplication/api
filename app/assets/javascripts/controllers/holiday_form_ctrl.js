@@ -4,7 +4,19 @@ angular.module('HrApp')
         $scope.holiday = {status: "waiting"};
 
         $scope.sendHoliday = function() {
-            $http.post('/holiday_forms', $scope.holiday).
+
+            var holidayToSend = {};            
+                
+            console.log($scope.holiday.start_date.toString().substr(4,11));
+            console.log($scope.holiday.end_date.toString().substr(4,11));
+
+            holidayToSend.start_date = $scope.holiday.start_date.toString().substr(4,11);
+            holidayToSend.end_date = $scope.holiday.end_date.toString().substr(4,11);
+            holidayToSend.comment = $scope.holiday.comment;
+            holidayToSend.holiday_type = $scope.holiday.holiday_type;
+            holidayToSend.status = $scope.holiday.status;
+
+            $http.post('/holiday_forms', holidayToSend).
             success(function(data) {
                 console.log('Wysyłanie zakończone sukcesem.');
                 console.log(data);

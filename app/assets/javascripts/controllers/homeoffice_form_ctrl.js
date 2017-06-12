@@ -4,7 +4,17 @@ angular.module('HrApp')
         $scope.homeOffice = {status: "waiting"};
 
         $scope.sendHomeOffice = function() {
-            $http.post('/homeoffice_forms', $scope.homeOffice).
+
+            var homeOfficeToSend = {};            
+                
+            console.log($scope.homeOffice.start_date.toString().substr(4,11));
+            console.log($scope.homeOffice.end_date.toString().substr(4,11));
+
+            homeOfficeToSend.start_date = $scope.homeOffice.start_date.toString().substr(4,11);
+            homeOfficeToSend.end_date = $scope.homeOffice.end_date.toString().substr(4,11);
+            homeOfficeToSend.status = $scope.homeOffice.status;
+
+            $http.post('/homeoffice_forms', homeOfficeToSend).
             success(function(data) {
                 console.log('Wysyłanie zakończone sukcesem.');
                 console.log(data);

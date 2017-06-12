@@ -4,7 +4,19 @@ angular.module('HrApp')
         $scope.sickLeave = {status: "waiting"};
 
         $scope.sendSickLeave = function() {
-            $http.post('/sick_leave_forms', $scope.sickLeave).
+
+            var sickLeaveToSend = {};            
+                
+            console.log($scope.sickLeave.start_date.toString().substr(4,11));
+            console.log($scope.sickLeave.end_date.toString().substr(4,11));
+
+            sickLeaveToSend.start_date = $scope.sickLeave.start_date.toString().substr(4,11);
+            sickLeaveToSend.end_date = $scope.sickLeave.end_date.toString().substr(4,11);
+            sickLeaveToSend.care_type = $scope.sickLeave.care_type;
+            sickLeaveToSend.status = $scope.sickLeave.status;
+
+
+            $http.post('/sick_leave_forms', sickLeaveToSend).
             success(function(data) {
                 console.log('Wysyłanie zakończone sukcesem.');
                 console.log(data);
