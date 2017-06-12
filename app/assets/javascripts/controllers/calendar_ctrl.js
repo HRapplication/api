@@ -18,12 +18,12 @@ angular.module('HrApp')
             console.log('Error!!!');
         });
 
-    function getSchedule(userId, date){
+    function getSchedule(userId){
         $http.get('/users/'+userId+'/schedules', {params: {start_date: startDay, end_date: endDay, user_id:userId}}).
             success(function(data){
                 $scope.schedule = data;
                 console.log($scope.schedule);
-                console.log($scope.schedule[0].work_date + $scope.schedule[0].start_hour.substr(10));
+                //console.log($scope.schedule[0].work_date + $scope.schedule[0].start_hour.substr(10));
                 angular.forEach($scope.schedule, function(value, key) {
                     $scope.scheduleEvents.push({start: value.work_date+value.start_hour.substr(10), end: value.work_date+value.end_hour.substr(10)});
                 });
@@ -39,6 +39,7 @@ angular.module('HrApp')
     // page is now ready, initialize the calendar...
     function calendarInit(){
         $('#calendar').fullCalendar({
+            locale: 'pl',
             header: {
                 left: 'prev,next today',
                 center: 'title',
@@ -46,7 +47,7 @@ angular.module('HrApp')
             },
             selectable: true,
             selectHelper: true,
-            editable: true,
+            editable: false,
             eventLimit: true,      
             events: $scope.scheduleEvents
         });

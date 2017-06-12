@@ -77,11 +77,24 @@ angular.module('HrApp')
 
         function sendScheduleDay(scheduleDay, empId) {
             
+            var scheduleDayToSend = {};
+
             if(scheduleDay.start_hour == null && scheduleDay.end_hour == null && scheduleDay.work_date == null) {
                 return;
             } else {
                 scheduleDay.user_id = empId;
-                $http.post('/users/'+empId+'/schedules', scheduleDay).
+                console.log(scheduleDay.work_date.toString().substr(4,11));
+                console.log(scheduleDay.start_hour.toString().substr(16,5));
+
+                scheduleDayToSend.work_date = scheduleDay.work_date.toString().substr(4,11);
+                scheduleDayToSend.start_hour = scheduleDay.start_hour.toString().substr(16,5);
+                scheduleDayToSend.end_hour = scheduleDay.end_hour.toString().substr(16,5);
+                scheduleDayToSend.is_weekend = scheduleDay.is_weekend;
+                scheduleDayToSend.user_id = empId;
+
+                console.log(scheduleDayToSend.start_hour, scheduleDayToSend.end_hour);
+
+                $http.post('/users/'+empId+'/schedules', scheduleDayToSend).
                     success(function(data) {
                         console.log('Dzień pracy przesłany pomyślnie.');
                         console.log(data);

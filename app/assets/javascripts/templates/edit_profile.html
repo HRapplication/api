@@ -122,13 +122,13 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">Imię: </label>
                             <div class="col-sm-7 col-lg-5">
-                                <input type="text" id="name" class="form-control" placeholder="Wprowadź imię..." ng-model="user.details.name" required />
+                                <input type="text" id="name" class="form-control" placeholder="Wprowadź imię..." ng-model="user.name" required />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="surname" class="col-sm-2 control-label">Nazwisko: </label>
                             <div class="col-sm-7 col-lg-5">
-                                <input type="text" id="surname" class="form-control" placeholder="Wprowadź nazwisko..." ng-model="user.details.surname" required />
+                                <input type="text" id="surname" class="form-control" placeholder="Wprowadź nazwisko..." ng-model="user.surname" required />
                             </div>
                         </div>                           
                         <div class="form-group">
@@ -140,7 +140,7 @@
                         <div class="form-group">
                             <label for="phone_number" class="col-sm-2 control-label">Numer telefonu: </label>
                             <div class="col-sm-7 col-lg-5">
-                                <input type="tel" id="phone_number" class="form-control" placeholder="Wprowadź numer telefonu..." ng-model="user.details.phone_number" required />
+                                <input type="tel" id="phone_number" class="form-control" placeholder="Wprowadź numer telefonu..." ng-model="user.phone_number" required />
                             </div>
                         </div>
                         <div class="form-group">
@@ -158,25 +158,25 @@
                         <div class="form-group">
                             <label for="address" class="col-sm-2 control-label">Ulica: </label>
                             <div class="col-sm-7 col-lg-5">
-                                <input type="text" id="address" ng-model="user.details.address.address" class="form-control" />
+                                <input type="text" id="address" ng-model="user.address_attributes.address" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="address_city" class="col-sm-2 control-label">Miasto: </label>
                             <div class="col-sm-7 col-lg-5">
-                                <input type="text" id="address_city" ng-model="user.details.address.city" class="form-control" />
+                                <input type="text" id="address_city" ng-model="user.address_attributes.city" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="address_country" class="col-sm-2 control-label">Państwo: </label>
                             <div class="col-sm-7 col-lg-5">
-                                <input type="text" id="address_country" ng-model="user.details.address.country" class="form-control" />
+                                <input type="text" id="address_country" ng-model="user.address_atrributes.country" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="address_postcode" class="col-sm-2 control-label">Kod pocztowy: </label>
                             <div class="col-sm-7 col-lg-5">
-                                <input type="text" id="address_postcode" ng-model="user.details.address.postcode" class="form-control" />
+                                <input type="text" id="address_postcode" ng-model="user.address_attributes.postcode" class="form-control" />
                             </div>
                         </div>  
                         <br />                         
