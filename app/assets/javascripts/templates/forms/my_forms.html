@@ -149,7 +149,10 @@
                                     <p class="list-group-item-text">{{form.transportPrint}}</p> 
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <a href="/business_trip_forms/{{form.id}}/form.pdf" class="btn btn-default" >Generuj formularz PDF</a>                                      
+                                            <a href="/business_trip_forms/{{form.id}}/form.pdf" class="btn btn-default" ng-show="form.company" >Generuj formularz PDF</a>    
+                                            <a href="/holiday_forms/{{form.id}}/form.pdf" class="btn btn-default" ng-show="form.comment" >Generuj formularz PDF</a>                        
+                                            <a href="/homeoffice_forms/{{form.id}}/form.pdf" class="btn btn-default" ng-show="!form.company && !form.comment && !form.care_type" >Generuj formularz PDF</a>                        
+                                            <a href="/sick_leave_forms/{{form.id}}/form.pdf" class="btn btn-default" ng-show="form.care_type" >Generuj formularz PDF</a>                                                          
                                         </div>
                                     </div>                                    
                             </details>                            
