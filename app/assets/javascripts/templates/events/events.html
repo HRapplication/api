@@ -97,7 +97,7 @@
 
         <div id="page-wrapper">
 
-            <div class="container-fluid">
+            <div class="container-fluid" ng-controller="eventsCtrl">
 
                 <!-- Page Heading -->
                 <div class="row">
@@ -115,14 +115,14 @@
                 <!-- /.row -->
 
                  <div class="row" id="events"> 
-                    <div class="col-lg-12 list-group" ng-controller="eventsCtrl"> 
+                    <div class="col-lg-12 list-group"> 
                         <div ng-repeat="event in events" class="contentList list-group-item"> 
                             <h4 class="list-group-item-heading">{{event.title}}</h4> 
                             <p class="list-group-item-text">{{"Data wydarzenia: "+event.duedate.substr(0,10)}}</p>
                             <details id="details" ng-open="open">
                                 <summary>Więcej...</summary>
                                     <p class="list-group-item-text">{{"Miejsce wydarzenia: "+event.place}}</p>
-                                    <p class="list-group-item-text">{{"Liczba wolnych miejsc: "+event.spots}}</p>
+                                    <p class="list-group-item-text">{{"Liczba miejsc: "+event.spots}}</p>
                                     <p class="list-group-item-text">{{"Opis wydarzenia: "+event.events_content.content}}</p>
                                     <br/>
                                     <div>
@@ -134,6 +134,44 @@
                 </div>
                 <!-- /.row -->
 
+                <div class="modal fade" id="submitModal" tabindex="-1" role="dialog"> 
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                                <h4 class="modal-title">Wydarzenia</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Zapisano na wydarzenie ( ͡° ͜ʖ ͡°)</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="errorModal" tabindex="-1" role="dialog"> 
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                                <h4 class="modal-title">Wydarzenia</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Wystąpił błąd. Spóbuj ponownie ( ͡° ͜ʖ ͡°)</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <!-- /.container-fluid -->
 
@@ -142,5 +180,4 @@
 
     </div>
     <!-- /#wrapper -->
-f
 

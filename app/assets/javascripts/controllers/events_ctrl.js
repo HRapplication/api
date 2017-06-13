@@ -1,5 +1,5 @@
 angular.module('HrApp')
-    .controller('eventsCtrl', function($scope, $http) {
+    .controller('eventsCtrl', function($scope, $http, $state) {
 
         $scope.events = {};
 
