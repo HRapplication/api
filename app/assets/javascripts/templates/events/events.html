@@ -43,6 +43,9 @@
                             <li>
                                 <a ui-sref="events">Aktualne wydarzenia</a>
                             </li>
+                            <li ng-show="user.details.position == 'hr'">
+                                <a ui-sref="add_event">Dodaj wydarzenie</a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -107,7 +110,7 @@
                                 <i class="glyphicon glyphicon-home"></i> <a ui-sref="home">Home</a>
                             </li>
                             <li class="active">
-                                <i class="glyphicon glyphicon-bell"></i> Wydarzenia
+                                <i class="glyphicon glyphicon-bell"></i> Aktualne wydarzenia
                             </li>
                         </ol>
                     </div>
@@ -115,7 +118,7 @@
                 <!-- /.row -->
 
                  <div class="row" id="events"> 
-                    <div class="col-lg-12 list-group"> 
+                    <div class="col-lg-12 list-group contentList"> 
                         <div ng-repeat="event in events" class="contentList list-group-item"> 
                             <h4 class="list-group-item-heading">{{event.title}}</h4> 
                             <p class="list-group-item-text">{{"Data wydarzenia: "+event.duedate.substr(0,10)}}</p>

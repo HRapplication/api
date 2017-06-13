@@ -107,7 +107,7 @@
                                 <i class="glyphicon glyphicon-home"></i> <a ui-sref="home">Home</a>
                             </li>
                             <li class="active">
-                                <i class="glyphicon glyphicon-bell"></i> Wydarzenia
+                                <i class="glyphicon glyphicon-bell"></i> Moje wydarzenia
                             </li>
                         </ol>
                     </div>
@@ -115,7 +115,7 @@
                 <!-- /.row -->
 
                  <div class="row" id="events"> 
-                    <div class="col-lg-12 list-group" ng-controller="myEventsCtrl"> 
+                    <div class="col-lg-12 list-group contentList" ng-controller="myEventsCtrl"> 
                         <div ng-repeat="event in events" class="contentList list-group-item"> 
                             <h4 class="list-group-item-heading">{{event.title}}</h4> 
                             <p class="list-group-item-text">{{"Data wydarzenia: "+event.duedate.substr(0,10)}}</p>

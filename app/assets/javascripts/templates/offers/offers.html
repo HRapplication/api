@@ -116,8 +116,8 @@
                 <!-- /.row -->
 
                  <div class="row" id="offers"> 
-                    <div class="col-lg-12 list-group" ng-controller="offersCtrl"> 
-                        <div ng-repeat="offer in availableOffers" class="contentList list-group-item"> 
+                    <div class="col-lg-12 list-group contentList" ng-controller="offersCtrl"> 
+                        <div ng-repeat="offer in availableOffers" class="list-group-item"> 
                             <h4 class="list-group-item-heading">{{offer.title}}</h4>
                             <h6 class="list-group-item-heading">{{"Stan: "+offer.isAvailable}}</h6> 
                             <details id="details" ng-open="open">
