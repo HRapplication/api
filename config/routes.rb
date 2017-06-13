@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   get 'homeoffice_forms/all', to: "homeoffice_forms#all"
 
   resources :offers
+  get 'all_offers', to: "offers#all_offers"
+
   resources :employees
   patch "/update_user", to: 'employees#update_user'
 

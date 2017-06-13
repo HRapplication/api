@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => [:index, :show]
+  skip_before_filter :authenticate_user!, :only => [:index, :show, :all_offers]
 
 
 	def index
@@ -29,6 +29,9 @@ class OffersController < ApplicationController
 	def destroy
     render json: current_user.job_offers.where(id: id_param).first.destroy
 	end
+
+  def all_offers
+  end
 
   private
 
