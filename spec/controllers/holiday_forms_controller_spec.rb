@@ -17,6 +17,7 @@ RSpec.describe HolidayFormsController, type: :controller do
       status: "waiting"
     }
   end
+
   it "returns all holiday forms" do
     form = @user.details.holiday_forms.create(@data)
     get :index, {status: "waiting"}
@@ -74,6 +75,28 @@ RSpec.describe HolidayFormsController, type: :controller do
       status: "accepted"
     }
     patch :update, new_data
+
+    output = JSON.parse(response.body)
+
+    expect(output["commpent"] == @data[:commpent]).to be(true)
+    expect(output["end_date"] == @data[:end_date]).to be(true)
+    expect(output["start_date"] == @data[:start_date]).to be(true)
+    expect(output["status"] == "accepted").to be(true)
+  end
+
+  it "updates only status form in hr" do
+    form = @user.details.holiday_forms.create(@data)
+
+    user2 = create(:user)
+
+    sign_in user2
+
+    new_data = {
+      id: form.id,
+      status: "accepted"
+    }
+
+    patch :update_status, new_data
 
     output = JSON.parse(response.body)
 

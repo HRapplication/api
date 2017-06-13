@@ -19,21 +19,25 @@ Rails.application.routes.draw do
   resources :business_trip_forms, :except => :show do
     get 'form', to: "business_trip_forms#pdf_template"
   end
+  patch 'business_trip_forms/:id/update_status', to: "business_trip_forms#update_status"
   get 'business_trip_forms/all', to: "business_trip_forms#all"
 
   resources :holiday_forms, :except => :show do
     get 'form', to: "holiday_forms#pdf_template"
   end
+  patch 'holiday_forms/:id/update_status', to: "holiday_forms#update_status"
   get 'holiday_forms/all', to: "holiday_forms#all"
 
   resources :sick_leave_forms, :except => :show do
     get 'form', to: "sick_leave_forms#pdf_template"
   end
+  patch 'sick_leave_forms/:id/update_status', to: "sick_leave_forms#update_status"
   get 'sick_leave_forms/all', to: "sick_leave_forms#all"
 
   resources :homeoffice_forms, :except => :show do
     get 'form', to: "homeoffice_forms#pdf_template"
   end
+  patch 'homeoffice_forms/:id/update_status', to: "homeoffice_forms#update_status"
   get 'homeoffice_forms/all', to: "homeoffice_forms#all"
 
   resources :offers

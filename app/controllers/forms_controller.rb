@@ -19,6 +19,11 @@ class FormsController < ApplicationController
     render json: current_user.details.send(@base_method).where(id_param).first
   end
 
+  def update_status
+    @base_class.where(id_param).first.update(status: status_param[:status])
+    render json: @base_class.where(id_param).first
+  end
+
   def destroy
     render json: current_user.details.send(@base_method).where(id_param).first.destroy
   end

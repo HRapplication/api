@@ -60,6 +60,12 @@ class BusinessTripFormsController < FormsController
     param :form, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
   end
 
+  swagger_api :update_status do
+    summary "nadpisuje dany formularz"
+    param :path, :id, :integer, :required, "Id formularza"
+    param :form, :status, :string, :required, "status formularza (waiting, rejected, accepted)"
+  end
+
   swagger_api :destroy do
     summary "Usuwa formularz"
     param :path, :id, :integer, :required, "Id formularza"

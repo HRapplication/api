@@ -164,6 +164,32 @@
       ]
     },
     {
+      "path": "/business_trip_forms/{id}/update_status",
+      "operations": [
+        {
+          "summary": "nadpisuje dany formularz",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Id formularza",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "status",
+              "type": "string",
+              "description": "status formularza (waiting, rejected, accepted)",
+              "required": true
+            }
+          ],
+          "nickname": "BusinessTripForms#update_status",
+          "method": "patch"
+        }
+      ]
+    },
+    {
       "path": "/business_trip_forms/all",
       "operations": [
         {
