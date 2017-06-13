@@ -1,0 +1,54 @@
+
+    <div id="wrapper-log">
+
+        <!-- Navigation -->
+        <nav class="main-nav navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">KORPOPLAN</a>
+            </div>
+            <!-- Top Menu Items -->
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row" >
+                    <div class="col-lg-12">
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-fw fa-suitcase"></i> Oferty pracy
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+                 <div class="row" id="offers"> 
+                    <div class="col-lg-12 list-group" ng-controller="allOffersCtrl"> 
+                        <div ng-repeat="offer in availableOffers" class="contentList list-group-item"> 
+                            <h4 class="list-group-item-heading">{{offer.title}}</h4>
+                            <h6 class="list-group-item-heading">{{"Stan: "+offer.isAvailable}}</h6> 
+                            <details id="details" ng-open="open">
+                                <summary>Więcej...</summary>
+                                    <label for="offer_content">Opis oferty:</label>
+                                    <p class="list-group-item-text">{{offer.offers_content.content}}</p>
+                                    <br/>                                                                                                        
+                            </details>
+                        </div> 
+                    </div> 
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
