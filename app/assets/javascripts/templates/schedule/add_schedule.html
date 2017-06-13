@@ -124,7 +124,7 @@
                                     <h2>Ustal grafik</h2>
                                     <label for="employee">Pracownik:</label>
                                     <select id="employee" class="form-control" ng-model="selectedEmployeeId" required>       
-                                        <option ng-repeat="employee in empListFilter" value="{{employee.id}}">{{'(ID: ' + employee.id + ') ' + employee.name + ' ' + employee.surname}}</option>                           
+                                        <option ng-repeat="employee in empListFilter" value="{{employee.user.id}}">{{'(ID: ' + employee.id + ') ' + employee.name + ' ' + employee.surname}}</option>                           
                                     </select>
                                 </div>  
                             </div>

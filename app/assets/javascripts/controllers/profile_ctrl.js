@@ -26,7 +26,7 @@ angular.module('HrApp')
 
            // $scope.user.address_attributes.address = $scope.user.details.address.address;
 
-            $http.patch('/employees/'+$scope.user.employee_id, $scope.user).
+            $http.patch('/update_user/', $scope.user).
                 success(function(data) {
                     console.log('Wysyłanie zakończone sukcesem.');
                     console.log(data);

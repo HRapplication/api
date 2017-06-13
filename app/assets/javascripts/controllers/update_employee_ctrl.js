@@ -40,7 +40,7 @@ angular.module('HrApp')
         };
 
         $scope.deleteEmployee = function() {
-            $http.delete('/employees/'+$scope.updatedEmployeeId).
+            $http.delete('/employees/'+$scope.updatedEmployee.user.id).
                 success(function(data) {
                     console.log('Udało się usunąć użytkownika.');
                     console.log(data);
