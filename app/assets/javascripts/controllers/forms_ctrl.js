@@ -205,7 +205,7 @@ angular.module('HrApp')
  
             if(form.name == 'business_trip_form') {                            
                 console.log(form); 
-                $http.patch('/business_trip_forms/'+form.id, form).
+                $http.patch('/business_trip_forms/'+form.id+'/update_status', form).
                     success(function(data){
                         console.log(data);
                         showModal('#submitModal');
@@ -213,7 +213,7 @@ angular.module('HrApp')
             }
             else if(form.name == 'holiday_form'){
                 console.log(form); 
-                $http.patch('/holiday_forms/'+form.id, form).
+                $http.patch('/holiday_forms/'+form.id+'/update_status', form).
                     success(function(data){
                         console.log(data);
                         showModal('#submitModal');
@@ -221,7 +221,7 @@ angular.module('HrApp')
             }
             else if(form.name == 'homeoffice_form'){
                 console.log(form); 
-                $http.patch('/homeoffice_forms/'+form.id, form).
+                $http.patch('/homeoffice_forms/'+form.id+'/update_status', form).
                     success(function(data){
                         console.log(data);
                         showModal('#submitModal');
@@ -229,7 +229,7 @@ angular.module('HrApp')
             }
             else if(form.name == 'sick_leave_form'){
                 console.log(form); 
-                $http.patch('/sick_leave_forms/'+form.id, form).
+                $http.patch('/sick_leave_forms/'+form.id+'/update_status', form).
                     success(function(data){
                         console.log(data);
                         showModal('#submitModal');
@@ -242,7 +242,7 @@ angular.module('HrApp')
 
             if(form.name == 'business_trip_form') {                            
                 console.log(form); 
-                $http.patch('/business_trip_forms/'+form.id, form).
+                $http.patch('/business_trip_forms/'+form.id+'/update_status', form).
                     success(function(data){
                         console.log(data);
                         showModal('#submitModal');
@@ -250,7 +250,7 @@ angular.module('HrApp')
             }
             else if(form.name == 'holiday_form'){
                 console.log(form); 
-                $http.patch('/holiday_forms/'+form.id, form).
+                $http.patch('/holiday_forms/'+form.id+'/update_status', form).
                     success(function(data){
                         console.log(data);
                         showModal('#submitModal');
@@ -258,7 +258,7 @@ angular.module('HrApp')
             }
             else if(form.name == 'homeoffice_form'){
                 console.log(form); 
-                $http.patch('/homeoffice_forms/'+form.id, form).
+                $http.patch('/homeoffice_forms/'+form.id+'/update_status', form).
                     success(function(data){
                         console.log(data);
                         showModal('#submitModal');
@@ -266,7 +266,7 @@ angular.module('HrApp')
             }
             else if(form.name == 'sick_leave_form'){
                 console.log(form); 
-                $http.patch('/sick_leave_forms/'+form.id, form).
+                $http.patch('/sick_leave_forms/'+form.id+'/update_status', form).
                     success(function(data){
                         console.log(data);
                         showModal('#submitModal');
